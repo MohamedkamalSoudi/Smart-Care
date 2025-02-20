@@ -71,7 +71,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                   children: [
                     DotIndicator(currentPage: currentPage, totalPages: 3),
                     Padding(
-                      padding: const EdgeInsets.only(left: 150, right: 20),
+                      padding: const EdgeInsets.only(left: 110, right: 20),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
