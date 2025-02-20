@@ -27,13 +27,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ImageSlider(
                   imagePaths: [
                     'assets/images/doctor_1.png',
                     'assets/images/doctor_2.png',
-                    'assets/images/doctor_3.png'
+                    'assets/images/logo.png',
                   ],
                   pageController: _pageController,
                 ),
@@ -45,7 +44,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             left: 0,
             right: 0,
             child: CustomPaint(
-              size: Size(double.infinity, 800),
+              size: Size(double.infinity, 900),
               painter: CustomWavePainter(),
             ),
           ),

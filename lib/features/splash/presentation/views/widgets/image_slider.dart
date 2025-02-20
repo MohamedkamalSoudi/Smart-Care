@@ -14,7 +14,7 @@ class ImageSlider extends StatelessWidget {
         itemCount: imagePaths.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.only(top: 34.0),
+            padding: const EdgeInsets.only(bottom:95.0),
             child: Image.asset(imagePaths[index]),
           );
         },
