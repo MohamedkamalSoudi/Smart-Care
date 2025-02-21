@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/splash/presentation/views/widgets/customwave_painter.dart';
-import 'image_slider.dart';
+import 'package:smart_care_app/features/splash/presentation/views/widgets/page_1.dart';
+import 'package:smart_care_app/features/splash/presentation/views/widgets/page_2.dart';
+import 'package:smart_care_app/features/splash/presentation/views/widgets/page_3.dart';
 import 'dot_indicator.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -12,12 +14,6 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> {
   int currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
-
-  List<String> textList = [
-    'Welcome To SmartCare',
-    'Patient Management and Monitoring Application',
-  ]; 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,17 +28,32 @@ class _SplashViewBodyState extends State<SplashViewBody> {
               ),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ImageSlider(
-                  imagePaths: [
-                    'assets/images/doctor_1.png',
-                    'assets/images/doctor_2.png',
-                  ],
-                  pageController: _pageController,
+                Expanded(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    itemCount: 3,
+                    onPageChanged: (index) {
+                      setState(() {
+                        currentPage = index;
+                      });
+                    },
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return FirstPage();
+                      } else if (index == 1) {
+                        return SecondPage();
+                      } else {
+                        return FourthPage();
+                      }
+                    },
+                  ),
                 ),
               ],
             ),
           ),
+          if (currentPage != 2)
           Positioned(
             bottom: 0,
             left: 0,
@@ -60,13 +71,14 @@ class _SplashViewBodyState extends State<SplashViewBody> {
               children: [
                 Center( 
                   child: Text(
-                    textList[currentPage], 
+                    currentPage == 0 ? 'Welcome To SmartCare' : 
+                    currentPage == 1 ? 'Patient Management And Monitoring Application' : '',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
-                    textAlign: TextAlign.center, 
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 SizedBox(
@@ -80,19 +92,15 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                       padding: const EdgeInsets.only(left: 110, right: 20),
                       child: GestureDetector(
                         onTap: () {
-                          setState(() {
-                            currentPage++;
-                          });
-                          if (currentPage == 2) {
-                            Navigator.pushReplacementNamed(
-                                context, '/nextScreen');
-                          } else {
-                            _pageController.nextPage(
-                              duration: Duration(milliseconds: 300),
-                              curve: Curves.ease,
-                            );
-                          }
-                        },
+                      if (currentPage == 2) {
+                        Navigator.pushReplacementNamed(context, '/FourthPage');
+                      } else {
+                        _pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.ease,
+                        );
+                      }
+                    },
                         child: Text(
                           'Next',
                           style: TextStyle(
