@@ -13,6 +13,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   int currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
+  List<String> textList = [
+    'Welcome To SmartCare',
+    'Patient Management and Monitoring Application',
+  ]; 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +37,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                   imagePaths: [
                     'assets/images/doctor_1.png',
                     'assets/images/doctor_2.png',
-                    'assets/images/logo.png',
                   ],
                   pageController: _pageController,
                 ),
@@ -54,12 +58,15 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             right: 0,
             child: Column(
               children: [
-                Text(
-                  'Welcome To SmartCare',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                Center( 
+                  child: Text(
+                    textList[currentPage], 
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.center, 
                   ),
                 ),
                 SizedBox(
@@ -104,5 +111,22 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         ],
       ),
     );
+  }
+
+
+ @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      setState(() {
+        currentPage = _pageController.page!.round();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }
