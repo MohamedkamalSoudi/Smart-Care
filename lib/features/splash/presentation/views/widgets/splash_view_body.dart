@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/logo/views/logo_view.dart';
+import 'package:smart_care_app/features/role_selection/views/role_selection_view.dart';
 import 'package:smart_care_app/features/splash/presentation/views/widgets/customwave_painter.dart';
 import 'package:smart_care_app/features/splash/presentation/views/widgets/page_1.dart';
 import 'package:smart_care_app/features/splash/presentation/views/widgets/page_2.dart';
@@ -45,7 +47,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                       } else if (index == 1) {
                         return SecondPage();
                       } else {
-                        return FourthPage();
+                        return LogoView();
                       }
                     },
                   ),
@@ -54,25 +56,28 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             ),
           ),
           if (currentPage != 2)
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: CustomPaint(
-              size: Size(double.infinity, 900),
-              painter: CustomWavePainter(),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: CustomPaint(
+                size: Size(double.infinity, 900),
+                painter: CustomWavePainter(),
+              ),
             ),
-          ),
           Positioned(
             bottom: 20,
             left: 0,
             right: 0,
             child: Column(
               children: [
-                Center( 
+                Center(
                   child: Text(
-                    currentPage == 0 ? 'Welcome To SmartCare' : 
-                    currentPage == 1 ? 'Patient Management And Monitoring Application' : '',
+                    currentPage == 0
+                        ? 'Welcome To SmartCare'
+                        : currentPage == 1
+                            ? 'Patient Management And Monitoring Application'
+                            : '',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -92,15 +97,16 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                       padding: const EdgeInsets.only(left: 110, right: 20),
                       child: GestureDetector(
                         onTap: () {
-                      if (currentPage == 2) {
-                        Navigator.pushReplacementNamed(context, '/FourthPage');
-                      } else {
-                        _pageController.nextPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.ease,
-                        );
-                      }
-                    },
+                          if (currentPage == 2) {
+                            Navigator.pushReplacementNamed(
+                                context, RoleSelectionView.id);
+                          } else {
+                            _pageController.nextPage(
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.ease,
+                            );
+                          }
+                        },
                         child: Text(
                           'Next',
                           style: TextStyle(
@@ -121,8 +127,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     );
   }
 
-
- @override
+  @override
   void initState() {
     super.initState();
     _pageController.addListener(() {

@@ -3,7 +3,7 @@ import 'package:smart_care_app/features/splash/presentation/views/widgets/splash
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
-
+  static String id = 'SplashView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
