@@ -89,9 +89,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                   height: 90,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SizedBox(width: MediaQuery.of(context).size.width /12),
+                    //SizedBox(width: MediaQuery.of(context).size.width /3.5),
                     DotIndicator(currentPage: currentPage, totalPages: 3),
                     Padding(
                       padding: const EdgeInsets.only(left: 80, right: 20),

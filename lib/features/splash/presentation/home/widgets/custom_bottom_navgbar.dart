@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/splash/presentation/home/Home_view.dart';
+import 'package:smart_care_app/features/splash/presentation/profile/profile_view.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   @override
@@ -13,12 +15,16 @@ class CustomBottomNavBar extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.home, color: Colors.black),
             iconSize: 30,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context, HomeView.id);
+            },
           ),
           IconButton(
             icon: const Icon(Icons.person, color: Colors.black),
             iconSize: 30,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, ProfileView.id);
+            },
           ),
         ],
       ),
