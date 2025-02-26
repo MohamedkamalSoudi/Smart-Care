@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/login/views/login_view.dart';
+import 'package:smart_care_app/features/splash/presentation/home/Home_view.dart';
 
 class CustomButtom extends StatelessWidget {
   const CustomButtom({super.key, required this.buttomName});
@@ -10,7 +11,13 @@ class CustomButtom extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () => Navigator.pushNamed(context, LoginView.id),
+        onTap: () {
+          if (buttomName == 'Login') {
+            Navigator.pushNamed(context, HomeView.id);
+          }else{
+            Navigator.pushNamed(context, LoginView.id);
+          }
+        },
         child: Container(
           width: double.infinity,
           height: 70,

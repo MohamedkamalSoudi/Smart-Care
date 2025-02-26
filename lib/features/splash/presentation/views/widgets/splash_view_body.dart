@@ -4,7 +4,6 @@ import 'package:smart_care_app/features/role_selection/views/role_selection_view
 import 'package:smart_care_app/features/splash/presentation/views/widgets/customwave_painter.dart';
 import 'package:smart_care_app/features/splash/presentation/views/widgets/page_1.dart';
 import 'package:smart_care_app/features/splash/presentation/views/widgets/page_2.dart';
-import 'package:smart_care_app/features/splash/presentation/views/widgets/page_3.dart';
 import 'dot_indicator.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -90,11 +89,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                   height: 90,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    SizedBox(width: MediaQuery.of(context).size.width /12),
                     DotIndicator(currentPage: currentPage, totalPages: 3),
                     Padding(
-                      padding: const EdgeInsets.only(left: 110, right: 20),
+                      padding: const EdgeInsets.only(left: 80, right: 20),
                       child: GestureDetector(
                         onTap: () {
                           if (currentPage == 2) {

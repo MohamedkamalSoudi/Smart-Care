@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/role_selection/views/role_selection_view.dart';
-
 import 'widgets/custom_logoview.dart';
 
 class LogoView extends StatelessWidget {

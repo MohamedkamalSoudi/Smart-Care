@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/splash/presentation/home/Home_view.dart';
 
 import 'features/login/views/login_view.dart';
 import 'features/logo/views/logo_view.dart';
@@ -19,6 +20,7 @@ class SmartCare extends StatelessWidget {
         LogoView.id: (context) => LogoView(),
         RoleSelectionView.id: (context) => RoleSelectionView(),
         LoginView.id: (context) => LoginView(),
+        HomeView.id: (context) => HomeView(),
       },
       debugShowCheckedModeBanner: false,
       initialRoute: SplashView.id,
