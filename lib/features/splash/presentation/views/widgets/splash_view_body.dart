@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/logo/views/logo_view.dart';
 import 'package:smart_care_app/features/role_selection/views/role_selection_view.dart';
 import 'package:smart_care_app/features/splash/presentation/views/widgets/customwave_painter.dart';
 import 'package:smart_care_app/features/splash/presentation/views/widgets/page_1.dart';
@@ -43,11 +42,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                     itemBuilder: (context, index) {
                       if (index == 0) {
                         return FirstPage();
-                      } else if (index == 1) {
+                      } else  {
                         return SecondPage();
-                      } else {
-                        return LogoView();
-                      }
+                      } 
                     },
                   ),
                 ),
@@ -97,7 +94,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                       padding: const EdgeInsets.only(left: 80, right: 20),
                       child: GestureDetector(
                         onTap: () {
-                          if (currentPage == 2) {
+                          if (currentPage == 1) {
                             Navigator.pushReplacementNamed(
                                 context, RoleSelectionView.id);
                           } else {

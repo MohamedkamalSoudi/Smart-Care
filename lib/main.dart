@@ -25,7 +25,7 @@ class SmartCare extends StatelessWidget {
         ProfileView.id: (context) => ProfileView(),
       },
       debugShowCheckedModeBanner: false,
-      initialRoute: SplashView.id,
+      initialRoute: LogoView.id,
     );
   }
 }

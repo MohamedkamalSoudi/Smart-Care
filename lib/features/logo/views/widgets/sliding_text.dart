@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/role_selection/views/widgets/custom_buttom.dart';
 
-import 'widgets/custom_text_field.dart';
+class SlidingText extends StatelessWidget {
+  const SlidingText({
+    super.key,
+    required this.slidingAnimation,
+  });
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
-  static String id = 'LoginView';
+  final Animation<Offset> slidingAnimation;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFBBE2FF),
-      body: ListView(
-        children: [
-          Center(
+    return AnimatedBuilder(
+      animation: slidingAnimation,
+      builder: (context, _) {
+        return SlideTransition(
+          position: slidingAnimation,
+          child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -41,31 +43,8 @@ class LoginView extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              'Login',
-              style: TextStyle(
-                fontSize: 34,
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          CustomTextField(
-            prefixIcon: Icons.email_outlined,
-            hintText: 'Email',
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          CustomTextField(
-            prefixIcon: Icons.lock_outlined,
-            hintText: 'Password',
-          ),
-          CustomButtom(buttomName: 'Login'),
-        ],
-      ),
+        );
+      },
     );
   }
 }
