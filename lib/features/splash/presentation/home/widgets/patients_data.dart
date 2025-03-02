@@ -57,13 +57,11 @@ class _PatientsListScreenState extends State<PatientsListScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFBBE2FF),
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Color.fromARGB(255, 101, 154, 193)),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Center(child: Text('Patients List', style: TextStyle(color: Colors.black))),
+        centerTitle: true,
+        title: Text('Patients List', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
+        leading: null,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -32,7 +32,7 @@ class LoginView extends StatelessWidget {
                   child: Text(
                     'Smart Care',
                     style: TextStyle(
-                      fontSize: 55,
+                      fontSize: 45,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
                     ),
@@ -41,27 +41,36 @@ class LoginView extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
               'Login',
               style: TextStyle(
-                fontSize: 34,
+                fontSize: 27,
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,
               ),
             ),
+          ),
+          SizedBox(
+            height: 7,
           ),
           CustomTextField(
             prefixIcon: Icons.email_outlined,
             hintText: 'Email',
           ),
           SizedBox(
-            height: 5,
+            height: 7,
           ),
           CustomTextField(
             prefixIcon: Icons.lock_outlined,
             hintText: 'Password',
+          ),
+          SizedBox(
+            height: 10,
           ),
           CustomButtom(buttomName: 'Login'),
         ],

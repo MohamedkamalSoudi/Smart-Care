@@ -9,7 +9,7 @@ class CustomButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap: () {
           if (buttomName == 'Login') {
@@ -20,16 +20,16 @@ class CustomButtom extends StatelessWidget {
         },
         child: Container(
           width: double.infinity,
-          height: 70,
+          height: 60,
           decoration: BoxDecoration(
             color: Colors.blue,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
           ),
           child: Center(
               child: Text(
             buttomName,
             style: TextStyle(
-                fontSize: 34, color: Colors.white, fontWeight: FontWeight.bold),
+                fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
           )),
         ),
       ),

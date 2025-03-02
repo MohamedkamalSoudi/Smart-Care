@@ -34,7 +34,7 @@ class SlidingText extends StatelessWidget {
                   child: Text(
                     'Smart Care',
                     style: TextStyle(
-                      fontSize: 55,
+                      fontSize: 45,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
                     ),

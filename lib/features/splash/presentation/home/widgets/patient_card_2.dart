@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/splash/presentation/home/widgets/patients_data.dart';
+import 'package:smart_care_app/features/splash/presentation/patient%20data/patient_data.dart';
 
 class PatientCard extends StatelessWidget {
   final Patient patient;
@@ -10,7 +11,7 @@ class PatientCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Handle tap on patient card (e.g., navigate to details)
+        Navigator.pushNamed(context, PatientData.id);
       },
       child: Card(
         margin: const EdgeInsets.symmetric(vertical: 5),

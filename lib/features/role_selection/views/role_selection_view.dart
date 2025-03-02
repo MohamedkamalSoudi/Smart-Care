@@ -13,7 +13,7 @@ class RoleSelectionView extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 30,
+              height: 60,
             ),
             Center(
             child: Column(
@@ -34,7 +34,7 @@ class RoleSelectionView extends StatelessWidget {
                   child: Text(
                     'Smart Care',
                     style: TextStyle(
-                      fontSize: 55,
+                      fontSize: 45,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
                     ),
@@ -44,13 +44,13 @@ class RoleSelectionView extends StatelessWidget {
             ),
           ),
             SizedBox(
-              height: 80,
+              height: 60,
             ),
             CustomButtom(
               buttomName: 'Doctor',
             ),
             SizedBox(
-              height: 20,
+              height: 18,
             ),
             CustomButtom(
               buttomName: 'Nurse',

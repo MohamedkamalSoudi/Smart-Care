@@ -81,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               ListTile(
                 leading: Icon(_isPasswordVisible ? Icons.visibility : Icons.visibility_off),
-                title: Text(_isPasswordVisible ? '**********' : '**********'),
+                title: Text(_isPasswordVisible ? '123456789' : '**********'),
                 onTap: _togglePasswordVisibility,
               ),
             ],
