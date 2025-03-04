@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/splash/presentation/home/Home_view.dart';
+import 'package:smart_care_app/features/splash/presentation/patient%20data/description%20of%20the%20condition/widgets/patient_data_page_1.dart';
 import 'package:smart_care_app/features/splash/presentation/patient%20data/patient_data.dart';
 import 'package:smart_care_app/features/splash/presentation/profile/profile_view.dart';
 
@@ -25,6 +26,7 @@ class SmartCare extends StatelessWidget {
         HomeView.id: (context) => HomeView(),
         ProfileView.id: (context) => ProfileView(),
         PatientData.id: (context) => PatientData(),
+        PatientDataPage1.id: (context) => PatientDataPage1(),
       },
       debugShowCheckedModeBanner: false,
       initialRoute: LogoView.id,

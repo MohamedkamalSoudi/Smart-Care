@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/splash/presentation/patient%20data/description%20of%20the%20condition/widgets/patient_data_page_1.dart';
 import 'package:smart_care_app/features/splash/presentation/patient%20data/widgets/custom_card.dart';
 import 'package:smart_care_app/features/splash/presentation/patient%20data/widgets/top_info.dart';
 
@@ -48,7 +49,9 @@ class PatientDataPage extends StatelessWidget {
               children: [
                 CustomCard(
                     imagePath: 'assets/images/Policy.png',
-                    title: 'Description of the Condition', onPressed: () {  },),
+                    title: 'Description of the Condition', onPressed: () { 
+                      Navigator.pushNamed(context, PatientDataPage1.id);
+                    },),
                 SizedBox(width: 10),
                 CustomCard(
                     imagePath: 'assets/images/Lungs.png',
