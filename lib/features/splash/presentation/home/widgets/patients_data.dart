@@ -61,7 +61,7 @@ class _PatientsListScreenState extends State<PatientsListScreen> {
         title: Text('Patients List', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: null,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

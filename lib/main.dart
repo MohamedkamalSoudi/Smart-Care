@@ -17,7 +17,7 @@ class SmartCare extends StatelessWidget {
   const SmartCare({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp(  
       routes: {
         SplashView.id: (context) => SplashView(),
         LogoView.id: (context) => LogoView(),
