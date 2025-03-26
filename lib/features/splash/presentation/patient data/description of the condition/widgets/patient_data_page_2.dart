@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/splash/presentation/patient%20data/widgets/custom_elevated_button.dart';
 
-import 'patient_data_page_1.dart';
-
 class PatientDataPage2 extends StatelessWidget {
   const PatientDataPage2({super.key});
   static const id = 'PatientDataPage2';
@@ -11,31 +9,31 @@ class PatientDataPage2 extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFBBE2FF),
       appBar: AppBar(
-        title: Row(
-          children: [
-            Text(
-              'Description of the Condition',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            CustomElevatedButton(
-              onPressed: (context) {
-                Navigator.of(context).pop();
-              },
-              CustomRowElevatedButton: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'EDIT',
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
-                  ),
-                ],
-              ),
-            ),
-          ],
+        title: const Text('Description of the Condition'),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back_ios_new, color: Color (0xFF1385E2),),
+          
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: CustomElevatedButton(
+                onPressed: Navigator.of(context).pop,
+                CustomRowElevatedButton: 
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'EDIT',
+                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    ),
+                  ],
+                ),
+                ),
+          )
+        ],
       ),
       body: Center(
         child: Padding(
@@ -65,9 +63,11 @@ class PatientDataPage2 extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10),
-                    Text(
-                      "السعودي تعبان بسبب دعوة الزرزور",
-                      style: TextStyle(fontSize: 22, color: Colors.grey[800]),
+                    Center(
+                      child: Text(
+                        "السعودي تعبان بسبب دعوة الزرزور",
+                        style: TextStyle(fontSize: 22, color: Colors.grey[800]),
+                      ),
                     ),
                   ],
                 ),
