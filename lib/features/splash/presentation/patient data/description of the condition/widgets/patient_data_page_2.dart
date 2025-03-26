@@ -9,29 +9,35 @@ class PatientDataPage2 extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFBBE2FF),
       appBar: AppBar(
-        title: const Text('Description of the Condition'),
+        title: const Text(
+          'Description of the Condition',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios_new, color: Color (0xFF1385E2),),
-          
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: Color(0xFF1385E2),
+          ),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: CustomElevatedButton(
-                onPressed: Navigator.of(context).pop,
-                CustomRowElevatedButton: 
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'EDIT',
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
-                    ),
-                  ],
-                ),
-                ),
+              onPressed: Navigator.of(context).pop,
+              CustomRowElevatedButton: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'EDIT',
+                    style: TextStyle(fontSize: 16, color: Colors.blue),
+                  ),
+                ],
+              ),
+            ),
           )
         ],
       ),
