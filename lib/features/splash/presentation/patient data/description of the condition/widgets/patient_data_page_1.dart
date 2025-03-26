@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/splash/presentation/patient%20data/description%20of%20the%20condition/widgets/patient_data_page_2.dart';
+import 'package:smart_care_app/features/splash/presentation/patient%20data/widgets/custom_elevated_button.dart';
 
 class PatientDataPage1 extends StatelessWidget {
   const PatientDataPage1({super.key});
@@ -13,23 +15,47 @@ class PatientDataPage1 extends StatelessWidget {
               color: Color.fromARGB(255, 108, 183, 241)),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text('Description of the Condition',style: TextStyle(fontSize: 18),),
+        title: Text(
+          'Description of the Condition',
+          style: TextStyle(fontSize: 18),
+        ),
         centerTitle: true,
       ),
       body: Center(
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-              side: const BorderSide(color: Colors.blue, width: 2),
-              
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomElevatedButton(
+            onPressed: showDescriptionDialog,
+            CustomRowElevatedButton: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  ' Edit Description Dialog',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+              ],
             ),
           ),
-          onPressed: () => showDescriptionDialog(context),
-          child: Text('Show Description Dialog',style: TextStyle(fontSize: 16,color: Colors.black),),
-        ),
-      ),
+          SizedBox(
+            height: 10,
+          ),
+          CustomElevatedButton(
+            onPressed: (context) async {
+              await Navigator.of(context).pushNamed(PatientDataPage2.id);
+            },
+            CustomRowElevatedButton: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  '  Show Description Dialog',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+        ],
+      )),
     );
   }
 
@@ -41,7 +67,6 @@ class PatientDataPage1 extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           content: TextField(
-
             controller: _controller,
             maxLines: null, // This allows the text field to be multiline
             decoration: InputDecoration(
@@ -52,7 +77,7 @@ class PatientDataPage1 extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(PatientDataPage2.id);
                 print('Description: ${_controller.text}');
               },
               child: Center(child: Text('Ok')),
