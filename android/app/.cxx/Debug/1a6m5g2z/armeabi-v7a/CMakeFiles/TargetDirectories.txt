@@ -1,0 +1,2 @@
+G:/flutter progects/smart_care_app/android/app/.cxx/Debug/1a6m5g2z/armeabi-v7a/CMakeFiles/edit_cache.dir
+G:/flutter progects/smart_care_app/android/app/.cxx/Debug/1a6m5g2z/armeabi-v7a/CMakeFiles/rebuild_cache.dir
