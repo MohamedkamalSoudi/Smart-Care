@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/patient%20data/patient_data.dart';
+import 'package:smart_care_app/features/doctor/patient%20data/presentation/views/patient_data.dart';
 
 import '../../../features/doctor/home/data/patient_model.dart';
 

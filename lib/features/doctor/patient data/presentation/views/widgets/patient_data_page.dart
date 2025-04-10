@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/patient%20data/widgets/top_info.dart';
+import 'package:smart_care_app/features/doctor/patient%20data/presentation/views/widgets/top_info.dart';
 
 import 'medical_data_grid_view_builder.dart';
 import 'patient_data_appbar.dart';

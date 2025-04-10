@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../data/patient_ists.dart';
-import '../description of the condition/widgets/patient_data_page_1.dart';
+import '../../../../description/presentation/views/description_view.dart';
+import '../../../data/patient_ists.dart';
 import 'custom_medical_card.dart';
 
 class MedicalDataGridViewBuilder extends StatelessWidget {
@@ -24,7 +24,7 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
             imagePath: medicalCardImages[index],
             title: medicalCardTitles[index],
             onPressed: () {
-              Navigator.pushNamed(context, PatientDataPage1.id);
+              Navigator.pushNamed(context, DescriptionView.id);
             },
           );
         },

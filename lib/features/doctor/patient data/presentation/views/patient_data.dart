@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/patient%20data/widgets/patient_data_page.dart';
+import 'package:smart_care_app/features/doctor/patient%20data/presentation/views/widgets/patient_data_page.dart';
 
 class PatientData extends StatelessWidget {
   const PatientData({super.key});
