@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/doctor/patient%20data/description%20of%20the%20condition/widgets/patient_data_page_2.dart';
 import 'package:smart_care_app/features/doctor/patient%20data/widgets/custom_elevated_button.dart';
@@ -27,7 +28,7 @@ class PatientDataPage1 extends StatelessWidget {
         children: [
           CustomElevatedButton(
             onPressed: showDescriptionDialog,
-            CustomRowElevatedButton: Row(
+            customRowElevatedButton: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
@@ -44,7 +45,7 @@ class PatientDataPage1 extends StatelessWidget {
             onPressed: (context) async {
               await Navigator.of(context).pushNamed(PatientDataPage2.id);
             },
-            CustomRowElevatedButton: Row(
+            customRowElevatedButton: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
@@ -60,14 +61,14 @@ class PatientDataPage1 extends StatelessWidget {
   }
 
   void showDescriptionDialog(BuildContext context) {
-    TextEditingController _controller = TextEditingController();
+    TextEditingController controller = TextEditingController();
 
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           content: TextField(
-            controller: _controller,
+            controller: controller,
             maxLines: null, // This allows the text field to be multiline
             decoration: InputDecoration(
               hintText: 'Enter Description of the Condition',
@@ -78,7 +79,9 @@ class PatientDataPage1 extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(PatientDataPage2.id);
-                print('Description: ${_controller.text}');
+                if (kDebugMode) {
+                  print('Description: ${controller.text}');
+                }
               },
               child: Center(child: Text('Ok')),
             ),

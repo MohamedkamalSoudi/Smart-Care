@@ -4,7 +4,8 @@ class ImageSlider extends StatelessWidget {
   final List<String> imagePaths;
   final PageController pageController;
 
-  ImageSlider({required this.imagePaths, required this.pageController});
+  const ImageSlider(
+      {super.key, required this.imagePaths, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class ImageSlider extends StatelessWidget {
         itemCount: imagePaths.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.only(bottom:95.0),
+            padding: const EdgeInsets.only(bottom: 95.0),
             child: Image.asset(imagePaths[index]),
           );
         },

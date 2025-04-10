@@ -28,7 +28,7 @@ class PatientDataPage2 extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: CustomElevatedButton(
               onPressed: Navigator.of(context).pop,
-              CustomRowElevatedButton: Row(
+              customRowElevatedButton: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/widgets/custom_bottom_navgbar.dart';
-import 'package:smart_care_app/features/doctor/home/widgets/patient_card_2.dart';
-import 'package:smart_care_app/features/doctor/home/widgets/search_bar_text_field.dart';
-
-
+import 'package:smart_care_app/features/doctor/home/views/widgets/custom_bottom_navgbar.dart';
+import 'package:smart_care_app/features/doctor/home/views/widgets/patient_card_2.dart';
+import 'package:smart_care_app/features/doctor/home/views/widgets/search_bar_text_field.dart';
 
 class Patient {
   final String name;
@@ -14,7 +12,10 @@ class Patient {
 }
 
 class PatientsListScreen extends StatefulWidget {
+  const PatientsListScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _PatientsListScreenState createState() => _PatientsListScreenState();
 }
 
@@ -80,7 +81,8 @@ class _PatientsListScreenState extends State<PatientsListScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavBar(), // Use the custom bottom nav bar
+      bottomNavigationBar:
+          CustomBottomNavBar(), // Use the custom bottom nav bar
     );
   }
 }

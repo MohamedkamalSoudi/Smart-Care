@@ -5,7 +5,11 @@ class TopInfoWidget extends StatelessWidget {
   final int age;
   final String patientId;
 
-  TopInfoWidget({required this.name, required this.age, required this.patientId});
+  const TopInfoWidget(
+      {super.key,
+      required this.name,
+      required this.age,
+      required this.patientId});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +21,10 @@ class TopInfoWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Name: $name', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              Text('Age: $age', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text('Name: $name',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text('Age: $age',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ],
           ),
           Container(

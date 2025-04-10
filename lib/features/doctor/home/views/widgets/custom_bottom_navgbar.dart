@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/Home_view.dart';
+import 'package:smart_care_app/features/doctor/home/views/home_view.dart';
 import 'package:smart_care_app/features/doctor/profile/profile_view.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
+  const CustomBottomNavBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(

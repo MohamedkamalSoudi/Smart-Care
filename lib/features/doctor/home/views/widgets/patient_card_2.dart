@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/widgets/patients_data.dart';
+import 'package:smart_care_app/features/doctor/home/views/widgets/patients_data.dart';
 import 'package:smart_care_app/features/doctor/patient%20data/patient_data.dart';
 
 class PatientCard extends StatelessWidget {
   final Patient patient;
 
-  const PatientCard({Key? key, required this.patient}) : super(key: key);
+  const PatientCard({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,8 @@ class PatientCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(patient.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text(patient.name,
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
                     Text('Room: ${patient.room}'),
                     Text('Bed number: ${patient.bedNumber}'),
                   ],

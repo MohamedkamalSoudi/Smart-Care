@@ -4,7 +4,8 @@ class DotIndicator extends StatelessWidget {
   final int currentPage;
   final int totalPages;
 
-  DotIndicator({required this.currentPage, required this.totalPages});
+  const DotIndicator(
+      {super.key, required this.currentPage, required this.totalPages});
 
   @override
   Widget build(BuildContext context) {

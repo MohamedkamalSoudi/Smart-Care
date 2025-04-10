@@ -4,10 +4,10 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton(
       {super.key,
       required this.onPressed,
-      required this.CustomRowElevatedButton});
+      required this.customRowElevatedButton});
 
   final Function(BuildContext) onPressed;
-  final Widget CustomRowElevatedButton;
+  final Widget customRowElevatedButton;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,6 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: () {
           onPressed(context);
         },
-        child: CustomRowElevatedButton);
+        child: customRowElevatedButton);
   }
 }

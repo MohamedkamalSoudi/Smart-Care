@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/widgets/custom_bottom_navgbar.dart';
+import 'package:smart_care_app/features/doctor/home/views/widgets/custom_bottom_navgbar.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _ProfilePageState createState() => _ProfilePageState();
 }
 
@@ -24,12 +27,14 @@ class _ProfilePageState extends State<ProfilePage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(height: 70,),
+              SizedBox(
+                height: 70,
+              ),
               Stack(
                 children: [
                   CircleAvatar(
                     radius: 60,
-                    backgroundImage: AssetImage('assets/images/Bitmap.png'), 
+                    backgroundImage: AssetImage('assets/images/Bitmap.png'),
                   ),
                   Positioned(
                     bottom: 0,
@@ -41,10 +46,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(
-                        icon: Icon(Icons.camera_alt, color: Colors.white, size: 15),
-                        onPressed: () {
-                          
-                        },
+                        icon: Icon(Icons.camera_alt,
+                            color: Colors.white, size: 15),
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -53,7 +57,10 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: 10),
               Text(
                 'Ahmed Mohamed',
-                style: TextStyle(fontSize: 24, color: Colors.blue, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold),
               ),
               Text(
                 'Doctor',
@@ -61,7 +68,13 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               SizedBox(height: 20),
               ListTile(
-                title: Text('Ahmed Data',style: TextStyle(color: Colors.blue ,fontSize: 25, fontWeight: FontWeight.bold),),
+                title: Text(
+                  'Ahmed Data',
+                  style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               ListTile(
                 leading: Icon(Icons.person),
@@ -80,7 +93,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 title: Text('Sohag'),
               ),
               ListTile(
-                leading: Icon(_isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+                leading: Icon(_isPasswordVisible
+                    ? Icons.visibility
+                    : Icons.visibility_off),
                 title: Text(_isPasswordVisible ? '123456789' : '**********'),
                 onTap: _togglePasswordVisibility,
               ),
@@ -88,7 +103,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
-
       bottomNavigationBar: CustomBottomNavBar(),
     );
   }

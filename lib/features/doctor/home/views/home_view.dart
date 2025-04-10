@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/widgets/patients_data.dart';
+
+import 'widgets/patients_data.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
