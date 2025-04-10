@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/views/widgets/custom_bottom_navgbar.dart';
+import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/custom_bottom_navgbar.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

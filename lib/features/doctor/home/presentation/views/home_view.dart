@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/patients_data.dart';
+import 'widgets/home_view_appbar.dart';
+import 'widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -9,7 +10,8 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PatientsListScreen(),
+      appBar: homeViewAppbar(),
+      body: HomeViewBody(),
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../features/doctor/login/views/login_view.dart';
 import '../../features/splash/views/splahs_view.dart';
 import '../../features/doctor/role_selection/views/role_selection_view.dart';
-import '../../features/doctor/home/views/home_view.dart';
+import '../../features/doctor/home/presentation/views/home_view.dart';
 import '../../features/doctor/patient data/description of the condition/widgets/patient_data_page_1.dart';
 import '../../features/doctor/patient data/description of the condition/widgets/patient_data_page_2.dart';
 import '../../features/doctor/patient data/patient_data.dart';

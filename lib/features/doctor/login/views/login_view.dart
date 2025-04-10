@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/role_selection/views/widgets/custom_buttom.dart';
+import 'package:smart_care_app/core/utils/widgets/custom_buttom.dart';
+import 'package:smart_care_app/core/utils/widgets/shader_mask_widget.dart';
 
-import 'widgets/custom_text_field.dart';
+import '../../../../core/utils/widgets/custom_text_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -18,26 +19,7 @@ class LoginView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Image.asset('assets/images/logo.png'),
-                ShaderMask(
-                  shaderCallback: (bounds) => LinearGradient(
-                    colors: [
-                      Color(0xff004173),
-                      Color(0xff6FD0F6),
-                      Color(0xff7FD0F7),
-                      Color(0xff5FDCF5),
-                    ],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ).createShader(bounds),
-                  child: Text(
-                    'Smart Care',
-                    style: TextStyle(
-                      fontSize: 45,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                ShaderMaskWidget(),
               ],
             ),
           ),

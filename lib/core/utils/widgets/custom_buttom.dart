@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/doctor/login/views/login_view.dart';
-import 'package:smart_care_app/features/doctor/home/views/home_view.dart';
+import 'package:smart_care_app/features/doctor/home/presentation/views/home_view.dart';
 
 class CustomButtom extends StatelessWidget {
   const CustomButtom({super.key, required this.buttomName});

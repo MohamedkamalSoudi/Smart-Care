@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/views/home_view.dart';
+import 'package:smart_care_app/features/doctor/home/presentation/views/home_view.dart';
 import 'package:smart_care_app/features/doctor/profile/profile_view.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
