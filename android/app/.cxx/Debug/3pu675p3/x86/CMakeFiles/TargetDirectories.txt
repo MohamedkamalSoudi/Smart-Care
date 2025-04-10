@@ -1,0 +1,2 @@
+E:/flutter apps/Smart-Care/android/app/.cxx/Debug/3pu675p3/x86/CMakeFiles/edit_cache.dir
+E:/flutter apps/Smart-Care/android/app/.cxx/Debug/3pu675p3/x86/CMakeFiles/rebuild_cache.dir
