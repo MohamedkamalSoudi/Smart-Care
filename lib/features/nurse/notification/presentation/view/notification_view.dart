@@ -9,6 +9,7 @@ class NotificationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: Color(0xff9ADCF6),
         leading: IconButton(
           onPressed: () {
