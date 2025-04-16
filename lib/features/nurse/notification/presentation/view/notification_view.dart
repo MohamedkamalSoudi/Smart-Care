@@ -10,8 +10,11 @@ class NotificationView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff9ADCF6),
-        leading: Icon(
-          Icons.arrow_back_ios,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
         ),
         title: Text(
           'Notificatios',
