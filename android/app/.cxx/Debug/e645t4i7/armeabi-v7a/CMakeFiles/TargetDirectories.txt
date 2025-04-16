@@ -1,0 +1,2 @@
+E:/Smart-Care/android/app/.cxx/Debug/e645t4i7/armeabi-v7a/CMakeFiles/edit_cache.dir
+E:/Smart-Care/android/app/.cxx/Debug/e645t4i7/armeabi-v7a/CMakeFiles/rebuild_cache.dir
