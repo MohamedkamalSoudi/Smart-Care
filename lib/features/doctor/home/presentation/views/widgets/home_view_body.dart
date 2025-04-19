@@ -40,7 +40,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       backgroundColor: AppColors.whitebody,
       body: Padding(
         
-        padding: const EdgeInsets.symmetric(horizontal: 16 , vertical: 40),
+        padding: const EdgeInsets.only(top: 45 ,left: 10 ,right: 10),
         child: Column(
           children: [
             SearchBarTextField(onChanged: _filterPatients),
@@ -57,7 +57,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         ),
       ),
       bottomNavigationBar:
-          CustomBottomNavBar(), // Use the custom bottom nav bar
+          CustomBottomNavBar(
+            currentIndex: 0,
+          ), // Use the custom bottom nav bar
     );
   }
 }

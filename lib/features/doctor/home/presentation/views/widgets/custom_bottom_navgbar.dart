@@ -1,35 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/presentation/views/home_view.dart';
+import 'package:smart_care_app/core/app_colors.dart';
 import 'package:smart_care_app/features/doctor/profile/profile_view.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({super.key});
+  final int currentIndex;
+  
+  const CustomBottomNavBar({
+    super.key,
+    required this.currentIndex,
+  });
+
+  void _onItemTapped(BuildContext context, int index) {
+    if (index == currentIndex) return; 
+
+    switch(index) {
+      case 0:
+        Navigator.pop(context);
+        break;
+      case 1:
+        Navigator.pushNamed(context, ProfileView.id);
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      height: 60,
-      color: const Color(0xFFBBE2FF),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.home, color: Colors.black),
-            iconSize: 30,
-            onPressed: () {
-              Navigator.pop(context, HomeView.id);
-            },
+    return BottomNavigationBar(
+      currentIndex: currentIndex,
+      onTap: (index) => _onItemTapped(context, index),
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            size: 30,
+            color: currentIndex == 0 
+                ? AppColors.iconhome 
+                : Colors.grey, 
           ),
-          IconButton(
-            icon: const Icon(Icons.person, color: Colors.black),
-            iconSize: 30,
-            onPressed: () {
-              Navigator.pushNamed(context, ProfileView.id);
-            },
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.person,
+            size: 30,
+            color: currentIndex == 1 
+                ? AppColors.iconhome 
+                : Colors.grey, 
           ),
-        ],
-      ),
+          label: 'Profile',
+        ),
+      ],
+      selectedItemColor: AppColors.iconhome, 
+      unselectedItemColor: Colors.grey, 
+      backgroundColor: AppColors.whitebody,
+      type: BottomNavigationBarType.fixed,
+      elevation: 8,
     );
   }
 }

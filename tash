@@ -1,0 +1,11 @@
+[33m35425ff[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: pull: Fast-forward
+[33m4e236a2[m HEAD@{1}: pull: Fast-forward
+[33mb451346[m HEAD@{2}: commit: edit app bar home view and edti baground color and edit card
+[33m2be47a1[m HEAD@{3}: commit: edit color app bar home viwe
+[33m59944c9[m HEAD@{4}: commit: add app colors
+[33m92e820f[m HEAD@{5}: commit: edit pubspec.lock
+[33m879cac3[m HEAD@{6}: pull: Fast-forward
+[33m47db9e5[m HEAD@{7}: pull: Fast-forward
+[33m3db4e2b[m HEAD@{8}: commit: flutter run
+[33m0b9a3b4[m HEAD@{9}: commit: flutter pub get
+[33mfdcca2a[m HEAD@{10}: clone: from https://github.com/MohamedkamalSoudi/Smart-Care.git
