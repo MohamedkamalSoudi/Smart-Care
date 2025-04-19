@@ -13,6 +13,7 @@ abstract class AppColors {
   static const Color cardDescription = Color(0xFF809CFF);
   static const Color iconprofile = Color(0xFF8696BB);
   static const Color iconhome = Color(0xFF63B4FF);
+  static  Color textcardhome = Color.fromARGB(255, 41, 41, 41).withOpacity(0.7);
 
 
 }

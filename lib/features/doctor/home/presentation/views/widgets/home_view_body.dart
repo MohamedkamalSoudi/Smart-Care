@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/app_colors.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/custom_bottom_navgbar.dart';
 import 'package:smart_care_app/core/utils/widgets/patient_card.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/search_bar_text_field.dart';
@@ -36,9 +37,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFBBE2FF),
+      backgroundColor: AppColors.whitebody,
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        
+        padding: const EdgeInsets.symmetric(horizontal: 16 , vertical: 40),
         child: Column(
           children: [
             SearchBarTextField(onChanged: _filterPatients),
