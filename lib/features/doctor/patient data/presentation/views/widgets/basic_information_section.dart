@@ -5,6 +5,8 @@ import 'room_number.dart';
 import 'section_title.dart';
 
 class BasicInformationSection extends StatelessWidget {
+  const BasicInformationSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Card(
