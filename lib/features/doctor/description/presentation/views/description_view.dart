@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/core/utils/widgets/custom_view.dart';
-import 'package:smart_care_app/features/doctor/description/data/models/description_model.dart';
+import '../../data/models/description_model.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
+import '../../../../../core/utils/widgets/custom_not_card.dart';
 import '../managers/description_cubit/description_cubit.dart';
 import '../managers/description_cubit/description_states.dart';
 
@@ -25,8 +26,23 @@ class DescriptionView extends StatelessWidget {
             isFloatingActive: state is EmptyState ? true : false,
             body: cubit.descModel.desc == 'null'
                 ? CustomEmptyBody(title: 'No Descriptions added until now')
-                : SizedBox(
-                    child: Text(cubit.descModel.desc),
+                : NoteItem(
+                    title: cubit.descModel.desc,
+                    dateTime: DateTime.now(),
+                    onTap: () {
+                      customShowDialog(
+                        context,
+                        TextEditingController(),
+                        'Enter Description of patient:',
+                        () {
+                          DescriptionModel model = DescriptionModel(
+                              desc: 'Hello Siiiiiiiiiiiiiiiiii ',
+                              dateTime: DateTime.now());
+                          cubit.addAndEditDescription(model);
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
                   ),
             onPressed: () {
               customShowDialog(
