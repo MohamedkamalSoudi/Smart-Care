@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/app_colors.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/custom_bottom_navgbar.dart';
+
+import 'custom_list_tile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -12,6 +15,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   bool _isPasswordVisible = false;
 
+  // ignore: unused_element
   void _togglePasswordVisibility() {
     setState(() {
       _isPasswordVisible = !_isPasswordVisible;
@@ -21,6 +25,17 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        scrolledUnderElevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new,
+              color: AppColors.iconhome),
+                onPressed: () => Navigator.pop(context),
+          ),
+              title: Text('My Profile', style: TextStyle(color:AppColors.iconhome),),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
@@ -28,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             children: [
               SizedBox(
-                height: 70,
+                height: 30,
               ),
               Stack(
                 children: [
@@ -42,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Container(
                       width: 30,
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: AppColors.iconhome,
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(
@@ -54,51 +69,36 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
-              Text(
-                'Ahmed Mohamed',
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'Doctor',
-                style: TextStyle(fontSize: 25),
-              ),
-              SizedBox(height: 20),
-              ListTile(
-                title: Text(
-                  'Ahmed Data',
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
+              SizedBox(height: 60,),
+                CustomListTile(
+                  icon: Icons.person,
+                  text: 'Ahmed Mohamed',
+                  horizontalGap: 30,
                 ),
-              ),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text('Ahmed Mohamed'),
-              ),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text('Dentistry'),
-              ),
-              ListTile(
-                leading: Icon(Icons.email),
-                title: Text('ahmed@gmail.com'),
-              ),
-              ListTile(
-                leading: Icon(Icons.location_on),
-                title: Text('Sohag'),
-              ),
-              ListTile(
-                leading: Icon(_isPasswordVisible
-                    ? Icons.visibility
-                    : Icons.visibility_off),
-                title: Text(_isPasswordVisible ? '123456789' : '**********'),
-                onTap: _togglePasswordVisibility,
-              ),
+                SizedBox(height: 10,),
+                CustomListTile(
+                  icon: Icons.person_outline,
+                  text: 'Dentistry',
+                  horizontalGap: 30,
+                ),
+                SizedBox(height: 10,),
+                CustomListTile(
+                  icon: Icons.email,
+                  text: 'ahmed@gmail.com',
+                  horizontalGap: 30,
+                ),
+                SizedBox(height: 10,),
+                CustomListTile(
+                  icon: Icons.visibility_off,
+                  text: '**********',
+                  horizontalGap: 30,
+                ),
+                SizedBox(height: 10,),
+                CustomListTile(
+                  icon: Icons.logout,
+                  text: 'Logout',
+                  horizontalGap: 30,
+                ),
             ],
           ),
         ),
