@@ -27,7 +27,7 @@ PreferredSizeWidget homeViewAppbar({bool isNurse = false, VoidCallback? onPresse
         Divider(
           height: 1.5, 
           thickness: 1.5,
-          color: AppColors.blue, 
+          color: AppColors.iconhome, 
         ),
       ],
     ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../description/presentation/views/description_view.dart';
 import '../../../data/patient_ists.dart';
 import 'custom_medical_card.dart';
@@ -11,24 +10,30 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        itemCount: 4,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-        ),
-        itemBuilder: (context, index) {
-          return CustomMedicalCard(
-            imagePath: medicalCardImages[index],
-            title: medicalCardTitles[index],
-            onPressed: () {
-              Navigator.pushNamed(context, DescriptionView.id);
-            },
-          );
-        },
+    return GridView.builder(
+      shrinkWrap: true, 
+      physics: const NeverScrollableScrollPhysics(), 
+      itemCount: medicalCardTitles.length, 
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 0.9, 
       ),
+      itemBuilder: (context, index) {
+        return CustomMedicalCard(
+          imagePath: medicalCardImages[index],
+          title: medicalCardTitles[index],
+          onPressed: () {
+            Navigator.pushNamed(
+              context, 
+              DescriptionView.id,
+              arguments: { 
+                'title': medicalCardTitles[index],
+                'image': medicalCardImages[index]
+              }
+            );
+          },
+        );
+      },
     );
   }
 }

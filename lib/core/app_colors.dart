@@ -14,6 +14,7 @@ abstract class AppColors {
   static const Color Iconbottonnavbar = Color(0xFF8696BB);
   static const Color iconhome = Color(0xFF63B4FF);
   static  Color textcardhome = Color.fromARGB(255, 41, 41, 41).withOpacity(0.7);
+  static  Color appbar = Color.fromARGB(255, 0, 0, 0).withOpacity(70);
   static  Color appbarprofile = Color.fromARGB(255, 34, 96, 255);
   static const Color iconprofile = Color(0xFF3E64FF);
 

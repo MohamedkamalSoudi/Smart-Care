@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/patient%20data/presentation/views/widgets/top_info.dart';
-
+import '../../../../../../core/app_colors.dart';
+import '../../../../../../core/utils/widgets/patient_data_appbar.dart';
 import 'medical_data_grid_view_builder.dart';
-import 'patient_data_appbar.dart';
+import 'medical_details_card.dart';
+import 'basic_information_section.dart';
 
 class PatientDataPage extends StatelessWidget {
   const PatientDataPage({super.key});
@@ -10,24 +11,22 @@ class PatientDataPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: patientDataAppbar(context),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 20,
-        children: [
-          Divider(color: Color(0xFFBBE2FF), thickness: 5),
-          TopInfoWidget(name: 'Ahmed', age: 21, patientId: 'G101'),
-          Divider(color: Color(0xFFBBE2FF), thickness: 5),
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Text(
-              'Medical Details:',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-          MedicalDataGridViewBuilder(),
-        ],
+      backgroundColor: AppColors.whitebody,
+      appBar: patientDataAppbar(
+        title: 'Patient Data',
+        context: context,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ListView(
+          children: [
+            BasicInformationSection(),
+            const SizedBox(height: 10),
+            MedicalDetailsCard(),
+            const SizedBox(height: 10),
+            MedicalDataGridViewBuilder(),
+          ],
+        ),
       ),
     );
   }
