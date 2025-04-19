@@ -23,16 +23,14 @@ class BasicInformationSection extends StatelessWidget {
               children: [
                 InfoRow(label: 'Name:', value: 'Ahmed'),
                 const Spacer(),
-                roomnumber(),
+                RoomNumber(),
               ],
             ),
             InfoRow(label: 'Age:', value: '21'),
             const SizedBox(height: 10),
-            
           ],
         ),
       ),
     );
   }
 }
-

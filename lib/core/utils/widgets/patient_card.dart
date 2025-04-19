@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/app_colors.dart';
 import 'package:smart_care_app/features/doctor/patient%20data/presentation/views/patient_data.dart';
