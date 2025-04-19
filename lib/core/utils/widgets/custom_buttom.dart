@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/login/views/login_view.dart';
-
 
 import '../../../features/nurse/home/presentation/view/home_view_nurse.dart';
 
@@ -14,13 +12,9 @@ class CustomButtom extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap: () {
-          if (buttomName == 'Login') {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return HomeViewNurse();
-            }));
-          } else {
-            Navigator.pushNamed(context, LoginView.id);
-          }
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return HomeViewNurse();
+          }));
         },
         child: Container(
           width: double.infinity,
