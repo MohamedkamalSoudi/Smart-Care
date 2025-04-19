@@ -1,9 +1,8 @@
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/app_colors.dart';
 
-void customShowDialog(
-    BuildContext context, TextEditingController controller, String hintText) {
+void customShowDialog(BuildContext context, TextEditingController controller,
+    String hintText, Function() onPressed) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -25,15 +24,11 @@ void customShowDialog(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 27, 70, 102),
+                backgroundColor: AppColors.blue,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
               ),
-              onPressed: () {
-                if (kDebugMode) {
-                  print('Description: ${controller.text}');
-                }
-              },
+              onPressed: onPressed,
               child: Center(
                   child: Text(
                 'Add description',

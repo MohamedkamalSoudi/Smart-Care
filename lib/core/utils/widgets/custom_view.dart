@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'custom_view_appbar.dart';
+import 'package:smart_care_app/core/app_colors.dart';
+import 'patient_data_appbar.dart';
 
 class CustomView extends StatelessWidget {
   final String title;
@@ -18,12 +19,12 @@ class CustomView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFBBE2FF),
-      appBar: customViewAppbar(context, title),
+      backgroundColor: AppColors.whitebody,
+      appBar: patientDataAppbar(title: title, context: context),
       body: body,
       floatingActionButton: isFloatingActive
           ? FloatingActionButton(
-              backgroundColor: const Color.fromARGB(255, 108, 183, 221),
+              backgroundColor: AppColors.blue,
               onPressed: onPressed,
               child: Icon(Icons.add, color: Colors.white),
             )
