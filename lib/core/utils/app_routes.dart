@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../features/doctor/login/views/login_view.dart';
 import '../../features/doctor/description/presentation/views/description_view.dart';
+import '../../features/doctor/required_tests/presentation/views/required_tests_view.dart';
 import '../../features/splash/views/splahs_view.dart';
 import '../../features/doctor/role_selection/views/role_selection_view.dart';
 import '../../features/doctor/home/presentation/views/home_view.dart';
@@ -19,5 +20,6 @@ Map<String, WidgetBuilder> get appRoutes {
     ProfileView.id: (context) => ProfileView(),
     PatientData.id: (context) => PatientData(),
     DescriptionView.id: (context) => DescriptionView(),
+    RequiredTestsView.id: (context) => RequiredTestsView(),
   };
 }

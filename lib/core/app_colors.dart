@@ -19,4 +19,5 @@ abstract class AppColors {
   static Color appbar = Color.fromARGB(255, 0, 0, 0).withOpacity(70);
   static Color appbarprofile = Color.fromARGB(255, 34, 96, 255);
   static const Color iconprofile = Color(0xFF3E64FF);
+  static const Color cardtest = Color(0xFFE5E7EB);
 }

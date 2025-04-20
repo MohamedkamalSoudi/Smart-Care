@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../description/presentation/views/description_view.dart';
+import '../../../../required_tests/presentation/views/required_tests_view.dart';
 import '../../../data/patient_ists.dart';
 import 'custom_medical_card.dart';
 
@@ -25,7 +25,8 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(
               context, 
-              DescriptionView.id,
+              RequiredTestsView.id,
+
               arguments: { 
                 'title': medicalCardTitles[index],
                 'image': medicalCardImages[index]
