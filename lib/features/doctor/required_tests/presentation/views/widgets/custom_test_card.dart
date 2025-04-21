@@ -5,10 +5,11 @@ import 'card_actions.dart';
 import 'card_content.dart';
 import 'green_line.dart';
 
-
 class CustomTestCard extends StatelessWidget {
-  const CustomTestCard({super.key});
-
+  const CustomTestCard(
+      {super.key, required this.iconImage, required this.colorIcon});
+  final String iconImage;
+  final Color colorIcon;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,6 +24,7 @@ class CustomTestCard extends StatelessWidget {
       ],
     );
   }
+
   Widget _buildCard() {
     return Container(
       height: 100,
@@ -37,11 +39,11 @@ class CustomTestCard extends StatelessWidget {
             spreadRadius: 0,
           ),
           BoxShadow(
-            color: const Color.fromARGB(255, 95, 95, 95).withOpacity(0.15), 
-            offset: Offset(-1, -1), 
+            color: const Color.fromARGB(255, 95, 95, 95).withOpacity(0.15),
+            offset: Offset(-1, -1),
             blurRadius: 0,
             spreadRadius: 0,
-  ),
+          ),
         ],
       ),
       margin: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
@@ -51,7 +53,10 @@ class CustomTestCard extends StatelessWidget {
           GreenLine(),
           SizedBox(width: 10),
           CardContent(),
-          CardActions(),
+          CardActions(
+            iconImage: iconImage,
+            colorIcon: colorIcon,
+          ),
         ],
       ),
     );

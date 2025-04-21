@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/nurse/Rediology/rediology_view.dart';
 
 import '../../../../doctor/home/presentation/views/widgets/home_view_appbar.dart';
 import '../../../../doctor/home/presentation/views/widgets/home_view_body.dart';
@@ -15,7 +16,7 @@ class HomeViewNurse extends StatelessWidget {
           isNurse: true,
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return NotificationView();
+              return RediologyView();
             }));
           }),
       body: HomeViewBody(),

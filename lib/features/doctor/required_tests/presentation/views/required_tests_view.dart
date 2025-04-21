@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 import 'package:smart_care_app/core/utils/widgets/custom_view.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
 import '../../../../../core/utils/widgets/custom_show_dialog.dart';
@@ -9,7 +11,7 @@ import '../../../description/presentation/managers/description_cubit/description
 import '../custom_card_body.dart';
 
 class RequiredTestsView extends StatelessWidget {
-    static const id = 'required_tests_view';
+  static const id = 'required_tests_view';
   const RequiredTestsView({super.key});
 
   @override
@@ -21,23 +23,23 @@ class RequiredTestsView extends StatelessWidget {
         builder: (context, state) {
           var cubit = BlocProvider.of<DescriptionCubit>(context);
           return CustomView(
-            title: 'Description of the condition',
+            title: 'Required Tests',
             isFloatingActive: state is EmptyState ? true : false,
             body: cubit.descModel.desc == 'null'
-                ? CustomEmptyBody(title: 'No Descriptions added until now')
-                :CustomCardBody(),
+                ? CustomEmptyBody(title: 'No tests added until now')
+                : CustomCardBody(
+                    iconImage: AssetsData.vector,
+                    colorIcon: AppColors.red,
+                  ),
             onPressed: () {
               customShowDialog(
-                context,
-                TextEditingController(),
-                'Enter Description of patient:',
-                () {
-                  DescriptionModel model = DescriptionModel(
-                      desc: 'Hello brother ', dateTime: DateTime.now());
-                  cubit.addAndEditDescription(model);
-                  Navigator.pop(context);
-                },
-              );
+                  context, TextEditingController(), 'Enter  test of patient:',
+                  () {
+                DescriptionModel model = DescriptionModel(
+                    desc: 'Hello brother ', dateTime: DateTime.now());
+                cubit.addAndEditDescription(model);
+                Navigator.pop(context);
+              }, 'Add test');
             },
           );
         },

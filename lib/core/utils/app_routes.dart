@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/nurse/Rediology/rediology_view.dart';
 
 import '../../features/doctor/login/views/login_view.dart';
 import '../../features/doctor/description/presentation/views/description_view.dart';
@@ -21,5 +22,6 @@ Map<String, WidgetBuilder> get appRoutes {
     PatientData.id: (context) => PatientData(),
     DescriptionView.id: (context) => DescriptionView(),
     RequiredTestsView.id: (context) => RequiredTestsView(),
+    RediologyView.id: (context) => RediologyView()
   };
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/app_colors.dart';
 
 void customShowDialog(BuildContext context, TextEditingController controller,
-    String hintText, Function() onPressed) {
+    String hintText, Function() onPressed, String titel) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -31,7 +31,7 @@ void customShowDialog(BuildContext context, TextEditingController controller,
               onPressed: onPressed,
               child: Center(
                   child: Text(
-                'Add description',
+                titel,
                 style: TextStyle(color: Colors.white),
               )),
             ),

@@ -30,32 +30,24 @@ class DescriptionView extends StatelessWidget {
                     title: cubit.descModel.desc,
                     dateTime: DateTime.now(),
                     onTap: () {
-                      customShowDialog(
-                        context,
-                        TextEditingController(),
-                        'Enter Description of patient:',
-                        () {
-                          DescriptionModel model = DescriptionModel(
-                              desc: 'Hello Siiiiiiiiiiiiiiiiii ',
-                              dateTime: DateTime.now());
-                          cubit.addAndEditDescription(model);
-                          Navigator.pop(context);
-                        },
-                      );
+                      customShowDialog(context, TextEditingController(),
+                          'Enter Description of patient:', () {
+                        DescriptionModel model = DescriptionModel(
+                            desc: 'Hello Siiiiiiiiiiiiiiiiii ',
+                            dateTime: DateTime.now());
+                        cubit.addAndEditDescription(model);
+                        Navigator.pop(context);
+                      }, "Add descripation");
                     },
                   ),
             onPressed: () {
-              customShowDialog(
-                context,
-                TextEditingController(),
-                'Enter Description of patient:',
-                () {
-                  DescriptionModel model = DescriptionModel(
-                      desc: 'Hello brother ', dateTime: DateTime.now());
-                  cubit.addAndEditDescription(model);
-                  Navigator.pop(context);
-                },
-              );
+              customShowDialog(context, TextEditingController(),
+                  'Enter Description of patient:', () {
+                DescriptionModel model = DescriptionModel(
+                    desc: 'Hello brother ', dateTime: DateTime.now());
+                cubit.addAndEditDescription(model);
+                Navigator.pop(context);
+              }, "Add descripation");
             },
           );
         },

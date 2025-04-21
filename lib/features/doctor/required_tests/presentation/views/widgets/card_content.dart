@@ -15,9 +15,9 @@ class CardContent extends StatelessWidget {
             child: Text(
               'C-Virase',
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.black),
             ),
           ),
           SizedBox(height: 25),
