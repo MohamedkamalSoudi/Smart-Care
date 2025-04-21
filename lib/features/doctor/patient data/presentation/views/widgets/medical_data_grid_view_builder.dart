@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/doctor/description/presentation/views/description_view.dart';
 import '../../../../required_tests/presentation/views/required_tests_view.dart';
 import '../../../data/patient_ists.dart';
 import 'custom_medical_card.dart';
 
 class MedicalDataGridViewBuilder extends StatelessWidget {
-  const MedicalDataGridViewBuilder({
+  MedicalDataGridViewBuilder({
     super.key,
   });
+
+  final List<String> pageIds = [
+    DescriptionView.id,
+    RequiredTestsView.id,
+    RequiredTestsView.id,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +30,12 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
           imagePath: medicalCardImages[index],
           title: medicalCardTitles[index],
           onPressed: () {
-            Navigator.pushNamed(
-              context, 
-              RequiredTestsView.id,
-
-              arguments: { 
-                'title': medicalCardTitles[index],
-                'image': medicalCardImages[index]
-              }
-            );
+            if (index < pageIds.length) {
+              Navigator.pushNamed(
+                context, 
+                pageIds[index], 
+              );
+            }
           },
         );
       },
