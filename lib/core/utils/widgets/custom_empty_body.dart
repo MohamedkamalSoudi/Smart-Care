@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 
 class CustomEmptyBody extends StatelessWidget {
   final String title;
@@ -15,7 +16,7 @@ class CustomEmptyBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/images/Patient in ward with doctors.png'),
+          Image.asset(AssetsData.patientandbed),
           Text(title),
         ],
       ),

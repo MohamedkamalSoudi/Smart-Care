@@ -1,9 +1,10 @@
+import 'package:smart_care_app/core/utils/assets.dart';
 
 List<String> medicalCardImages = [
-  'assets/images/Policy.png',
-  'assets/images/Lungs.png',
-  'assets/images/Flask.png',
-  'assets/images/Vitamin.png',
+  AssetsData.policy,
+  AssetsData.lungs,
+  AssetsData.flask,
+  AssetsData.vitamin,
 ];
 
 List<String> medicalCardTitles = [

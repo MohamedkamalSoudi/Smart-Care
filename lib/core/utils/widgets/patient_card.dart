@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 import 'package:smart_care_app/features/doctor/patient%20data/presentation/views/patient_data.dart';
 
 import '../../../features/doctor/home/data/patient_model.dart';
@@ -25,7 +26,7 @@ class PatientCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.15),
-              offset: const Offset(2, 2), 
+              offset: const Offset(2, 2),
               blurRadius: 1,
               spreadRadius: 1,
             ),
@@ -50,7 +51,7 @@ class PatientCard extends StatelessWidget {
                 ),
               ),
               Image.asset(
-                'assets/images/Patient in ward with doctors.png',
+                AssetsData.patientandbed,
                 width: 100,
                 height: 100,
               ),

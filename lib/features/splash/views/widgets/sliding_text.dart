@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 
 class SlidingText extends StatelessWidget {
   const SlidingText({
@@ -19,7 +20,7 @@ class SlidingText extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Image.asset('assets/images/logo.png'),
+                Image.asset(AssetsData.logo),
                 ShaderMask(
                   shaderCallback: (bounds) => LinearGradient(
                     colors: [

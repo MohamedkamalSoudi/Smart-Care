@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 
 class FourthPage extends StatelessWidget {
   const FourthPage({super.key});
@@ -15,7 +16,7 @@ class FourthPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 34.0),
-              child: Image.asset('assets/images/logo.png'),
+              child: Image.asset(AssetsData.logo),
             ),
           ],
         ),

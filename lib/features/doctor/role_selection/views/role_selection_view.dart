@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 
 import '../../../../core/utils/widgets/custom_buttom.dart';
 import '../../../../core/utils/widgets/shader_mask_widget.dart';
@@ -18,7 +19,7 @@ class RoleSelectionView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Image.asset('assets/images/logo.png'),
+                  Image.asset(AssetsData.logo),
                   ShaderMaskWidget(),
                 ],
               ),

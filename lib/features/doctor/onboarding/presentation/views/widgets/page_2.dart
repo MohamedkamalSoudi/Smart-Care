@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
@@ -21,7 +22,7 @@ class SecondPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 34.0),
-              child: Image.asset('assets/images/doctor_2.png'),
+              child: Image.asset(AssetsData.womandoctor),
             ),
           ],
         ),
