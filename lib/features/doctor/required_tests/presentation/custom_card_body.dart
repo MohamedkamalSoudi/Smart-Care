@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/app_colors.dart';
-
 import 'views/widgets/custom_test_card.dart';
 
 class CustomCardBody extends StatelessWidget {

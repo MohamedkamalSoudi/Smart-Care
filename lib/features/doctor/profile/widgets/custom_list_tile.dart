@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/app_colors.dart';
 
-// في ملف custom_widgets.dart
 class CustomListTile extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -12,7 +11,7 @@ class CustomListTile extends StatelessWidget {
     super.key,
     required this.icon,
     required this.text,
-    this.horizontalGap = 40, // ← قيمة افتراضية أكبر
+    this.horizontalGap = 40,
   });
 
   @override
@@ -21,7 +20,7 @@ class CustomListTile extends StatelessWidget {
       leading: Icon(icon, color: AppColors.iconhome),
       title: Text(text, style: TextStyle(color: AppColors.black, fontSize: 18)),
       horizontalTitleGap: horizontalGap,
-      minLeadingWidth: 30, // ← إضافة هذا الخط
+      minLeadingWidth: 30, 
     );
   }
 }
