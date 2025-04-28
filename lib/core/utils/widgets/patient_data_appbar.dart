@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../app_colors.dart';
 
-PreferredSizeWidget patientDataAppbar({
+PreferredSizeWidget PatientDataAppbar({
   required BuildContext context,
   required String title,
   bool isNurse = false,

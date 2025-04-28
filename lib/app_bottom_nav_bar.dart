@@ -28,7 +28,7 @@ class AppBottomNavBar extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return const [
-    HomeView(),
+    HomeViewDoctor(),
     ProfileView(),
   ];
 }

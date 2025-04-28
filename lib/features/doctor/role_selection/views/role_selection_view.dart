@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/assets.dart';
-
+import 'package:smart_care_app/features/doctor/login/presentation/views/login_view.dart';
 import '../../../../core/utils/widgets/custom_buttom.dart';
 import '../../../../core/utils/widgets/shader_mask_widget.dart';
 
@@ -25,9 +25,19 @@ class RoleSelectionView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 60),
-            CustomButtom(buttomName: 'Doctor'),
+            CustomButtom(
+              buttomName: 'Doctor',
+              onTap: () {
+                Navigator.pushNamed(context, LoginView.id);
+              },
+            ),
             SizedBox(height: 18),
-            CustomButtom(buttomName: 'Nurse')
+            CustomButtom(
+              buttomName: 'Nurse',
+              onTap: () {
+                Navigator.pushNamed(context, LoginView.id);
+              },
+            )
           ],
         ),
       ),

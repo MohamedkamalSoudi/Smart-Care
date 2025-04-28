@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/app_colors.dart';
-import '../../../../../../core/utils/widgets/patient_data_appbar.dart';
+import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/widgets/patient_data_appbar.dart';
 import 'medical_data_grid_view_builder.dart';
 import 'medical_details_card.dart';
 import 'basic_information_section.dart';
@@ -12,7 +12,7 @@ class PatientDataPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whitebody,
-      appBar: patientDataAppbar(
+      appBar: PatientDataAppbar(
         title: 'Patient Data',
         context: context,
       ),

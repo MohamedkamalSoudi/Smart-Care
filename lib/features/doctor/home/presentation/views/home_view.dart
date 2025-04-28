@@ -1,11 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/home_view_appbar.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/home_view_body.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class HomeViewDoctor extends StatelessWidget {
+  const HomeViewDoctor({super.key});
   static String id = 'HomeView';
 
   @override

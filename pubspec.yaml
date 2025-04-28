@@ -30,14 +30,15 @@ environment:
 dependencies:
   bloc: ^9.0.0
   cupertino_icons: ^1.0.8
+  dio: ^5.8.0+1
   dropdown_button2: ^2.3.9
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0
   flutter_svg: ^1.0.0
   font_awesome_flutter: ^10.8.0
-  
   persistent_bottom_nav_bar: ^6.2.1
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_lints: ^5.0.0

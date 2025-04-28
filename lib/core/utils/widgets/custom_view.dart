@@ -20,7 +20,7 @@ class CustomView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whitebody,
-      appBar: patientDataAppbar(title: title, context: context),
+      appBar: PatientDataAppbar(title: title, context: context),
       body: body,
       floatingActionButton: isFloatingActive
           ? FloatingActionButton(
