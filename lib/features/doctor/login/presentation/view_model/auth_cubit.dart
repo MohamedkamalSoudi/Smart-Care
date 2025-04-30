@@ -13,7 +13,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   AuthCubit() : super(AuthInitial());
 
-  final String baseUrl = "http://127.0.0.1:8000";
+  final String baseUrl = "http://smartcare.wuaze.com/public";
 
   Future<void> login() async {
     // emit(AuthLoading());
@@ -28,6 +28,9 @@ class AuthCubit extends Cubit<AuthState> {
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
+            'cookie': '__test=9e85d8265fbaf97a9d0d258e35bc9228',
+            'user-agent':
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
           },
         ),
       );
