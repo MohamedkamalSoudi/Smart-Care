@@ -8,7 +8,7 @@ import 'package:smart_care_app/features/doctor/patient%20data/presentation/views
 import '../../../features/doctor/home/data/patient_model.dart';
 
 class PatientCard extends StatelessWidget {
-  final Patient patient;
+  final UserModel patient;
 
   const PatientCard({super.key, required this.patient});
 
@@ -41,11 +41,11 @@ class PatientCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(patient.name,
+                    Text('Name : ${patient.name!}' ,
                         style: TextStyle(color: AppColors.textcardhome)),
                     Text('Room: ${patient.room}',
                         style: TextStyle(color: AppColors.textcardhome)),
-                    Text('Bed number: ${patient.bedNumber}',
+                    Text('Bed number: ${patient.bed}',
                         style: TextStyle(color: AppColors.textcardhome)),
                   ],
                 ),

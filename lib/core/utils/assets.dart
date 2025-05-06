@@ -1,6 +1,6 @@
 class AssetsData {
   static const logo = "assets/images/logo.png";
-  static const bitmap = "assets/images/bitmap.png";
+  static const bitmap = "assets/images/Bitmap.png";
   static const mandoctor = "assets/images/man_doctor.png";
   static const womandoctor = "assets/images/woman_doctor.png";
   static const editIcon = "assets/images/editIcon.png";
