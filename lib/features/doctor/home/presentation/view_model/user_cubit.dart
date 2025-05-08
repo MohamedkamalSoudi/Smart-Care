@@ -18,6 +18,7 @@ class UserCubit extends Cubit<UserState> {
         'Accept': HeadersApi.accept,
         'cookie': HeadersApi.cookie,
         'user-agent': HeadersApi.userAgent,
+        'Authorization': HeadersApi.authorization,
       },
     ),
   );
