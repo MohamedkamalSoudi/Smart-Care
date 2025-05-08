@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/app_colors.dart';
+import '../../../../core/utils/app_colors.dart';
 
 class CustomListTile extends StatelessWidget {
   final IconData icon;
@@ -20,7 +20,7 @@ class CustomListTile extends StatelessWidget {
       leading: Icon(icon, color: AppColors.iconhome),
       title: Text(text, style: TextStyle(color: AppColors.black, fontSize: 18)),
       horizontalTitleGap: horizontalGap,
-      minLeadingWidth: 30, 
+      minLeadingWidth: 30,
     );
   }
 }

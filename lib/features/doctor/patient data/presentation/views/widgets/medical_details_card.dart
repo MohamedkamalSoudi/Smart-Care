@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 
 class MedicalDetailsCard extends StatelessWidget {
   final List<Widget>? content;
@@ -14,7 +14,7 @@ class MedicalDetailsCard extends StatelessWidget {
     return Card(
       color: AppColors.whitebody,
       elevation: 3,
-      margin: const EdgeInsets.only(right: 140 , left: 5),
+      margin: const EdgeInsets.only(right: 140, left: 5),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

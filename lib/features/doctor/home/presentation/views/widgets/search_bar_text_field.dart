@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 
 class SearchBarTextField extends StatelessWidget {
   const SearchBarTextField({super.key, required this.onChanged});

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/app_colors.dart';
+import '../../../../../../core/utils/app_colors.dart';
 
-PreferredSizeWidget homeViewAppbar({bool isNurse = false, VoidCallback? onPressed}) {
+PreferredSizeWidget homeViewAppbar(
+    {bool isNurse = false, VoidCallback? onPressed}) {
   return PreferredSize(
     preferredSize: Size.fromHeight(60.0),
     child: Column(
@@ -10,7 +11,10 @@ PreferredSizeWidget homeViewAppbar({bool isNurse = false, VoidCallback? onPresse
           scrolledUnderElevation: 0,
           title: Text(
             'Patients List',
-            style: TextStyle(color: AppColors.grey60, fontSize: 26 , fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: AppColors.grey60,
+                fontSize: 26,
+                fontWeight: FontWeight.bold),
           ),
           backgroundColor: AppColors.whitebody,
           elevation: 0,
@@ -25,9 +29,9 @@ PreferredSizeWidget homeViewAppbar({bool isNurse = false, VoidCallback? onPresse
           automaticallyImplyLeading: false,
         ),
         Divider(
-          height: 1.5, 
+          height: 1.5,
           thickness: 1.5,
-          color: AppColors.iconhome, 
+          color: AppColors.iconhome,
         ),
       ],
     ),

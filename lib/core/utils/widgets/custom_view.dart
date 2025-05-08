@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'patient_data_appbar.dart';
 
 class CustomView extends StatelessWidget {

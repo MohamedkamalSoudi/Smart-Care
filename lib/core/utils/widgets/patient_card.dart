@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/core/utils/assets.dart';
 import 'package:smart_care_app/features/doctor/patient%20data/presentation/views/patient_data.dart';
 
@@ -41,7 +41,7 @@ class PatientCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Name : ${patient.name!}' ,
+                    Text('Name : ${patient.name!}',
                         style: TextStyle(color: AppColors.textcardhome)),
                     Text('Room: ${patient.room}',
                         style: TextStyle(color: AppColors.textcardhome)),

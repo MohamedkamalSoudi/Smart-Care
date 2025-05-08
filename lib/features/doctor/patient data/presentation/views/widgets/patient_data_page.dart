@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/core/utils/widgets/patient_data_appbar.dart';
 import 'medical_data_grid_view_builder.dart';
 import 'medical_details_card.dart';

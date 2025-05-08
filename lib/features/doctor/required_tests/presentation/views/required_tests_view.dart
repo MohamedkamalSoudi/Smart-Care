@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/core/utils/assets.dart';
 import 'package:smart_care_app/core/utils/widgets/custom_view.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';

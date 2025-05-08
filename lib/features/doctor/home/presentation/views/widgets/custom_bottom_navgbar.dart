@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/features/doctor/profile/profile_view.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
-  
+
   const CustomBottomNavBar({
     super.key,
     required this.currentIndex,
   });
 
   void _onItemTapped(BuildContext context, int index) {
-    if (index == currentIndex) return; 
+    if (index == currentIndex) return;
 
-    switch(index) {
+    switch (index) {
       case 0:
         Navigator.pop(context);
         break;
@@ -33,9 +33,7 @@ class CustomBottomNavBar extends StatelessWidget {
           icon: Icon(
             Icons.home,
             size: 30,
-            color: currentIndex == 0 
-                ? AppColors.iconhome 
-                : Colors.grey, 
+            color: currentIndex == 0 ? AppColors.iconhome : Colors.grey,
           ),
           label: 'Home',
         ),
@@ -43,15 +41,13 @@ class CustomBottomNavBar extends StatelessWidget {
           icon: Icon(
             Icons.person,
             size: 30,
-            color: currentIndex == 1 
-                ? AppColors.iconhome 
-                : Colors.grey, 
+            color: currentIndex == 1 ? AppColors.iconhome : Colors.grey,
           ),
           label: 'Profile',
         ),
       ],
-      selectedItemColor: AppColors.iconhome, 
-      unselectedItemColor: Colors.grey, 
+      selectedItemColor: AppColors.iconhome,
+      unselectedItemColor: Colors.grey,
       backgroundColor: AppColors.whitebody,
       type: BottomNavigationBarType.fixed,
       elevation: 8,

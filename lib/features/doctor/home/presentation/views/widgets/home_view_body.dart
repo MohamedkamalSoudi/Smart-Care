@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 
 import '../../../../../../core/utils/widgets/patient_card.dart';
 import '../../../data/patient_model.dart';
@@ -58,9 +58,8 @@ class _HomeViewbodyState extends State<HomeViewbody> {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is UserLoaded) {
                     final allPatients = state.users;
-                    final patientsToShow = searchQuery.isEmpty
-                        ? allPatients
-                        : filteredPatients;
+                    final patientsToShow =
+                        searchQuery.isEmpty ? allPatients : filteredPatients;
 
                     if (patientsToShow.isEmpty) {
                       return const Center(child: Text("لا توجد بيانات للعرض"));

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/app_colors.dart';
+import '../../../../../../core/utils/app_colors.dart';
 import 'info_row.dart';
 import 'room_number.dart';
 import 'section_title.dart';

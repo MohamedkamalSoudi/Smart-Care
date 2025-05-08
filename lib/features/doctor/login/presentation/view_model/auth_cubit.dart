@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_care_app/core/utils/headers.dart';
 import 'package:smart_care_app/features/doctor/login/presentation/view_model/auth_state.dart';
 import 'package:smart_care_app/features/doctor/login/data/models/user_model.dart';
 
@@ -26,11 +27,10 @@ class AuthCubit extends Cubit<AuthState> {
         },
         options: Options(
           headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'cookie': '__test=8e5a07a15f3219e5a579854fbe981139',
-            'user-agent':
-                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0',
+            'Content-Type': HeadersApi.contentType,
+            'Accept': HeadersApi.accept,
+            'cookie': HeadersApi.cookie,
+            'user-agent': HeadersApi.userAgent,
           },
         ),
       );

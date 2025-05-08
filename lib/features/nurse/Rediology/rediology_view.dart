@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/app_colors.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/core/utils/widgets/patient_data_appbar.dart';
 import 'package:smart_care_app/features/doctor/required_tests/presentation/custom_card_body.dart';
 
