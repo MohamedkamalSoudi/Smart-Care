@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/doctor/description/presentation/views/description_view.dart';
+import 'package:smart_care_app/features/doctor/prescribed_treatments/presentation/add_new_prescription.dart';
 import '../../../../required_tests/presentation/views/required_tests_view.dart';
 import '../../../data/patient_ists.dart';
 import 'custom_medical_card.dart';
@@ -13,6 +14,7 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
     DescriptionView.id,
     RequiredTestsView.id,
     RequiredTestsView.id,
+    AddNewPrescription.id,
   ];
 
   @override

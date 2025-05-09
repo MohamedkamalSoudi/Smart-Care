@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:smart_care_app/core/utils/headers.dart';
@@ -28,7 +26,6 @@ class UserCubit extends Cubit<UserState> {
 
     try {
       final response = await dio.get('$baseUrl/api/doctor/patients');
-      log(response.data.toString());
 
       if (response.statusCode == 200) {
         if (response.data is Map && response.data.containsKey('patients')) {
