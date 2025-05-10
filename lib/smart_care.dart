@@ -14,9 +14,6 @@ class SmartCare extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthCubit(),
         ),
-        BlocProvider(
-          create: (context) => ProfileCubit(),
-        ),
       ],
       child: MaterialApp(
         routes: appRoutes,

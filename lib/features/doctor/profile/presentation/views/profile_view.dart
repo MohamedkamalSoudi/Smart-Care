@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_care_app/features/doctor/profile/presentation/managers/profile_cubit.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/views/widgets/profile_page.dart';
 
 class ProfileView extends StatelessWidget {
@@ -6,8 +8,11 @@ class ProfileView extends StatelessWidget {
   static const id = 'ProfileView';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ProfilePage(),
+    return BlocProvider(
+      create: (context) => ProfileCubit()..getProfileData,
+      child: Scaffold(
+        body: ProfilePage(),
+      ),
     );
   }
 }

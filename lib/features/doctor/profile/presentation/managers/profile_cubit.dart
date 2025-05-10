@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/core/utils/headers.dart';
@@ -12,7 +14,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
   Future<void> getProfileData() async {
     try {
       final response = await dio.get(
-        '$baseUrl/api/auth/access-token',
+        '$baseUrl/api/doctor/profile',
         options: Options(
           headers: {
             'Content-Type': HeadersApi.contentType,
@@ -23,6 +25,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
           },
         ),
       );
+      log(response.data.toString());
 
       // response تحقق من حالة
       if (response.statusCode == 200) {

@@ -38,9 +38,6 @@ class _ProfilePageState extends State<ProfilePage> {
         }
       },
       builder: (context, state) {
-        if (state is ProfileLoading) {
-          return Center(child: CircularProgressIndicator());
-        }
         if (state is ProfileSuccess) {
           final profile = state.profileModel;
           return Scaffold(
