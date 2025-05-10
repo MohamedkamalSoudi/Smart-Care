@@ -17,7 +17,7 @@ class AuthCubit extends Cubit<AuthState> {
   final String baseUrl = "http://smartcare.wuaze.com/public";
 
   Future<void> login() async {
-    // emit(AuthLoading());
+    emit(AuthLoading());
     try {
       final response = await dio.post(
         '$baseUrl/api/auth/access-token',

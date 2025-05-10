@@ -1,17 +1,17 @@
-class UserModel {
+class ProfileModel {
   final String userName;
   final String? image;
-  final String? email;
-  final String? specialty;
+  final String email;
+  final String specialty;
 
-  UserModel(
+  ProfileModel(
       {required this.image,
       required this.email,
       required this.userName,
       required this.specialty});
 
-  factory UserModel.fromJson(json) {
-    return UserModel(
+  factory ProfileModel.fromJson(json) {
+    return ProfileModel(
       userName: json['doctor']['user']['name'],
       email: json['doctor']['user']['email'],
       image: json['doctor']['user']['image'],
