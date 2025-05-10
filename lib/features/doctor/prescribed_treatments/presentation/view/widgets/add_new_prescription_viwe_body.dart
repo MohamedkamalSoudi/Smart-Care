@@ -6,7 +6,6 @@ import 'package:smart_care_app/features/doctor/prescribed_treatments/presentatio
 
 class AddNewPrescriptionViweBody extends StatelessWidget {
   const AddNewPrescriptionViweBody({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
