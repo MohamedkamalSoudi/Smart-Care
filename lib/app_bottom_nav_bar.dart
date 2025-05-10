@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/home_view.dart';
-import 'package:smart_care_app/features/doctor/profile/profile_view.dart';
+import 'package:smart_care_app/features/doctor/profile/presentation/views/profile_view.dart';
 
 PersistentTabController _controller = PersistentTabController();
 

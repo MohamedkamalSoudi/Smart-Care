@@ -10,7 +10,7 @@ import '../../features/splash/views/splahs_view.dart';
 import '../../features/doctor/role_selection/views/role_selection_view.dart';
 import '../../features/doctor/home/presentation/views/home_view.dart';
 import '../../features/doctor/patient data/presentation/views/patient_data.dart';
-import '../../features/doctor/profile/profile_view.dart';
+import '../../features/doctor/profile/presentation/views/profile_view.dart';
 import '../../features/doctor/onboarding/presentation/views/onboarding_view.dart';
 
 Map<String, WidgetBuilder> get appRoutes {
@@ -27,6 +27,5 @@ Map<String, WidgetBuilder> get appRoutes {
     RediologyView.id: (context) => RediologyView(),
     AddNewPrescription.id: (context) => AddNewPrescription(),
     MedicationCard.id: (context) => MedicationCard(),
-
   };
 }
