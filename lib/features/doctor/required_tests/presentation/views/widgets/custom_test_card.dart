@@ -7,9 +7,8 @@ import 'green_line.dart';
 
 class CustomTestCard extends StatelessWidget {
   const CustomTestCard(
-      {super.key, required this.iconImage, required this.colorIcon});
+      {super.key, required this.iconImage,});
   final String iconImage;
-  final Color colorIcon;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,7 +54,6 @@ class CustomTestCard extends StatelessWidget {
           CardContent(),
           CardActions(
             iconImage: iconImage,
-            colorIcon: colorIcon,
             isDoc: false,
           ),
         ],

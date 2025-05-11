@@ -13,7 +13,6 @@ class CustomCardBody extends StatelessWidget {
         itemBuilder: (context, index) {
           return CustomTestCard(
             iconImage: iconImage,
-            colorIcon: colorIcon,
           );
         });
   }

@@ -6,12 +6,10 @@ class CardActions extends StatelessWidget {
   const CardActions({
     super.key,
     required this.iconImage,
-    required this.colorIcon,
     required this.isDoc,
   });
   final String iconImage;
   final bool isDoc;
-  final Color colorIcon;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,14 +20,12 @@ class CardActions extends StatelessWidget {
               ? IconButton(
                   icon: SvgPicture.asset(
                     iconImage,
-                    color: colorIcon,
                   ),
                   onPressed: () {},
                 )
               : IconButton(
                   icon: SvgPicture.asset(
                     'assets/images/ragb.svg',
-                    color: colorIcon,
                   ),
                   onPressed: () {},
                 ),
