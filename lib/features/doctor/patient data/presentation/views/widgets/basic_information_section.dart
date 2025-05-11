@@ -27,7 +27,7 @@ class BasicInformationSection extends StatelessWidget {
                 RoomNumber(model: model),
               ],
             ),
-            InfoRow(label: 'Age:', value: model?.id.toString()),
+            InfoRow(label: 'Age:', value: model?.age),
             const SizedBox(height: 10),
           ],
         ),
