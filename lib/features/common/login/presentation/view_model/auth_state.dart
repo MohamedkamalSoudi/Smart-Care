@@ -1,4 +1,4 @@
-import 'package:smart_care_app/features/doctor/login/data/models/user_model.dart';
+import 'package:smart_care_app/features/common/login/data/models/user_model.dart';
 
 abstract class AuthState {}
 

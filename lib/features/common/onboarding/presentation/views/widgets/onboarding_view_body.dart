@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/onboarding/presentation/views/widgets/customwave_painter.dart';
-import 'package:smart_care_app/features/doctor/onboarding/presentation/views/widgets/page_1.dart';
-import 'package:smart_care_app/features/doctor/onboarding/presentation/views/widgets/page_2.dart';
+import 'customwave_painter.dart';
+import 'page_1.dart';
+import 'page_2.dart';
 import 'onboarding_container_box_decoration.dart';
 import 'welcome_onboarding_text_and_next_button.dart';
 

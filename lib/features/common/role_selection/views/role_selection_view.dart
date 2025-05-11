@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/assets.dart';
-import 'package:smart_care_app/features/doctor/login/presentation/views/login_view.dart';
+import 'package:smart_care_app/features/common/login/presentation/views/login_view.dart';
 import '../../../../core/utils/widgets/custom_buttom.dart';
 import '../../../../core/utils/widgets/shader_mask_widget.dart';
 

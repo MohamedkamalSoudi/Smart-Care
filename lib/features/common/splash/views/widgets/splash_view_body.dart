@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/splash/views/widgets/sliding_text.dart';
-import 'package:smart_care_app/features/doctor/onboarding/presentation/views/onboarding_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../role_selection/views/role_selection_view.dart';
+import 'sliding_text.dart';
+import '../../../onboarding/presentation/views/onboarding_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -50,9 +52,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () async {
       // ignore: use_build_context_synchronously
-      Navigator.pushReplacementNamed(context, OnboardingView.id);
+      final sharedPref = await SharedPreferences.getInstance();
+      final response = sharedPref.getBool('isClicked');
+      response != true
+          ? Navigator.pushReplacementNamed(context, OnboardingView.id)
+          : Navigator.pushReplacementNamed(context, RoleSelectionView.id);
     });
   }
 }

@@ -1,9 +1,8 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/core/utils/assets.dart';
-import 'package:smart_care_app/features/doctor/patient%20data/presentation/views/patient_data.dart';
+import '../../../features/doctor/patient%20data/presentation/views/patient_data.dart';
 
 import '../../../features/doctor/home/data/patient_model.dart';
 
@@ -16,7 +15,7 @@ class PatientCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, PatientData.id);
+        Navigator.pushNamed(context, PatientData.id, arguments: patient);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 7, horizontal: 5),

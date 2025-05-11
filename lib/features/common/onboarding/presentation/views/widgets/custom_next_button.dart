@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../role_selection/views/role_selection_view.dart';
 import 'dot_indicator.dart';
@@ -23,11 +23,12 @@ class CustomNextButton extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 80, right: 20),
           child: GestureDetector(
-            onTap: () {
+            onTap: () async {
               if (currentPage == 1) {
-                Navigator.pushReplacementNamed(
-                    context, RoleSelectionView.id);
+                Navigator.pushReplacementNamed(context, RoleSelectionView.id);
               } else {
+                final shaerdPref = await SharedPreferences.getInstance();
+                shaerdPref.setBool('isClicked', true);
                 _pageController.nextPage(
                   duration: Duration(milliseconds: 300),
                   curve: Curves.ease,

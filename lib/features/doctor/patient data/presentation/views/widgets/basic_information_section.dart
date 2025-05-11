@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/doctor/home/data/patient_model.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import 'info_row.dart';
 import 'room_number.dart';
 import 'section_title.dart';
 
 class BasicInformationSection extends StatelessWidget {
-  const BasicInformationSection({super.key});
-
+  final UserModel? model;
+  const BasicInformationSection({super.key, this.model});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -21,12 +22,12 @@ class BasicInformationSection extends StatelessWidget {
             const Divider(height: 16),
             Row(
               children: [
-                InfoRow(label: 'Name:', value: 'Ahmed'),
+                InfoRow(label: 'Name:', value: model?.name),
                 const Spacer(),
-                RoomNumber(),
+                RoomNumber(model: model),
               ],
             ),
-            InfoRow(label: 'Age:', value: '21'),
+            InfoRow(label: 'Age:', value: model?.id.toString()),
             const SizedBox(height: 10),
           ],
         ),

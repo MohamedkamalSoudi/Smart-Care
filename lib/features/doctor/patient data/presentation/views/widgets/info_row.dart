@@ -3,9 +3,9 @@ import '../../../../../../core/utils/app_colors.dart';
 
 class InfoRow extends StatelessWidget {
   final String label;
-  final String value;
+  final String? value;
 
-  const InfoRow({super.key, required this.label, required this.value});
+  const InfoRow({super.key, required this.label, this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class InfoRow extends StatelessWidget {
           ),
           const SizedBox(width: 16),
           Text(
-            value,
+            value ?? '',
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,

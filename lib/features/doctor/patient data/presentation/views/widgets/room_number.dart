@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../../../home/data/patient_model.dart';
 
 class RoomNumber extends StatelessWidget {
+  final UserModel? model;
   const RoomNumber({
     super.key,
+    this.model,
   });
 
   @override
@@ -18,7 +21,7 @@ class RoomNumber extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'G101',
+            'G${model!.room}',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
@@ -33,7 +36,7 @@ class RoomNumber extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           Text(
-            '3',
+            model!.id.toString(),
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_care_app/core/utils/widgets/custom_buttom.dart';
-import 'package:smart_care_app/core/utils/widgets/shader_mask_widget.dart';
-import 'package:smart_care_app/features/doctor/login/presentation/view_model/auth_cubit.dart';
-import 'package:smart_care_app/features/doctor/login/presentation/view_model/auth_state.dart';
-import 'package:smart_care_app/features/doctor/login/presentation/views/role_based_home_screen.dart';
+import '../../../../../core/utils/widgets/custom_buttom.dart';
+import '../../../../../core/utils/widgets/shader_mask_widget.dart';
+import '../view_model/auth_cubit.dart';
+import '../view_model/auth_state.dart';
+import 'role_based_home_screen.dart';
 
 import '../../../../../core/utils/widgets/custom_text_field.dart';
 
@@ -22,7 +22,6 @@ class LoginView extends StatelessWidget {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text(state.message)));
-            print(state.message);
           } else if (state is AuthLoading) {
             Center(child: CircularProgressIndicator());
           } else if (state is AuthAuthenticated) {
@@ -35,7 +34,6 @@ class LoginView extends StatelessWidget {
           } else {
             LoginView();
           }
-          // TODO: implement listener
         },
         builder: (context, state) {
           return ListView(

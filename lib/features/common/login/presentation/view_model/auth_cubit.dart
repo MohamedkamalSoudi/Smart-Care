@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_care_app/core/utils/headers.dart';
-import 'package:smart_care_app/features/doctor/login/presentation/view_model/auth_state.dart';
-import 'package:smart_care_app/features/doctor/login/data/models/user_model.dart';
+import 'package:smart_care_app/features/common/login/presentation/view_model/auth_state.dart';
+import 'package:smart_care_app/features/common/login/data/models/user_model.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final Dio dio = Dio();

@@ -3,9 +3,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
 
 class CardActions extends StatelessWidget {
-  const CardActions(
-      {super.key, required this.iconImage, required this.colorIcon});
+  const CardActions({
+    super.key,
+    required this.iconImage,
+    required this.colorIcon,
+    required this.isDoc,
+  });
   final String iconImage;
+  final bool isDoc;
   final Color colorIcon;
   @override
   Widget build(BuildContext context) {
@@ -13,13 +18,21 @@ class CardActions extends StatelessWidget {
       padding: const EdgeInsets.only(right: 18),
       child: Column(
         children: [
-          IconButton(
-            icon: SvgPicture.asset(
-              iconImage,
-              color: colorIcon,
-            ),
-            onPressed: () {},
-          ),
+          isDoc
+              ? IconButton(
+                  icon: SvgPicture.asset(
+                    iconImage,
+                    color: colorIcon,
+                  ),
+                  onPressed: () {},
+                )
+              : IconButton(
+                  icon: SvgPicture.asset(
+                    'assets/images/ragb.svg',
+                    color: colorIcon,
+                  ),
+                  onPressed: () {},
+                ),
           SizedBox(height: 0),
           IconButton(
             icon: Icon(Icons.check_circle_outline_outlined,
