@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +24,6 @@ class ProfileCubit extends Cubit<ProfileStates> {
           },
         ),
       );
-      log(response.data.toString());
 
       // response تحقق من حالة
       if (response.statusCode == 200) {
