@@ -54,7 +54,6 @@ class CustomTestCard extends StatelessWidget {
           CardContent(),
           CardActions(
             iconImage: iconImage,
-            isDoc: false,
           ),
         ],
       ),

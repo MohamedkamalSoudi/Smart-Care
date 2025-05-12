@@ -1,12 +1,9 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart';
 import 'package:smart_care_app/features/nurse/home/presentation/view/widgets/custom_bottom_navgbar_nurse.dart';
-
 import '../../../../../../core/utils/app_colors.dart';
-import '../../../../../doctor/home/presentation/views/widgets/custom_bottom_navgbar.dart';
 import '../../../../../doctor/home/presentation/views/widgets/search_bar_text_field.dart';
 import '../../manager/user_nurse_cubit.dart';
 import '../../manager/user_nurse_state.dart';
