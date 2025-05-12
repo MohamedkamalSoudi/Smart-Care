@@ -1,10 +1,9 @@
-
-
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart';
+import 'package:smart_care_app/features/nurse/home/presentation/view/widgets/custom_bottom_navgbar_nurse.dart';
 
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../doctor/home/presentation/views/widgets/custom_bottom_navgbar.dart';
@@ -38,7 +37,7 @@ class _HomeViewbodyState extends State<HomeViewBodyNurse> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whitebody,
-      bottomNavigationBar: const CustomBottomNavBar(currentIndex: 0),
+      bottomNavigationBar: const CustomBottomNavBarNurse(currentIndex: 0),
       body: Padding(
         padding: const EdgeInsets.only(top: 45, left: 10, right: 10),
         child: Column(

@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/core/utils/headers.dart';
@@ -6,10 +5,10 @@ import 'package:smart_care_app/features/doctor/profile/data/profile_model.dart';
 
 import 'profile_states.dart';
 
-class ProfileCubit extends Cubit<ProfileStates> {
+class ProfileCubit extends Cubit<DoctorProfileStates> {
   final String baseUrl = "http://smartcare.wuaze.com/public";
   final Dio dio = Dio();
-  ProfileCubit() : super(ProfileLoading());
+  ProfileCubit() : super(DoctorProfileLoading());
   Future<void> getProfileData() async {
     try {
       final response = await dio.get(
@@ -20,7 +19,8 @@ class ProfileCubit extends Cubit<ProfileStates> {
             'Accept': HeadersApi.accept,
             'cookie': HeadersApi.cookie,
             'user-agent': HeadersApi.userAgent,
-            'Authorization': ' Bearer 315|6iNjENBr6kIDXvOVpRf8gRgLQgcdbK85LY3Ey1UD08a19441',
+            'Authorization':
+                ' Bearer 315|6iNjENBr6kIDXvOVpRf8gRgLQgcdbK85LY3Ey1UD08a19441',
           },
         ),
       );
@@ -28,13 +28,14 @@ class ProfileCubit extends Cubit<ProfileStates> {
       if (response.statusCode == 200) {
         final jsonData = response.data;
 
-        final ProfileModel profileModel = ProfileModel.fromJson(jsonData);
-        emit(ProfileSuccess(profileModel: profileModel));
+        final ProfileDoctorModel doctorProfileModel =
+            ProfileDoctorModel.fromJson(jsonData);
+        emit(DoctorProfileSuccess(doctorProfileModel: doctorProfileModel));
       } else {
-        emit(ProfileError(response.statusMessage.toString()));
+        emit(DoctorProfileError(response.statusMessage.toString()));
       }
     } catch (e) {
-      emit(ProfileError(e.toString()));
+      emit(DoctorProfileError(e.toString()));
     }
   }
 }

@@ -5,7 +5,7 @@ abstract class ProfileNarseStates {}
 class ProfileNarseLoading extends ProfileNarseStates {}
 
 class ProfileNarseSuccess extends ProfileNarseStates {
-  final ProfileModelNurse profileNurseModel; 
+  final ProfileModelNurse profileNurseModel;
   ProfileNarseSuccess({required this.profileNurseModel});
 }
 

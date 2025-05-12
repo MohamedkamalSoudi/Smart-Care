@@ -1,15 +1,15 @@
 import 'package:smart_care_app/features/doctor/profile/data/profile_model.dart';
 
-abstract class ProfileStates {}
+abstract class DoctorProfileStates {}
 
-class ProfileLoading extends ProfileStates {}
+class DoctorProfileLoading extends DoctorProfileStates {}
 
-class ProfileSuccess extends ProfileStates {
-  final ProfileModel profileModel;
-  ProfileSuccess({required this.profileModel});
+class DoctorProfileSuccess extends DoctorProfileStates {
+  final ProfileDoctorModel doctorProfileModel;
+  DoctorProfileSuccess({required this.doctorProfileModel});
 }
 
-class ProfileError extends ProfileStates {
+class DoctorProfileError extends DoctorProfileStates {
   final String message;
-  ProfileError(this.message);
+  DoctorProfileError(this.message);
 }

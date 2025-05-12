@@ -4,12 +4,12 @@ class ProfileModelNurse {
   final String email;
   //final String specialty;
 
-  ProfileModelNurse(
-      {required this.image,
-      required this.email,
-      required this.userName,
-      //required this.specialty
-      });
+  ProfileModelNurse({
+    required this.image,
+    required this.email,
+    required this.userName,
+    //required this.specialty
+  });
 
   factory ProfileModelNurse.fromJson(json) {
     return ProfileModelNurse(

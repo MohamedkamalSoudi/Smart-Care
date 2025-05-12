@@ -6,15 +6,14 @@ import 'package:smart_care_app/features/doctor/profile/presentation/managers/pro
 import 'package:smart_care_app/features/doctor/profile/presentation/managers/profile_states.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/views/widgets/custom_list_tile.dart';
 
-
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProfileCubit, ProfileStates>(
+    return BlocConsumer<ProfileCubit, DoctorProfileStates>(
       listener: (context, state) {
-        if (state is ProfileError) {
+        if (state is DoctorProfileError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.message),
@@ -23,8 +22,8 @@ class ProfilePage extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is ProfileSuccess) {
-          final profile = state.profileModel;
+        if (state is DoctorProfileSuccess) {
+          final profile = state.doctorProfileModel;
           return Scaffold(
             appBar: AppBar(
               scrolledUnderElevation: 0,

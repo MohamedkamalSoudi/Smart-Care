@@ -23,7 +23,7 @@ class ProfileNarseViewBody extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is ProfileNarseSuccess) {
-          final profile = state.profileNurseModel;
+          final nurseProfile = state.profileNurseModel;
           return Scaffold(
             appBar: AppBar(
               scrolledUnderElevation: 0,
@@ -52,7 +52,7 @@ class ProfileNarseViewBody extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 60,
-                          backgroundImage: NetworkImage(profile.image ??
+                          backgroundImage: NetworkImage(nurseProfile.image ??
                               'https://www.i2clipart.com/cliparts/6/9/2/c/clipart-facebook_no_image-512x512-692c.png'),
                         ),
                         Positioned(
@@ -78,7 +78,7 @@ class ProfileNarseViewBody extends StatelessWidget {
                     ),
                     CustomListTileNurse(
                       icon: Icons.person,
-                      text: profile.userName,
+                      text: nurseProfile.userName,
                       horizontalGap: 30,
                     ),
                     SizedBox(
@@ -94,7 +94,7 @@ class ProfileNarseViewBody extends StatelessWidget {
                     ),
                     CustomListTileNurse(
                       icon: Icons.email,
-                      text: profile.email,
+                      text: nurseProfile.email,
                       horizontalGap: 30,
                     ),
                     SizedBox(

@@ -15,7 +15,7 @@ class CustomBottomNavBarNurse extends StatelessWidget {
 
     switch (index) {
       case 0:
-        Navigator.pop(context); 
+        Navigator.pop(context);
         break;
       case 1:
         Navigator.pushNamed(context, ProfileNarseView.id);

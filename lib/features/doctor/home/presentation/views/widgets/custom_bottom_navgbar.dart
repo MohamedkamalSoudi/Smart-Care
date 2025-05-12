@@ -18,7 +18,7 @@ class CustomBottomNavBar extends StatelessWidget {
         Navigator.pop(context);
         break;
       case 1:
-        Navigator.pushNamed(context, ProfileView.id); 
+        Navigator.pushNamed(context, ProfileView.id);
         break;
     }
   }
