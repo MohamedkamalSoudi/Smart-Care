@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/utils/app_colors.dart';
 
-PreferredSizeWidget homeViewAppbar(
-    {bool isNurse = false, VoidCallback? onPressed}) {
+PreferredSizeWidget homeViewAppbar() {
   return PreferredSize(
     preferredSize: Size.fromHeight(60.0),
     child: Column(
       children: [
         AppBar(
+          automaticallyImplyLeading: false,
           scrolledUnderElevation: 0,
           title: Text(
             'Patients List',
@@ -18,15 +18,7 @@ PreferredSizeWidget homeViewAppbar(
           ),
           backgroundColor: AppColors.whitebody,
           elevation: 0,
-          actions: isNurse
-              ? [
-                  IconButton(
-                    onPressed: onPressed,
-                    icon: Icon(Icons.notifications, color: AppColors.grey60),
-                  ),
-                ]
-              : [],
-          automaticallyImplyLeading: false,
+          centerTitle: true,
         ),
         Divider(
           height: 1.5,

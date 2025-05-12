@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/doctor/home/presentation/views/home_view.dart';
+import 'package:smart_care_app/features/doctor/home/presentation/views/home_view_doctor.dart';
 import 'package:smart_care_app/features/nurse/home/presentation/view/home_view_nurse.dart';
 
 class RoleBasedHomeScreen extends StatelessWidget {
-  const RoleBasedHomeScreen({required this.userType, required this.token});
+  const RoleBasedHomeScreen({super.key, required this.userType, required this.token});
   final String userType;
   final String token;
   @override

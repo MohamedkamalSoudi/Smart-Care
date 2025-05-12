@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../../role_selection/views/role_selection_view.dart';
+import '../../../../login/presentation/views/login_view.dart';
 import 'dot_indicator.dart';
 
 class CustomNextButton extends StatelessWidget {
@@ -25,7 +24,7 @@ class CustomNextButton extends StatelessWidget {
           child: GestureDetector(
             onTap: () async {
               if (currentPage == 1) {
-                Navigator.pushReplacementNamed(context, RoleSelectionView.id);
+                Navigator.pushReplacementNamed(context, LoginView.id);
               } else {
                 final shaerdPref = await SharedPreferences.getInstance();
                 shaerdPref.setBool('isClicked', true);

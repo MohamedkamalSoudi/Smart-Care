@@ -4,26 +4,11 @@ import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/custom_bottom_navgbar.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/managers/profile_cubit.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/managers/profile_states.dart';
+import 'package:smart_care_app/features/doctor/profile/presentation/views/widgets/custom_list_tile.dart';
 
-import 'custom_list_tile.dart';
 
-class ProfilePage extends StatefulWidget {
+class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _ProfilePageState createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
-  bool _isPasswordVisible = false;
-
-  // ignore: unused_element
-  void _togglePasswordVisibility() {
-    setState(() {
-      _isPasswordVisible = !_isPasswordVisible;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,14 +96,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     CustomListTile(
                       icon: Icons.email,
                       text: profile.email,
-                      horizontalGap: 30,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    CustomListTile(
-                      icon: Icons.visibility_off,
-                      text: '**********',
                       horizontalGap: 30,
                     ),
                     SizedBox(

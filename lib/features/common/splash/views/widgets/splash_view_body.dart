@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../role_selection/views/role_selection_view.dart';
+import '../../../login/presentation/views/login_view.dart';
 import 'sliding_text.dart';
 import '../../../onboarding/presentation/views/onboarding_view.dart';
 
@@ -58,7 +58,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       final response = sharedPref.getBool('isClicked');
       response != true
           ? Navigator.pushReplacementNamed(context, OnboardingView.id)
-          : Navigator.pushReplacementNamed(context, RoleSelectionView.id);
+          : Navigator.pushReplacementNamed(context, LoginView.id);
     });
   }
 }

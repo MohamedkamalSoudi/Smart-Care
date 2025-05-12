@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/widgets/custom_view.dart';
-import '../../../../prescribed_treatments/presentation/view/widgets/medication_card.dart';
+import '../../../../prescribed treatments/presentation/view/widgets/medication_card.dart';
 import 'taskcard.dart';
 
 class DisplayPrescriptionBody extends StatefulWidget {

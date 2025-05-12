@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
 
-import '../../../../../../core/utils/widgets/patient_card.dart';
+import 'patient_card.dart';
 import '../../../data/patient_model.dart';
-import '../../view_model/user_cubit.dart';
-import '../../view_model/user_state.dart';
+import '../../manager/user_cubit.dart';
+import '../../manager/user_state.dart';
 import 'custom_bottom_navgbar.dart';
 import 'search_bar_text_field.dart';
 

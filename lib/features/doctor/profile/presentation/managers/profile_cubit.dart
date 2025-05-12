@@ -20,12 +20,11 @@ class ProfileCubit extends Cubit<ProfileStates> {
             'Accept': HeadersApi.accept,
             'cookie': HeadersApi.cookie,
             'user-agent': HeadersApi.userAgent,
-            'Authorization': HeadersApi.authorization,
+            'Authorization': ' Bearer 315|6iNjENBr6kIDXvOVpRf8gRgLQgcdbK85LY3Ey1UD08a19441',
           },
         ),
       );
 
-      // response تحقق من حالة
       if (response.statusCode == 200) {
         final jsonData = response.data;
 

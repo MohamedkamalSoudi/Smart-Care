@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/widgets/custom_buttom.dart';
 import '../../../../../core/utils/widgets/shader_mask_widget.dart';
-import '../view_model/auth_cubit.dart';
-import '../view_model/auth_state.dart';
+import '../manager/auth_cubit.dart';
+import '../manager/auth_state.dart';
 import 'role_based_home_screen.dart';
 
 import '../../../../../core/utils/widgets/custom_text_field.dart';

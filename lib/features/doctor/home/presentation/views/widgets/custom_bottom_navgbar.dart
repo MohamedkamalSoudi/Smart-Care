@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
-import 'package:smart_care_app/features/doctor/profile/presentation/views/profile_view.dart';
+import '../../../../profile/presentation/views/profile_view.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -18,7 +18,7 @@ class CustomBottomNavBar extends StatelessWidget {
         Navigator.pop(context);
         break;
       case 1:
-        Navigator.pushNamed(context, ProfileView.id);
+        Navigator.pushNamed(context, ProfileView.id); 
         break;
     }
   }
