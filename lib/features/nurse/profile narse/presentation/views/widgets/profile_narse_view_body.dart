@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart'; 
 import 'package:smart_care_app/features/nurse/home/presentation/view/widgets/custom_bottom_navgbar_nurse.dart';
 import '../../../../../../core/utils/app_colors.dart';
+import '../../../../../common/login/presentation/views/login_view.dart';
 import '../../manager/profile_narse_cubit.dart';
 import '../../manager/profile_narse_states.dart';
 import 'custom_list_tile_nurse.dart';
+
 
 class ProfileNarseViewBody extends StatelessWidget {
   const ProfileNarseViewBody({super.key});
@@ -104,6 +107,17 @@ class ProfileNarseViewBody extends StatelessWidget {
                       icon: Icons.logout,
                       text: 'Logout',
                       horizontalGap: 30,
+                      onTap: () async {
+                        final prefs = await SharedPreferences.getInstance();
+                        await prefs.remove('user_token'); 
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(), 
+                          ),
+                          (route) => false,
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -114,7 +128,7 @@ class ProfileNarseViewBody extends StatelessWidget {
             ),
           );
         }
-        return Container();
+        return Center(child: CircularProgressIndicator()); 
       },
     );
   }

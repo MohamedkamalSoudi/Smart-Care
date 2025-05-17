@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart'; 
 import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/custom_bottom_navgbar.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/managers/profile_cubit.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/managers/profile_states.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/views/widgets/custom_list_tile.dart';
+
+import '../../../../../common/login/presentation/views/login_view.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -17,6 +20,7 @@ class ProfilePage extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.message),
+              backgroundColor: Colors.red,
             ),
           );
         }
@@ -100,10 +104,24 @@ class ProfilePage extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
+                    // 🔴 زر تسجيل الخروج مع الوظيفة الكاملة
                     CustomListTile(
                       icon: Icons.logout,
                       text: 'Logout',
                       horizontalGap: 30,
+                      onTap: () async {
+                        final prefs = await SharedPreferences.getInstance();
+                        await prefs.remove('user_token'); // حذف توكن المستخدم
+
+                        // التنقل إلى شاشة تسجيل الدخول وإزالة المحفوظات
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginView(), // تأكد من وجود هذه الشاشة
+                          ),
+                          (route) => false,
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -114,7 +132,9 @@ class ProfilePage extends StatelessWidget {
             ),
           );
         }
-        return Container();
+        return Center(
+          child: CircularProgressIndicator(), // عرض مؤشر أثناء جلب البيانات
+        );
       },
     );
   }
