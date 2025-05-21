@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart'; 
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 import 'package:smart_care_app/features/nurse/home/presentation/view/widgets/custom_bottom_navgbar_nurse.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../common/login/presentation/views/login_view.dart';
 import '../../manager/profile_narse_cubit.dart';
 import '../../manager/profile_narse_states.dart';
 import 'custom_list_tile_nurse.dart';
-
 
 class ProfileNarseViewBody extends StatelessWidget {
   const ProfileNarseViewBody({super.key});
@@ -27,6 +27,13 @@ class ProfileNarseViewBody extends StatelessWidget {
       builder: (context, state) {
         if (state is ProfileNarseSuccess) {
           final nurseProfile = state.profileNurseModel;
+          String baseUrl =
+              'http://smartcare.wuaze.com/public/'; // عدّله حسب رابط السيرفر
+          String? imagePath = nurseProfile.image;
+
+          String? imageUrl = (imagePath != null && imagePath.isNotEmpty)
+              ? '$baseUrl$imagePath'
+              : null;
           return Scaffold(
             appBar: AppBar(
               scrolledUnderElevation: 0,
@@ -55,24 +62,10 @@ class ProfileNarseViewBody extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 60,
-                          backgroundImage: NetworkImage(nurseProfile.image ??
-                              'https://www.i2clipart.com/cliparts/6/9/2/c/clipart-facebook_no_image-512x512-692c.png'),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: AppColors.iconhome,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                              icon: Icon(Icons.camera_alt,
-                                  color: Colors.white, size: 15),
-                              onPressed: () {},
-                            ),
-                          ),
+                          backgroundImage: (imageUrl != null)
+                              ? NetworkImage(imageUrl)
+                              : AssetImage(AssetsData.emptyUser)
+                                  as ImageProvider,
                         ),
                       ],
                     ),
@@ -109,11 +102,11 @@ class ProfileNarseViewBody extends StatelessWidget {
                       horizontalGap: 30,
                       onTap: () async {
                         final prefs = await SharedPreferences.getInstance();
-                        await prefs.remove('user_token'); 
+                        await prefs.remove('user_token');
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginView(), 
+                            builder: (context) => LoginView(),
                           ),
                           (route) => false,
                         );
@@ -128,7 +121,7 @@ class ProfileNarseViewBody extends StatelessWidget {
             ),
           );
         }
-        return Center(child: CircularProgressIndicator()); 
+        return Center(child: CircularProgressIndicator());
       },
     );
   }

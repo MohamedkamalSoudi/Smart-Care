@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart'; 
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
+import 'package:smart_care_app/core/utils/assets.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/widgets/custom_bottom_navgbar.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/managers/profile_cubit.dart';
 import 'package:smart_care_app/features/doctor/profile/presentation/managers/profile_states.dart';
@@ -28,6 +31,13 @@ class ProfilePage extends StatelessWidget {
       builder: (context, state) {
         if (state is DoctorProfileSuccess) {
           final profile = state.doctorProfileModel;
+          String baseUrl =
+              'http://smartcare.wuaze.com/public/'; // عدّله حسب رابط السيرفر
+          String? imagePath = profile.image;
+
+          String? imageUrl = (imagePath != null && imagePath.isNotEmpty)
+              ? '$baseUrl$imagePath'
+              : null;
           return Scaffold(
             appBar: AppBar(
               scrolledUnderElevation: 0,
@@ -56,24 +66,10 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 60,
-                          backgroundImage: NetworkImage(profile.image ??
-                              'https://www.i2clipart.com/cliparts/6/9/2/c/clipart-facebook_no_image-512x512-692c.png'),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: AppColors.iconhome,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                              icon: Icon(Icons.camera_alt,
-                                  color: Colors.white, size: 15),
-                              onPressed: () {},
-                            ),
-                          ),
+                          backgroundImage: (imageUrl != null)
+                              ? NetworkImage(imageUrl)
+                              : AssetImage(AssetsData.emptyUser)
+                                  as ImageProvider,
                         ),
                       ],
                     ),
@@ -90,7 +86,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     CustomListTile(
                       icon: Icons.person_outline,
-                      text: profile.specialty,
+                      text: profile.specialty ?? '',
                       horizontalGap: 30,
                     ),
                     SizedBox(
@@ -117,7 +113,8 @@ class ProfilePage extends StatelessWidget {
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginView(), // تأكد من وجود هذه الشاشة
+                            builder: (context) =>
+                                LoginView(), // تأكد من وجود هذه الشاشة
                           ),
                           (route) => false,
                         );

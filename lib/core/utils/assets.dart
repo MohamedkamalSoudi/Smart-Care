@@ -10,4 +10,5 @@ class AssetsData {
   static const policy = "assets/images/Policy.png";
   static const vitamin = "assets/images/Vitamin.png";
   static const vector = "assets/images/Vector.svg";
+  static const emptyUser = "assets/images/empty_user.png";
 }
