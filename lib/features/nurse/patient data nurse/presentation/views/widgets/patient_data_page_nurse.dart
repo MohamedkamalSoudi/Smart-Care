@@ -7,7 +7,7 @@ import 'medical_data_grid_view_builder_nurse.dart';
 import 'medical_details_card_nuser.dart';
 
 class PatientDataPageNurse extends StatelessWidget {
-  final UserModelNurse model;  // اجعله non-nullable
+  final UserModelNurse model; 
   const PatientDataPageNurse({super.key, required this.model});
 
   @override
@@ -29,7 +29,7 @@ class PatientDataPageNurse extends StatelessWidget {
             MedicalDetailsCardNuser(),
             const SizedBox(height: 10),
             MedicalDataGridViewBuilderNurse(
-              patientId: model.id?.toInt() ?? 0, // تحويل num? إلى int مع افتراض 0 بدل null
+              patientId: model.id?.toInt() ?? 0, 
             ),
           ],
         ),

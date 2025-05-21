@@ -9,12 +9,16 @@ import '../managers/description_cubit.dart';
 import '../managers/description_states.dart';
 
 class DescriptionView extends StatelessWidget {
-  static const id = 'PatientDataPage1';
-  final int ids;
-  const DescriptionView({super.key, required this.ids});
+  static const id = 'DescriptionView';
+
+  const DescriptionView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final String patientId =
+        ModalRoute.of(context)!.settings.arguments as String;
+    final int ids = int.parse(patientId); 
+
     return BlocProvider(
       create: (context) => DescriptionCubit()..fetchDescription(ids),
       child: BlocConsumer<DescriptionCubit, DescriptionStates>(
@@ -32,7 +36,7 @@ class DescriptionView extends StatelessWidget {
             body: state is DataFounded
                 ? NoteItem(
                     title: state.model.desc,
-                    // dateTime: ,
+                    dateTime: DateTime.now(),
                     onTap: () {
                       final controller =
                           TextEditingController(text: state.model.desc);
@@ -41,9 +45,6 @@ class DescriptionView extends StatelessWidget {
                         controller,
                         'Edit Description of patient:',
                         () {
-                          context
-                              .read<DescriptionCubit>()
-                              .postDescription(controller.text, ids);
                           context
                               .read<DescriptionCubit>()
                               .postDescription(controller.text, ids);

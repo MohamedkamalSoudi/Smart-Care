@@ -6,8 +6,11 @@ import '../../../data/patient_ists.dart';
 import 'custom_medical_card.dart';
 
 class MedicalDataGridViewBuilder extends StatelessWidget {
+  final String patientId;  
+
   MedicalDataGridViewBuilder({
     super.key,
+    required this.patientId,
   });
 
   final List<String> pageIds = [
@@ -36,6 +39,7 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
               Navigator.pushNamed(
                 context,
                 pageIds[index],
+                arguments: patientId,   
               );
             }
           },

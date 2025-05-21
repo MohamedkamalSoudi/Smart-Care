@@ -7,8 +7,8 @@ import 'medical_details_card.dart';
 import 'basic_information_section.dart';
 
 class PatientDataPage extends StatelessWidget {
-  final UserModel? model;
-  const PatientDataPage({super.key, this.model});
+  final UserModel model;
+  const PatientDataPage({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,9 @@ class PatientDataPage extends StatelessWidget {
             const SizedBox(height: 10),
             MedicalDetailsCard(),
             const SizedBox(height: 10),
-            MedicalDataGridViewBuilder(),
+            MedicalDataGridViewBuilder(
+              patientId: model.id.toString(),  
+            ),
           ],
         ),
       ),

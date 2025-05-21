@@ -28,7 +28,7 @@ class DescriptionNurseView extends StatelessWidget {
             if (state is LoadingNurseState) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is DataFoundedNurse) {
-              final DateTime dateTime = DateTime.now();  // تستخدم تاريخ اليوم مؤقتاً
+              final DateTime dateTime = DateTime.now();  
 
               return Padding(
                 padding: const EdgeInsets.all(10.0),
