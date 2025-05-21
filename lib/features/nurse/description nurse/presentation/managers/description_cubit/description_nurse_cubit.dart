@@ -24,9 +24,10 @@ class DescriptionNurseCubit extends Cubit<DescriptionNurseStates> {
     emit(LoadingNurseState());
     try {
       final response = await dio.get('$baseUrl/api/patient/$id/diagnoses');
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 && response.data['diagnoses'] != null) {
         final diagnosisData = response.data;
-        DescriptionNurseModel model = DescriptionNurseModel.fromJson(diagnosisData);
+        DescriptionNurseModel model =
+            DescriptionNurseModel.fromJson(diagnosisData);
 
         emit(DataFoundedNurse(model: model));
       } else {
