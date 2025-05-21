@@ -6,8 +6,8 @@ import 'package:smart_care_app/core/utils/widgets/custom_view.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
 import '../../../../../core/utils/widgets/custom_show_dialog.dart';
 import '../../../description/data/models/description_model.dart';
-import '../../../description/presentation/managers/description_cubit/description_cubit.dart';
-import '../../../description/presentation/managers/description_cubit/description_states.dart';
+import '../../../description/presentation/managers/description_cubit.dart';
+import '../../../description/presentation/managers/description_states.dart';
 import '../custom_card_body.dart';
 
 class RequiredTestsView extends StatelessWidget {
@@ -21,11 +21,12 @@ class RequiredTestsView extends StatelessWidget {
       child: BlocConsumer<DescriptionCubit, DescriptionStates>(
         listener: (context, state) {},
         builder: (context, state) {
+          // ignore: unused_local_variable
           var cubit = BlocProvider.of<DescriptionCubit>(context);
           return CustomView(
             title: 'Required Tests',
             isFloatingActive: state is EmptyState ? true : false,
-            body: cubit.descModel.desc == 'null'
+            body: state is EmptyState
                 ? CustomEmptyBody(title: 'No tests added until now')
                 : CustomCardBody(
                     iconImage: AssetsData.vector,
@@ -35,9 +36,10 @@ class RequiredTestsView extends StatelessWidget {
               customShowDialog(
                   context, TextEditingController(), 'Enter  test of patient:',
                   () {
+                // ignore: unused_local_variable
                 DescriptionModel model = DescriptionModel(
-                    desc: 'Hello brother ', dateTime: DateTime.now());
-                cubit.addAndEditDescription(model);
+                    id: 1,
+                    desc: 'Hello brother ', );
                 Navigator.pop(context);
               }, 'Add test');
             },

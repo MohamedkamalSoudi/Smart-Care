@@ -33,7 +33,9 @@ Map<String, WidgetBuilder> get appRoutes {
       final user = ModalRoute.of(context)!.settings.arguments as UserModel;
       return PatientData(model: user);
     },
-    DescriptionView.id: (context) => DescriptionView(),
+    DescriptionView.id: (context) => DescriptionView(
+      ids: ModalRoute.of(context)!.settings.arguments as int,
+    ),
     RequiredTestsView.id: (context) => RequiredTestsView(),
     RediologyView.id: (context) => RediologyView(),
     AddNewPrescription.id: (context) => AddNewPrescription(),
