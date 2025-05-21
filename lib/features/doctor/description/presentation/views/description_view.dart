@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/core/utils/widgets/custom_view.dart';
+import 'package:smart_care_app/features/doctor/description/data/models/description_model.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
+import '../../../../../core/utils/widgets/custom_not_card.dart';
 import '../../../../../core/utils/widgets/custom_show_dialog.dart';
 import '../managers/description_cubit.dart';
 import '../managers/description_states.dart';
@@ -22,34 +26,33 @@ class DescriptionView extends StatelessWidget {
               SnackBar(content: Text("Error: ${state.error}")),
             );
           }
-          if (state is DataFounded) {
-            context.read<DescriptionCubit>().fetchDescription(ids);
-          }
         },
         builder: (context, state) {
           return CustomView(
             title: 'Description of the condition',
             isFloatingActive: state is EmptyState ? true : false,
             body: state is DataFounded
-                // ? NoteItem(
-                //     title: state.models.desc,
-                //     dateTime: state.models.dateTime,
-                //     onTap: () {
-                //       final controller = TextEditingController(text: state.models.desc);
-                //       customShowDialog(
-                //         context,
-                //         controller,
-                //         'Edit Description of patient:',
-                //         () {
-                //           context.read<DescriptionCubit>().postDescription( controller.text,  ids);
-                //           Navigator.pop(context);
-                //         },
-                //         "Edit Description",
-                //       );
-                //     },
-                //   )
-                ? SizedBox():
-                state is LoadingState
+                ? NoteItem(
+                    title: state.model.desc,
+                    // dateTime: ,
+                    onTap: () {
+                      final controller =
+                          TextEditingController(text: state.model.desc);
+                      customShowDialog(
+                        context,
+                        controller,
+                        'Edit Description of patient:',
+                        () {
+                          context
+                              .read<DescriptionCubit>()
+                              .postDescription(controller.text, ids);
+                          Navigator.pop(context);
+                        },
+                        "Edit Description",
+                      );
+                    },
+                  )
+                : state is LoadingState
                     ? const Center(child: CircularProgressIndicator())
                     : const CustomEmptyBody(title: 'No Description'),
             onPressed: () {
@@ -59,7 +62,9 @@ class DescriptionView extends StatelessWidget {
                 controller,
                 'Enter Description of patient:',
                 () {
-                  //context.read<DescriptionCubit>().postDescription( controller.text, ids);
+                  context
+                      .read<DescriptionCubit>()
+                      .postDescription(controller.text, ids);
                   Navigator.pop(context);
                 },
                 "Add Description",
@@ -71,4 +76,3 @@ class DescriptionView extends StatelessWidget {
     );
   }
 }
-

@@ -4,11 +4,11 @@ import 'package:smart_care_app/core/utils/app_colors.dart';
 class NoteItem extends StatelessWidget {
   final String title;
   final Function() onTap;
-  final DateTime dateTime;
+  // final DateTime dateTime;
   const NoteItem(
       {super.key,
       required this.title,
-      required this.dateTime,
+      //   required this.dateTime,
       required this.onTap});
   @override
   Widget build(BuildContext context) {
@@ -44,18 +44,18 @@ class NoteItem extends StatelessWidget {
             style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
           Spacer(),
-          RichText(
-            textAlign: TextAlign.end,
-            text: TextSpan(
-              children: [
-                TextSpan(text: dateTime.day.toString()),
-                TextSpan(text: '/'),
-                TextSpan(text: dateTime.month.toString()),
-                TextSpan(text: '/'),
-                TextSpan(text: dateTime.year.toString()),
-              ],
-            ),
-          ),
+          // RichText(
+          //   textAlign: TextAlign.end,
+          //   text: TextSpan(
+          //     children: [
+          //       TextSpan(text: dateTime.day.toString()),
+          //       TextSpan(text: '/'),
+          //       TextSpan(text: dateTime.month.toString()),
+          //       TextSpan(text: '/'),
+          //       TextSpan(text: dateTime.year.toString()),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

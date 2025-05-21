@@ -5,9 +5,8 @@ abstract class DescriptionStates {}
 class EmptyState extends DescriptionStates {}
 
 class DataFounded extends DescriptionStates {
-
-  final List<DescriptionModel> models;
-  DataFounded({required this.models});
+  final DescriptionModel model;
+  DataFounded({required this.model});
 }
 
 class LoadingState extends DescriptionStates {}

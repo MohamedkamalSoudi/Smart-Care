@@ -9,7 +9,8 @@ import '../../features/doctor/home/data/patient_model.dart';
 import '../../features/doctor/home/presentation/views/home_view_doctor.dart';
 import '../../features/doctor/patient data/presentation/views/patient_data.dart';
 import '../../features/doctor/prescribed treatments/presentation/add_new_prescription.dart';
-import '../../features/doctor/prescribed treatments/presentation/view/widgets/medication_card.dart' show MedicationCard;
+import '../../features/doctor/prescribed treatments/presentation/view/widgets/medication_card.dart'
+    show MedicationCard;
 import '../../features/doctor/profile/presentation/views/profile_view.dart';
 import '../../features/doctor/required_tests/presentation/views/required_tests_view.dart';
 import '../../features/nurse/Rediology/rediology_view.dart';
@@ -34,9 +35,9 @@ Map<String, WidgetBuilder> get appRoutes {
       return PatientData(model: user);
     },
     DescriptionView.id: (context) => DescriptionView(
-      ids: ModalRoute.of(context)!.settings.arguments as int,
-    ),
-    RequiredTestsView.id: (context) => RequiredTestsView(),
+          ids: 3,
+        ),
+    // RequiredTestsView.id: (context) => RequiredTestsView(),
     RediologyView.id: (context) => RediologyView(),
     AddNewPrescription.id: (context) => AddNewPrescription(),
     MedicationCard.id: (context) => MedicationCard(),
@@ -50,8 +51,8 @@ Map<String, WidgetBuilder> get appRoutes {
     DescriptionNurseView.id: (context) => DescriptionNurseView(),
     RequiredTestsViewNurse.id: (context) => RequiredTestsViewNurse(),
     AddNewPrescriptionNurse.id: (context) => AddNewPrescriptionNurse(),
-    DisplayPrescriptionBodyNurse.id: (context) => DisplayPrescriptionBodyNurse(),
+    DisplayPrescriptionBodyNurse.id: (context) =>
+        DisplayPrescriptionBodyNurse(),
     EditProfilePicturePage.id: (context) => EditProfilePicturePage(),
-    
   };
 }

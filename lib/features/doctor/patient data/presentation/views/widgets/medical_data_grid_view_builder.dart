@@ -12,20 +12,20 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
 
   final List<String> pageIds = [
     DescriptionView.id,
-    RequiredTestsView.id,
-    RequiredTestsView.id,
+    // RequiredTestsView.id,
+    //  RequiredTestsView.id,
     AddNewPrescription.id,
   ];
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      shrinkWrap: true, 
-      physics: const NeverScrollableScrollPhysics(), 
-      itemCount: medicalCardTitles.length, 
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: medicalCardTitles.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.9, 
+        childAspectRatio: 0.9,
       ),
       itemBuilder: (context, index) {
         return CustomMedicalCard(
@@ -34,8 +34,8 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
           onPressed: () {
             if (index < pageIds.length) {
               Navigator.pushNamed(
-                context, 
-                pageIds[index], 
+                context,
+                pageIds[index],
               );
             }
           },
