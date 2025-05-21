@@ -6,6 +6,7 @@ class PatientDataNurse extends StatelessWidget {
   final UserModelNurse model;
   const PatientDataNurse({super.key, required this.model});
   static const id = 'PatientDataNurse';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

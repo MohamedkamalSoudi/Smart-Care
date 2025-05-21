@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart';
@@ -72,7 +71,6 @@ class _HomeViewbodyState extends State<HomeViewBodyNurse> {
                   } else if (state is UserNurseError) {
                     return Center(child: Text(state.message));
                   } else {
-                    log('Unknown state: $state');
                     return const SizedBox.shrink();
                   }
                 },

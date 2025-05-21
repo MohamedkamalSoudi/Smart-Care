@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart';
-
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../../patient data nurse/presentation/views/patient_data_nurse.dart';
@@ -15,7 +13,11 @@ class PatientCardNurse extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, PatientDataNurse.id, arguments: patient);
+        Navigator.pushNamed(
+          context,
+          PatientDataNurse.id,
+          arguments: patient, // نمرر الكائن كامل
+        );
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 7, horizontal: 5),

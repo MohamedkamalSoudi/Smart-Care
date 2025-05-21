@@ -41,6 +41,7 @@ class DescriptionCubit extends Cubit<DescriptionStates> {
   Future<void> postDescription(String description, int id) async {
     emit(LoadingState());
     try {
+      // ignore: unused_local_variable
       final response = await dio.post(
         '$baseUrl/api/patient/$id/diagnoses',
         data: {'diagnosis': description},
