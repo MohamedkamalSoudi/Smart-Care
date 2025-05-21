@@ -5,25 +5,29 @@ import '../../../../../core/utils/widgets/shader_mask_widget.dart';
 import '../manager/auth_cubit.dart';
 import '../manager/auth_state.dart';
 import 'role_based_home_screen.dart';
-
 import '../../../../../core/utils/widgets/custom_text_field.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
   static String id = 'LoginView';
 
   @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  bool _isPasswordVisible = false;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFBBE2FF),
+      backgroundColor: const Color(0xFFBBE2FF),
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthError) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
-          } else if (state is AuthLoading) {
-            Center(child: CircularProgressIndicator());
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.message)),
+            );
           } else if (state is AuthAuthenticated) {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return RoleBasedHomeScreen(
@@ -31,8 +35,6 @@ class LoginView extends StatelessWidget {
                 token: state.token,
               );
             }));
-          } else {
-            LoginView();
           }
         },
         builder: (context, state) {
@@ -43,15 +45,13 @@ class LoginView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Image.asset('assets/images/logo.png'),
-                    ShaderMaskWidget(),
+                    const ShaderMaskWidget(),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
                   'Login',
                   style: TextStyle(
@@ -61,31 +61,36 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 7,
-              ),
+              const SizedBox(height: 7),
               CustomTextField(
                 controller: context.read<AuthCubit>().userNameController,
                 prefixIcon: Icons.email_outlined,
                 hintText: 'Email',
               ),
-              SizedBox(
-                height: 7,
-              ),
+              const SizedBox(height: 7),
               CustomTextField(
+                controller: context.read<AuthCubit>().passwordController,
                 prefixIcon: Icons.lock_outlined,
                 hintText: 'Password',
-                controller: context.read<AuthCubit>().passwordController,
+                obscureText: !_isPasswordVisible,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
+                ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               CustomButtom(
                 buttomName: 'Login',
                 onTap: () {
                   context.read<AuthCubit>().login();
                 },
-              )
+              ),
             ],
           );
         },

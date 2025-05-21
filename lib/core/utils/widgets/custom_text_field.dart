@@ -6,10 +6,15 @@ class CustomTextField extends StatelessWidget {
     required this.prefixIcon,
     required this.hintText,
     required this.controller,
+    this.suffixIcon,
+    this.obscureText = false,
   });
+
   final String hintText;
   final IconData prefixIcon;
   final TextEditingController controller;
+  final Widget? suffixIcon;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +22,21 @@ class CustomTextField extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: TextField(
         controller: controller,
+        obscureText: obscureText,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(fontSize: 18),
+          hintStyle: const TextStyle(fontSize: 18),
           prefixIcon: Icon(
             prefixIcon,
             size: 20,
           ),
-          enabledBorder: OutlineInputBorder(
+          suffixIcon: suffixIcon,
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.blue,
             ),
           ),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: Colors.blue,
             ),
