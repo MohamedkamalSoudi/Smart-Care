@@ -16,12 +16,4 @@ class DescriptionModel {
       doctorId: json['diagnoses']['doctor_id'],
     );
   }
-
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'diagnosis': desc,
-//       'patient_id': patientId ?? '3',
-//       'doctor_id': doctorId ?? '2',
-//     };
-//   }
 }

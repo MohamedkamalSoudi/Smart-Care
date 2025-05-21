@@ -37,7 +37,7 @@ Map<String, WidgetBuilder> get appRoutes {
     DescriptionView.id: (context) => DescriptionView(
           ids: 3,
         ),
-    // RequiredTestsView.id: (context) => RequiredTestsView(),
+    RequiredTestsView.id: (context) => RequiredTestsView(),
     RediologyView.id: (context) => RediologyView(),
     AddNewPrescription.id: (context) => AddNewPrescription(),
     MedicationCard.id: (context) => MedicationCard(),

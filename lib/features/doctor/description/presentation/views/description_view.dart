@@ -1,9 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/core/utils/widgets/custom_view.dart';
-import 'package:smart_care_app/features/doctor/description/data/models/description_model.dart';
+
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
 import '../../../../../core/utils/widgets/custom_not_card.dart';
 import '../../../../../core/utils/widgets/custom_show_dialog.dart';
@@ -43,6 +41,9 @@ class DescriptionView extends StatelessWidget {
                         controller,
                         'Edit Description of patient:',
                         () {
+                          context
+                              .read<DescriptionCubit>()
+                              .postDescription(controller.text, ids);
                           context
                               .read<DescriptionCubit>()
                               .postDescription(controller.text, ids);

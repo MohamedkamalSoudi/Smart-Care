@@ -45,6 +45,7 @@ class DescriptionCubit extends Cubit<DescriptionStates> {
         '$baseUrl/api/patient/$id/diagnoses',
         data: {'diagnosis': description},
       );
+      fetchDescription(id);
     } catch (e) {
       emit(ErrorState(e.toString()));
     }
