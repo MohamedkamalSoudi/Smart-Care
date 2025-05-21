@@ -11,19 +11,17 @@ class ProfileCubit extends Cubit<DoctorProfileStates> {
   ProfileCubit() : super(DoctorProfileLoading());
   Future<void> getProfileData() async {
     try {
-      final response = await dio.get(
-        '$baseUrl/api/doctor/profile',
-        options: Options(
-          headers: {
-            'Content-Type': HeadersApi.contentType,
-            'Accept': HeadersApi.accept,
-            'cookie': HeadersApi.cookie,
-            'user-agent': HeadersApi.userAgent,
-            'Authorization':
-                ' Bearer 315|6iNjENBr6kIDXvOVpRf8gRgLQgcdbK85LY3Ey1UD08a19441',
-          },
-        ),
-      );
+      final response = await dio.get('$baseUrl/api/doctor/profile',
+          options: Options(
+            headers: {
+              'Content-Type': HeadersApi.contentType,
+              'Accept': HeadersApi.accept,
+              'cookie': HeadersApi.cookie,
+              'user-agent': HeadersApi.userAgent,
+              'Authorization':
+                  ' Bearer 315|6iNjENBr6kIDXvOVpRf8gRgLQgcdbK85LY3Ey1UD08a19441',
+            },
+          ));
 
       if (response.statusCode == 200) {
         final jsonData = response.data;

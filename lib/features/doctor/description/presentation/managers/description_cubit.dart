@@ -25,7 +25,7 @@ class DescriptionCubit extends Cubit<DescriptionStates> {
     emit(LoadingState());
     try {
       final response = await dio.get('$baseUrl/api/patient/$id/diagnoses');
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 && response.data['diagnoses'] != null) {
         final diagnosisData = response.data;
         DescriptionModel model = DescriptionModel.fromJson(diagnosisData);
 
