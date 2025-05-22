@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_care_app/constant.dart';
+import 'package:smart_care_app/features/doctor/home/presentation/views/home_view_doctor.dart';
 import '../../../login/presentation/views/login_view.dart';
 import 'sliding_text.dart';
 import '../../../onboarding/presentation/views/onboarding_view.dart';
@@ -58,7 +60,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
       final response = sharedPref.getBool('isClicked');
       response != true
           ? Navigator.pushReplacementNamed(context, OnboardingView.id)
-          : Navigator.pushReplacementNamed(context, LoginView.id);
+          : token == ''
+              ? Navigator.pushReplacementNamed(context, LoginView.id)
+              : Navigator.pushReplacementNamed(context, HomeViewDoctor.id);
     });
   }
 }
