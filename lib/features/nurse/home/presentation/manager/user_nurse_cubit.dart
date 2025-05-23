@@ -38,20 +38,20 @@ class UserNurseCubit extends Cubit<UserNurseState> {
           }
           emit(UserNurseLoaded(models));
         } else {
-          emit(UserNurseError('البيانات غير متوفرة أو ليست قائمة'));
+          emit(UserNurseError('Data is not available or not a list'));
         }
       } else {
-        emit(UserNurseError('فشل في تحميل المستخدمين: ${response.statusMessage}'));
+        emit(UserNurseError('Failed to load users: ${response.statusMessage}'));
       }
     } on DioException catch (e) {
       if (e.response != null) {
         emit(UserNurseError(
-            'خطأ من الخادم (${e.response?.statusCode}): ${e.message}'));
+            'Server error (${e.response?.statusCode}): ${e.message}'));
       } else {
-        emit(UserNurseError('مشكلة في الاتصال: ${e.message}'));
+        emit(UserNurseError('Connection issue: ${e.message}'));
       }
     } catch (e) {
-      emit(UserNurseError('حدث خطأ غير متوقع: $e'));
+      emit(UserNurseError('An unexpected error occurred: $e'));
     }
   }
 }

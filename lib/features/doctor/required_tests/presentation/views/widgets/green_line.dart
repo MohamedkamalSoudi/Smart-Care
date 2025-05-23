@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/utils/app_colors.dart';
 
 class GreenLine extends StatelessWidget {
-  const GreenLine({super.key});
+  final bool isDone;
+
+  const GreenLine({super.key, required this.isDone});
 
   @override
   Widget build(BuildContext context) {
+    final Color lineColor = isDone ? Colors.green : Colors.orange;
+
     return Padding(
       padding: const EdgeInsets.only(left: 20, top: 16, bottom: 16),
       child: ClipRRect(
@@ -13,7 +16,7 @@ class GreenLine extends StatelessWidget {
         child: Container(
           width: 4,
           height: double.infinity,
-          color: AppColors.green,
+          color: lineColor,
         ),
       ),
     );
