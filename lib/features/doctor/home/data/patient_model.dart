@@ -17,7 +17,7 @@ class UserModel {
       id: json['id'],
       name: json['user']['name'],
       room: json['room_number'],
-      bed: json['ped_room'],
+      bed: json['ped'],
       age: json['age'],
     );
   }

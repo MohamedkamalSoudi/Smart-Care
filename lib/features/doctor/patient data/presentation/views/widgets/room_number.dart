@@ -36,7 +36,7 @@ class RoomNumber extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           Text(
-            model!.id.toString(),
+            model!.bed.toString(),
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
