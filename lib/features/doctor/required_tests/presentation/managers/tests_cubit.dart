@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/utils/headers.dart';
 import '../../data/treatment_model.dart';
@@ -73,7 +70,7 @@ class TestCubit extends Cubit<TestState> {
     }
   }
 
-  Future<void> toggleTestStatus(int testId, bool currentStatus, int patientId) async {
+Future<void> toggleTestStatus(int testId, bool currentStatus, int patientId) async {
   emit(state.copyWith(isLoading: true));
 
   try {
@@ -83,7 +80,6 @@ class TestCubit extends Cubit<TestState> {
     await dio.post(
       '$baseUrl/api/lab-tests/$testId',
       data: {
-        'is_done': newIsDone ? 1 : 0,
         'status': newApiStatus,
       },
     );
@@ -97,17 +93,9 @@ class TestCubit extends Cubit<TestState> {
 
     emit(TestState(tests: updatedTests));
 
-    final prefs = await SharedPreferences.getInstance();
-    final testKey = 'test_$testId';
-    final testMap = {
-      'id': testId,
-      'is_done': newIsDone ? 1 : 0,
-      'status': newApiStatus,
-    };
-    prefs.setString(testKey, json.encode(testMap));
-
   } catch (e) {
     emit(TestState(error: e.toString()));
   }
 }
+
 }

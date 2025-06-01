@@ -42,15 +42,17 @@ class TreatmentModel {
   }
 
   factory TreatmentModel.fromJson(Map<String, dynamic> json) {
+    final String status = json['status'] ?? 'pending';
+
     return TreatmentModel(
       id: json['id'] ?? 0,
       patientId: json['patient_id'] ?? 0,
       name: json['name'] ?? '',
       dueDate: json['due_date'] ?? '',
       dueTime: json['due_time'] ?? '00:00',
-      isDone: (json['is_done'] ?? 0) == 1,
+      isDone: status == 'completed',  
       filePath: json['file_path'],
-      status: json['status'] ?? 'pending',
+      status: status,
     );
   }
 
@@ -61,7 +63,6 @@ class TreatmentModel {
       'name': name,
       'due_date': dueDate,
       'due_time': dueTime,
-      'is_done': isDone ? 1 : 0,
       'file_path': filePath,
       'status': status,
     };

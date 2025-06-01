@@ -56,10 +56,10 @@ class RadiologyCubit extends Cubit<RadiologyStates> {
 
       await fetchRadiologes(patientId);
 
-      print(' Radiology added successfully: ${response.data}');
+      print('Radiology added successfully: ${response.data}');
     } catch (e) {
       emit(RadiologyError(e.toString()));
-      print('Failed to add  Radiology: $e');
+      print('Failed to add Radiology: $e');
     }
   }
 
@@ -73,19 +73,26 @@ class RadiologyCubit extends Cubit<RadiologyStates> {
     }
   }
 
-  // Future<void> toggleTestStatus(int testId, bool currentStatus, int patientId) async {
-  //   emit(TestLoading());
-  //   try {
-  //     final newStatus = !currentStatus;
-  //     await dio.put(
-  //       '$baseUrl/api/lab-tests/$testId',
-  //       data: {
-  //         'is_done': newStatus ? 1 : 0,
-  //       },
-  //     );
-  //     await fetchTests(patientId);
-  //   } catch (e) {
-  //     emit(TestError(e.toString()));
-  //   }
-  // }
+ Future<void> toggleRadiologyStatus(int id, bool currentStatus, int patientId) async {
+  emit(RadiologyLoading());
+
+  try {
+    final newIsDone = !currentStatus;
+    final newStatus = newIsDone ? 'completed' : 'pending';
+
+    await dio.post(
+      '$baseUrl/api/tasks/$id',
+      data: {
+        'status': newStatus,
+      },
+    );
+
+    await fetchRadiologes(patientId);
+
+  } catch (e) {
+    emit(RadiologyError(e.toString()));
+  }
+}
+
+
 }

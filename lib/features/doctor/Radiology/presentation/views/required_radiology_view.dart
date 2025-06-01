@@ -58,7 +58,8 @@ class RequiredRadiologyView extends StatelessWidget {
                                       .deleteRadiology(radiology.id, patientId);
                                 },
                                 onDonePressed: () {
-                                  // context.read<TestCubit>().toggleTestStatus(test.id, test.isDone, patientId);
+                                  context.read<RadiologyCubit>().toggleRadiologyStatus(radiology.id, radiology.isDone, patientId);
+
                                 },
                               );
                             },
