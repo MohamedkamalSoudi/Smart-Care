@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_care_app/features/doctor/Radiology/presentation/views/required_radiology_view.dart';
 import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart';
 import '../../features/common/login/presentation/views/login_view.dart';
 import '../../features/common/onboarding/presentation/views/onboarding_view.dart';
@@ -36,6 +37,7 @@ Map<String, WidgetBuilder> get appRoutes {
     },
     DescriptionView.id: (context) => DescriptionView(),
     RequiredTestsView.id: (context) => RequiredTestsView(),
+    RequiredRadiologyView.id: (context) => RequiredRadiologyView(),
     RediologyView.id: (context) => RediologyView(),
     AddNewPrescription.id: (context) => AddNewPrescription(),
     MedicationCard.id: (context) => MedicationCard(),

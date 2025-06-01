@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:smart_care_app/core/utils/app_colors.dart';
+
+class RadiologyCardContent extends StatelessWidget {
+  final String radiologyName;
+  final String formattedDate;
+
+  const RadiologyCardContent({
+    super.key,
+    required this.radiologyName,
+    required this.formattedDate,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 14),
+          child: Text(
+            radiologyName,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: AppColors.black,
+            ),
+          ),
+        ),
+        const SizedBox(height: 25),
+        Row(
+          children: [
+            Text(
+              'Scheduled for',
+              style: TextStyle(
+                fontSize: 14,
+                color: AppColors.grey100,
+              ),
+            ),
+            Text(
+              ' $formattedDate',
+              style: TextStyle(
+                fontSize: 12,
+                color: AppColors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
