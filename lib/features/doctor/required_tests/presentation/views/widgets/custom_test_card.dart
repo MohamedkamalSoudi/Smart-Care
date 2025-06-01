@@ -39,7 +39,7 @@ class CustomTestCard extends StatelessWidget {
                 blurRadius: 2,
               ),
               BoxShadow(
-                color: const Color(0xFF5F5F5F).withOpacity(0.15),
+                color: Color(0xFF5F5F5F).withOpacity(0.15),
                 offset: const Offset(-1, -1),
               ),
             ],

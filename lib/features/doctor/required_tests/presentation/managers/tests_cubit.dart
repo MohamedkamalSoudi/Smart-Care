@@ -1,12 +1,15 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../../../core/utils/headers.dart';
+import '../../../../../core/utils/headers.dart';
 import '../../data/treatment_model.dart';
 import 'tests_states.dart';
 
-class TestCubit extends Cubit<TestStates> {
-  TestCubit() : super(TestInitial());
+class TestCubit extends Cubit<TestState> {
+  TestCubit() : super(TestState());
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
   final Dio dio = Dio(
@@ -22,7 +25,7 @@ class TestCubit extends Cubit<TestStates> {
   );
 
   Future<void> fetchTests(int patientId) async {
-    emit(TestLoading());
+    emit(state.copyWith(isLoading: true));
     try {
       final response = await dio.get('$baseUrl/api/lab-tests/patient/$patientId');
       final data = response.data;
@@ -35,56 +38,76 @@ class TestCubit extends Cubit<TestStates> {
             .map((e) => TreatmentModel.fromJson(e as Map<String, dynamic>))
             .toList();
 
-        emit(TestSuccess(tests));
+        emit(TestState(tests: tests));
       } else {
-        emit(TestEmpty());
+        emit(TestState(isEmpty: true));
       }
     } catch (e) {
-      emit(TestError(e.toString()));
+      emit(TestState(error: e.toString()));
     }
   }
 
   Future<void> dTreaadtment(CreateTreatmentRequest request, int patientId) async {
-    emit(TestLoading());
+    emit(state.copyWith(isLoading: true));
 
     try {
-      final response = await dio.post(
+      await dio.post(
         '$baseUrl/api/lab-tests',
         data: request.toJson(),
       );
 
       await fetchTests(patientId);
 
-      print('Test added successfully: ${response.data}');
     } catch (e) {
-      emit(TestError(e.toString()));
-      print('Failed to add test: $e');
+      emit(TestState(error: e.toString()));
     }
   }
 
   Future<void> deleteTest(int testId, int patientId) async {
-  emit(TestLoading());
+    emit(state.copyWith(isLoading: true));
+    try {
+      await dio.get('$baseUrl/api/lab-tests/$testId');
+      await fetchTests(patientId);
+    } catch (e) {
+      emit(TestState(error: e.toString()));
+    }
+  }
+
+  Future<void> toggleTestStatus(int testId, bool currentStatus, int patientId) async {
+  emit(state.copyWith(isLoading: true));
+
   try {
-    await dio.get('$baseUrl/api/lab-tests/$testId');
-    await fetchTests(patientId);
+    final newIsDone = !currentStatus;
+    final String newApiStatus = newIsDone ? 'completed' : 'pending';
+
+    await dio.post(
+      '$baseUrl/api/lab-tests/$testId',
+      data: {
+        'is_done': newIsDone ? 1 : 0,
+        'status': newApiStatus,
+      },
+    );
+
+    final updatedTests = state.tests!.map((test) {
+      if (test.id == testId) {
+        return test.copyWith(isDone: newIsDone, status: newApiStatus);
+      }
+      return test;
+    }).toList();
+
+    emit(TestState(tests: updatedTests));
+
+    final prefs = await SharedPreferences.getInstance();
+    final testKey = 'test_$testId';
+    final testMap = {
+      'id': testId,
+      'is_done': newIsDone ? 1 : 0,
+      'status': newApiStatus,
+    };
+    prefs.setString(testKey, json.encode(testMap));
+
   } catch (e) {
-    emit(TestError(e.toString()));
+    emit(TestState(error: e.toString()));
   }
 }
-
-  // Future<void> toggleTestStatus(int testId, bool currentStatus, int patientId) async {
-  //   emit(TestLoading());
-  //   try {
-  //     final newStatus = !currentStatus;
-  //     await dio.put(
-  //       '$baseUrl/api/lab-tests/$testId',
-  //       data: {
-  //         'is_done': newStatus ? 1 : 0,
-  //       },
-  //     );
-  //     await fetchTests(patientId);
-  //   } catch (e) {
-  //     emit(TestError(e.toString()));
-  //   }
-  // }
 }

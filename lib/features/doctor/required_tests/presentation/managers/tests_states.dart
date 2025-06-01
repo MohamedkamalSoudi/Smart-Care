@@ -1,21 +1,38 @@
+import 'package:equatable/equatable.dart';
 import '../../data/treatment_model.dart';
 
-abstract class TestStates {}
+class TestState extends Equatable {
+  final bool isLoading;
+  final String? error;
+  final List<TreatmentModel>? tests;
+  final bool isEmpty;
 
-class TestInitial extends TestStates {}
+  const TestState({
+    this.isLoading = false,
+    this.error,
+    this.tests,
+    this.isEmpty = false,
+  });
 
-class TestLoading extends TestStates {}
+  TestState copyWith({
+    bool? isLoading,
+    String? error,
+    List<TreatmentModel>? tests,
+    bool? isEmpty,
+  }) {
+    return TestState(
+      isLoading: isLoading ?? this.isLoading,
+      error: error ?? this.error,
+      tests: tests ?? this.tests,
+      isEmpty: isEmpty ?? this.isEmpty,
+    );
+  }
 
-class TestSuccess extends TestStates {
-  final List<TreatmentModel> tests;
-
-  TestSuccess(this.tests);
-}
-
-class TestEmpty extends TestStates {}
-
-class TestError extends TestStates {
-  final String error;
-
-  TestError(this.error);
+  @override
+  List<Object?> get props => [
+        isLoading,
+        error,
+        tests?.length, // فقط الطول لتجنب مشاكل المقارنة
+        isEmpty,
+      ];
 }
