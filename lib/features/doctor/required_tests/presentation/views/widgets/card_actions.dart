@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CardActions extends StatelessWidget {
   const CardActions({
@@ -7,13 +7,11 @@ class CardActions extends StatelessWidget {
     required this.iconImage,
     required this.isDone,
     required this.onDeletePressed,
-    required this.onDonePressed,
   });
 
   final String iconImage;
   final bool isDone;
   final VoidCallback onDeletePressed;
-  final VoidCallback onDonePressed;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +24,9 @@ class CardActions extends StatelessWidget {
             icon: SvgPicture.asset(iconImage),
             onPressed: onDeletePressed,
           ),
-          IconButton(
-            icon: isDone
+          Padding(
+            padding: const EdgeInsets.all(13),
+            child: isDone
                 ? Icon(
                     Icons.check_circle,
                     color: Colors.green,
@@ -35,15 +34,13 @@ class CardActions extends StatelessWidget {
                   )
                 : SvgPicture.asset(
                     'assets/images/wate.svg',
-                    color: Colors.orange, 
+                    color: Colors.orange,
                     width: 20,
                     height: 20,
                   ),
-                  onPressed: onDonePressed,
           ),
         ],
       ),
     );
   }
 }
-

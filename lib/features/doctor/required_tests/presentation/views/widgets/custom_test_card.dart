@@ -59,7 +59,6 @@ class CustomTestCard extends StatelessWidget {
                 iconImage: iconImage,
                 isDone: isDone,
                 onDeletePressed: onDeletePressed,
-                onDonePressed: onDonePressed,
               ),
             ],
           ),
