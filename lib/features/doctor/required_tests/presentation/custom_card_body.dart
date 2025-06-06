@@ -14,7 +14,6 @@ class CustomCardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 10,
       itemBuilder: (context, index) {
         final bool isDone = index % 2 == 0; 
         final String date = 'May ${20 + index}, 2025';

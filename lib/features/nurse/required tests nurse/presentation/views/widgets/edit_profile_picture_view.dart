@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'add_image_button.dart';
-import 'custom_view_appbar.dart';
-import 'image_controller.dart';
-import 'image_tile.dart';
+import '../../../../../../core/utils/widgets/add_image_button.dart';
+import '../../../../../../core/utils/widgets/custom_view_appbar.dart';
+import '../../../../../../core/utils/widgets/image_controller.dart';
+import '../../../../../../core/utils/widgets/image_tile.dart';
 
 class EditProfilePicturePage extends StatefulWidget {
   const EditProfilePicturePage({super.key});

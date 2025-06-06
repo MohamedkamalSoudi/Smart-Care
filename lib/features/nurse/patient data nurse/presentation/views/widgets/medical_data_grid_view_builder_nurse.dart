@@ -31,18 +31,22 @@ class MedicalDataGridViewBuilderNurse extends StatelessWidget {
         childAspectRatio: 0.9,
       ),
       itemBuilder: (context, index) {
+        final String route = pageIds[index];
+
         return CustomMedicalCardNurse(
           imagePath: medicalCardImages[index],
           title: medicalCardTitles[index],
           onPressed: () {
-            if (pageIds[index] == DescriptionNurseView.id) {
+            if (route == DescriptionNurseView.id ||
+                route == RequiredTestsViewNurse.id ||
+                route == AddNewPrescriptionNurse.id) {
               Navigator.pushNamed(
                 context,
-                DescriptionNurseView.id,
+                route,
                 arguments: patientId,
               );
             } else {
-              Navigator.pushNamed(context, pageIds[index]);
+              Navigator.pushNamed(context, route);
             }
           },
         );

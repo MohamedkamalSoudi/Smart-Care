@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/features/nurse/required%20tests%20nurse/presentation/views/widgets/custom_test_card.dart';
+import '../data/treatment_nurse_model.dart';
+import 'views/widgets/custom_test_card.dart' show CustomTestCardNurse;
 
 class CustomCardNurseBody extends StatelessWidget {
-  const CustomCardNurseBody(
-      {super.key, required this.iconImage, required this.colorIcon});
+  final List<NurseTreatmentModel> tests;
   final String iconImage;
-  final Color colorIcon;
+
+  const CustomCardNurseBody({
+    super.key,
+    required this.tests,
+    required this.iconImage,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return CustomTestCardNurse(
-            iconImage: iconImage,
-          );
-        });
+    return Column(
+      children: tests.map((test) {
+        return CustomTestCardNurse(
+          iconImage: iconImage,
+          testName: test.name,
+          dueDate: test.dueDate,
+          isDone: test.isDone,
+          filePath: test.filePath,
+          testId: test.id,
+          onUploadPressed: () {},
+          onDonePressed: () {},
+        );
+      }).toList(),
+    );
   }
 }

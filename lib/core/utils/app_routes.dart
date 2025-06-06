@@ -22,8 +22,6 @@ import '../../features/nurse/prescribed treatments nurse/presentation/add_new_pr
 import '../../features/nurse/prescribed treatments nurse/presentation/view/widgets/dispaly_prescription_body_nurse.dart';
 import '../../features/nurse/profile narse/presentation/views/widgets/profile_narse_view.dart';
 import '../../features/nurse/required tests nurse/presentation/views/required_tests_view.dart';
-import 'widgets/edit_profile_picture_view.dart';
-
 Map<String, WidgetBuilder> get appRoutes {
   return {
     OnboardingView.id: (context) => OnboardingView(),
@@ -51,8 +49,7 @@ Map<String, WidgetBuilder> get appRoutes {
     DescriptionNurseView.id: (context) => DescriptionNurseView(),
     RequiredTestsViewNurse.id: (context) => RequiredTestsViewNurse(),
     AddNewPrescriptionNurse.id: (context) => AddNewPrescriptionNurse(),
-    DisplayPrescriptionBodyNurse.id: (context) =>
-        DisplayPrescriptionBodyNurse(),
-    EditProfilePicturePage.id: (context) => EditProfilePicturePage(),
+    DisplayPrescriptionBodyNurse.id: (context) =>DisplayPrescriptionBodyNurse(),
+    
   };
 }

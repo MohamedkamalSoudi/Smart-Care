@@ -1,40 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_care_app/core/utils/app_colors.dart';
-import '../../../../../../core/utils/widgets/edit_profile_picture_view.dart'; 
+import 'package:flutter_svg/svg.dart';
 
 class CardActions extends StatelessWidget {
   const CardActions({
     super.key,
     required this.iconImage,
+    required this.isDone,
+    required this.onUploadPressed,
+    required this.onDonePressed,
   });
 
   final String iconImage;
+  final bool isDone;
+  final VoidCallback onUploadPressed;
+  final VoidCallback onDonePressed;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 18),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
             icon: SvgPicture.asset(iconImage),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EditProfilePicturePage(), 
-                ),
-              );
-            },
+            onPressed: onUploadPressed,
           ),
 
-          SizedBox(height: 0),
-
           IconButton(
-            icon: Icon(Icons.check_circle_outline_outlined,
-                color: AppColors.green),
-            onPressed: () {},
+            icon: isDone
+                ? const Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                    size: 26,
+                  )
+                : SvgPicture.asset(
+                    'assets/images/wate.svg',
+                    color: Colors.orange,
+                    width: 20,
+                    height: 20,
+                  ),
+            onPressed: onDonePressed,
           ),
         ],
       ),
