@@ -13,14 +13,7 @@ class ProfileCubit extends Cubit<DoctorProfileStates> {
     try {
       final response = await dio.get('$baseUrl/api/doctor/profile',
           options: Options(
-            headers: {
-              'Content-Type': HeadersApi.contentType,
-              'Accept': HeadersApi.accept,
-              'cookie': HeadersApi.cookie,
-              'user-agent': HeadersApi.userAgent,
-              'Authorization':
-                  ' Bearer 315|6iNjENBr6kIDXvOVpRf8gRgLQgcdbK85LY3Ey1UD08a19441',
-            },
+            headers: await HeadersApi.getHeaders(),
           ));
 
       if (response.statusCode == 200) {

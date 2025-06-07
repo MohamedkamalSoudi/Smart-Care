@@ -28,8 +28,7 @@ class ProfilePage extends StatelessWidget {
       builder: (context, state) {
         if (state is DoctorProfileSuccess) {
           final profile = state.doctorProfileModel;
-          String baseUrl =
-              'http://smartcare.wuaze.com/public/';
+          String baseUrl = 'http://smartcare.wuaze.com/public/';
           String? imagePath = profile.image;
 
           String? imageUrl = (imagePath != null && imagePath.isNotEmpty)
@@ -103,12 +102,11 @@ class ProfilePage extends StatelessWidget {
                       horizontalGap: 30,
                       onTap: () async {
                         final prefs = await SharedPreferences.getInstance();
-                        await prefs.remove('user_token'); 
+                        await prefs.remove('token');
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                LoginView(), 
+                            builder: (context) => LoginView(),
                           ),
                           (route) => false,
                         );
@@ -124,7 +122,7 @@ class ProfilePage extends StatelessWidget {
           );
         }
         return Center(
-          child: CircularProgressIndicator(), 
+          child: CircularProgressIndicator(),
         );
       },
     );

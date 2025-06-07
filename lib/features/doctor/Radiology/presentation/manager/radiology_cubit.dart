@@ -9,22 +9,13 @@ class RadiologyCubit extends Cubit<RadiologyStates> {
   RadiologyCubit() : super(RadiologyInitial());
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
-  final Dio dio = Dio(
-    BaseOptions(
-      headers: {
-        'Accept': HeadersApi.accept,
-        'cookie': HeadersApi.cookie,
-        'user-agent': HeadersApi.userAgent,
-        'Authorization':
-            'Bearer 396|sYWeNqsJg9U2sEa1bYWABKgCXxCMclYz1B53IxZrdc8ed65c',
-      },
-    ),
-  );
+  final Dio dio = Dio();
 
   Future<void> fetchRadiologes(int patientId) async {
     emit(RadiologyLoading());
     try {
-      final response = await dio.get('$baseUrl/api/tasks/patient/$patientId');
+      final response = await dio.get('$baseUrl/api/tasks/patient/$patientId',
+          options: Options(headers: await HeadersApi.getHeaders()));
       final data = response.data;
 
       if (data['patient'] != null &&
@@ -53,6 +44,7 @@ class RadiologyCubit extends Cubit<RadiologyStates> {
       final response = await dio.post(
         '$baseUrl/api/tasks',
         data: request.toJson(),
+        options: Options(headers: await HeadersApi.getHeaders()),
       );
 
       await fetchRadiologes(patientId);
@@ -67,7 +59,8 @@ class RadiologyCubit extends Cubit<RadiologyStates> {
   Future<void> deleteRadiology(int radiologyId, int patientId) async {
     emit(RadiologyLoading());
     try {
-      await dio.get('$baseUrl/api/tasks/$radiologyId');
+      await dio.get('$baseUrl/api/tasks/$radiologyId',
+          options: Options(headers: await HeadersApi.getHeaders()));
       await fetchRadiologes(patientId);
     } catch (e) {
       emit(RadiologyError(e.toString()));
@@ -87,6 +80,7 @@ class RadiologyCubit extends Cubit<RadiologyStates> {
         data: {
           'status': newStatus,
         },
+        options: Options(headers: await HeadersApi.getHeaders()),
       );
 
       await fetchRadiologes(patientId);

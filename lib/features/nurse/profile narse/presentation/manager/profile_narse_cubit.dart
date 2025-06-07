@@ -13,14 +13,7 @@ class ProfileNarseCubit extends Cubit<ProfileNarseStates> {
       final response = await dio.get(
         '$baseUrl/api/nurse/profile',
         options: Options(
-          headers: {
-            'Content-Type': HeadersApi.contentType,
-            'Accept': HeadersApi.accept,
-            'cookie': HeadersApi.cookie,
-            'user-agent': HeadersApi.userAgent,
-            'Authorization':
-                'Bearer 314|9q6Dwp4iSIseGEhEIVsXmZxbTAHIadrNCQx1zn3Me4943b5a',
-          },
+          headers: await HeadersApi.getHeaders(),
         ),
       );
 

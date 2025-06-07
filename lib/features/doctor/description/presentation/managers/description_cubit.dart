@@ -9,22 +9,13 @@ class DescriptionCubit extends Cubit<DescriptionStates> {
   DescriptionCubit() : super(EmptyState());
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
-  final Dio dio = Dio(
-    BaseOptions(
-      headers: {
-        'Accept': HeadersApi.accept,
-        'cookie': HeadersApi.cookie,
-        'user-agent': HeadersApi.userAgent,
-        'Authorization':
-            'Bearer 396|sYWeNqsJg9U2sEa1bYWABKgCXxCMclYz1B53IxZrdc8ed65c',
-      },
-    ),
-  );
+  final Dio dio = Dio();
 
   Future<void> fetchDescription(int id) async {
     emit(LoadingState());
     try {
-      final response = await dio.get('$baseUrl/api/patient/$id/diagnoses');
+      final response = await dio.get('$baseUrl/api/patient/$id/diagnoses',
+          options: Options(headers: await HeadersApi.getHeaders()));
       if (response.statusCode == 200 && response.data['diagnoses'] != null) {
         final diagnosisData = response.data;
         DescriptionModel model = DescriptionModel.fromJson(diagnosisData);
@@ -45,6 +36,7 @@ class DescriptionCubit extends Cubit<DescriptionStates> {
       final response = await dio.post(
         '$baseUrl/api/patient/$id/diagnoses',
         data: {'diagnosis': description},
+        options: Options(headers: await HeadersApi.getHeaders()),
       );
       fetchDescription(id);
     } catch (e) {

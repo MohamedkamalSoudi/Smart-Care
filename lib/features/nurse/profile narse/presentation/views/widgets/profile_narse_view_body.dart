@@ -102,7 +102,7 @@ class ProfileNarseViewBody extends StatelessWidget {
                       horizontalGap: 30,
                       onTap: () async {
                         final prefs = await SharedPreferences.getInstance();
-                        await prefs.remove('user_token');
+                        await prefs.remove('token');
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

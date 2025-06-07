@@ -9,23 +9,14 @@ class UserNurseCubit extends Cubit<UserNurseState> {
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
 
-  final Dio dio = Dio(
-    BaseOptions(
-      headers: {
-        'Content-Type': HeadersApi.contentType,
-        'Accept': HeadersApi.accept,
-        'cookie': HeadersApi.cookie,
-        'user-agent': HeadersApi.userAgent,
-        'Authorization': 'Bearer 314|9q6Dwp4iSIseGEhEIVsXmZxbTAHIadrNCQx1zn3Me4943b5a',
-      },
-    ),
-  );
+  final Dio dio = Dio();
 
   Future<void> fetchUsersNurse() async {
     emit(UserNurseLoading());
 
     try {
-      final response = await dio.get('$baseUrl/api/nurse/patients');
+      final response = await dio.get('$baseUrl/api/nurse/patients',
+          options: Options(headers: await HeadersApi.getHeaders()));
 
       if (response.statusCode == 200) {
         if (response.data is Map && response.data.containsKey('patients')) {

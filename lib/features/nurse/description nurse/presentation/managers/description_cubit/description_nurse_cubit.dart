@@ -8,22 +8,13 @@ class DescriptionNurseCubit extends Cubit<DescriptionNurseStates> {
   DescriptionNurseCubit() : super(EmptyNurseState());
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
-  final Dio dio = Dio(
-    BaseOptions(
-      headers: {
-        'Accept': HeadersApi.accept,
-        'cookie': HeadersApi.cookie,
-        'user-agent': HeadersApi.userAgent,
-        'Authorization':
-            'Bearer 414|2nWqZ8FJJQda2qviYHWex4WbqIGBJIPRlf8m768R2d85972d',
-      },
-    ),
-  );
+  final Dio dio = Dio();
 
   Future<void> fetchDescriptionNurse(int id) async {
     emit(LoadingNurseState());
     try {
-      final response = await dio.get('$baseUrl/api/patient/$id/diagnoses');
+      final response = await dio.get('$baseUrl/api/patient/$id/diagnoses',
+          options: Options(headers: await HeadersApi.getHeaders()));
       if (response.statusCode == 200 && response.data['diagnoses'] != null) {
         final diagnosisData = response.data;
         DescriptionNurseModel model =

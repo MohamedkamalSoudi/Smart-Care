@@ -9,23 +9,14 @@ class TestCubit extends Cubit<TestState> {
   TestCubit() : super(TestState());
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
-  final Dio dio = Dio(
-    BaseOptions(
-      headers: {
-        'Accept': HeadersApi.accept,
-        'cookie': HeadersApi.cookie,
-        'user-agent': HeadersApi.userAgent,
-        'Authorization':
-            'Bearer 396|sYWeNqsJg9U2sEa1bYWABKgCXxCMclYz1B53IxZrdc8ed65c',
-      },
-    ),
-  );
+  final Dio dio = Dio();
 
   Future<void> fetchTests(int patientId) async {
     emit(state.copyWith(isLoading: true));
     try {
-      final response =
-          await dio.get('$baseUrl/api/lab-tests/patient/$patientId');
+      final response = await dio.get(
+          '$baseUrl/api/lab-tests/patient/$patientId',
+          options: Options(headers: await HeadersApi.getHeaders()));
       final data = response.data;
 
       if (data['patient'] != null &&
@@ -52,6 +43,7 @@ class TestCubit extends Cubit<TestState> {
       await dio.post(
         '$baseUrl/api/lab-tests',
         data: request.toJson(),
+        options: Options(headers: await HeadersApi.getHeaders()),
       );
 
       await fetchTests(patientId);
@@ -63,7 +55,8 @@ class TestCubit extends Cubit<TestState> {
   Future<void> deleteTest(int testId, int patientId) async {
     emit(state.copyWith(isLoading: true));
     try {
-      await dio.get('$baseUrl/api/lab-tests/$testId');
+      await dio.get('$baseUrl/api/lab-tests/$testId',
+          options: Options(headers: await HeadersApi.getHeaders()));
       await fetchTests(patientId);
     } catch (e) {
       emit(TestState(error: e.toString()));
@@ -83,6 +76,7 @@ class TestCubit extends Cubit<TestState> {
         data: {
           'status': newApiStatus,
         },
+        options: Options(headers: await HeadersApi.getHeaders()),
       );
 
       final updatedTests = state.tests!.map((test) {

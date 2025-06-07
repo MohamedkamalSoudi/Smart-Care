@@ -8,23 +8,14 @@ class TestCubit extends Cubit<TestState> {
   TestCubit() : super(const TestState());
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
-  final Dio dio = Dio(
-    BaseOptions(
-      headers: {
-        'Accept': HeadersApi.accept,
-        'cookie': HeadersApi.cookie,
-        'user-agent': HeadersApi.userAgent,
-        'Authorization':
-            'Bearer 414|2nWqZ8FJJQda2qviYHWex4WbqIGBJIPRlf8m768R2d85972d',
-      },
-    ),
-  );
+  final Dio dio = Dio();
 
   Future<void> fetchTests(int patientId) async {
     emit(state.copyWith(isLoading: true));
     try {
-      final response =
-          await dio.get('$baseUrl/api/lab-tests/patient/$patientId');
+      final response = await dio.get(
+          '$baseUrl/api/lab-tests/patient/$patientId',
+          options: Options(headers: await HeadersApi.getHeaders()));
       final data = response.data;
 
       if (data['patient'] != null &&
@@ -57,6 +48,7 @@ class TestCubit extends Cubit<TestState> {
         data: {
           'status': newApiStatus,
         },
+        options: Options(headers: await HeadersApi.getHeaders()),
       );
 
       final tests = state.tests!.map((test) {
