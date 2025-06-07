@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../Rediology/presentation/views/required_rediology_view.dart';
 import '../../../../description nurse/presentation/views/description_nurse_view.dart';
 import '../../../../required tests nurse/presentation/views/required_tests_view.dart';
 import '../../../../prescribed treatments nurse/presentation/add_new_prescription_nurse.dart';
@@ -15,8 +16,8 @@ class MedicalDataGridViewBuilderNurse extends StatelessWidget {
 
   final List<String> pageIds = [
     DescriptionNurseView.id,
-    RequiredTestsViewNurse.id,
-    RequiredTestsViewNurse.id,
+    RequiredRediologyViewNurse.id,
+    RequiredTestsViewAtNurse.id,
     AddNewPrescriptionNurse.id,
   ];
 
@@ -38,7 +39,8 @@ class MedicalDataGridViewBuilderNurse extends StatelessWidget {
           title: medicalCardTitles[index],
           onPressed: () {
             if (route == DescriptionNurseView.id ||
-                route == RequiredTestsViewNurse.id ||
+                route == RequiredRediologyViewNurse.id ||
+                route == RequiredTestsViewAtNurse.id ||
                 route == AddNewPrescriptionNurse.id) {
               Navigator.pushNamed(
                 context,

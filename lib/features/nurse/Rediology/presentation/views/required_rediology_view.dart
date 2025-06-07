@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_care_app/features/nurse/required%20tests%20nurse/presentation/views/widgets/custom_test_card.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
 import 'widgets/edit_profile_picture_view.dart';
 import '../../../../../core/utils/widgets/patient_data_appbar.dart';
-import '../managers/test_cubit.dart';
-import '../managers/test_state.dart';
+import '../managers/rediology_cubit.dart';
+import '../managers/rediology_state.dart';
+import 'widgets/custom_rediology_card.dart';
 
-class RequiredTestsViewAtNurse extends StatelessWidget {
-  static const String id = 'RequiredTestsViewAtNurse';
+class RequiredRediologyViewNurse extends StatelessWidget {
+  static const String id = 'RequiredRediologyViewNurse';
 
-  const RequiredTestsViewAtNurse({super.key});
+  const RequiredRediologyViewNurse({super.key});
 
   @override
   Widget build(BuildContext context) {
     final int patientId = ModalRoute.of(context)!.settings.arguments as int;
     return BlocProvider(
-      create: (context) => TestCubit()..fetchTests(patientId),
+      create: (context) => RediologyCubit()..fetchTests(patientId),
       child: Scaffold(
         backgroundColor: AppColors.whitebody,
-        appBar: PatientDataAppbar(title: "Required Tests", context: context),
-        body: BlocBuilder<TestCubit, TestState>(
+        appBar:
+            PatientDataAppbar(title: "Required  Rediologies", context: context),
+        body: BlocBuilder<RediologyCubit, RediologyState>(
           builder: (context, state) {
             if (state.isLoading) {
               return const Center(child: CircularProgressIndicator());
@@ -31,26 +32,29 @@ class RequiredTestsViewAtNurse extends StatelessWidget {
               return Center(child: Text("❌ Error: ${state.error}"));
             }
 
-            if (state.isEmpty || state.tests == null || state.tests!.isEmpty) {
-              return const CustomEmptyBody(title: 'No tests added until now');
+            if (state.isEmpty ||
+                state.rediologies == null ||
+                state.rediologies!.isEmpty) {
+              return const CustomEmptyBody(
+                  title: 'No  rediologies added until now');
             }
 
             return ListView.builder(
-              itemCount: state.tests?.length ?? 0,
+              itemCount: state.rediologies?.length ?? 0,
               itemBuilder: (context, index) {
-                final test = state.tests?[index];
+                final rediologies = state.rediologies?[index];
 
-                if (test == null) {
+                if (rediologies == null) {
                   return const SizedBox.shrink();
                 }
 
-                return CustomTestCardAtNurse(
+                return CustomRediologyCard(
                   iconImage: "assets/images/ragb.svg",
-                  testName: test.name,
-                  dueDate: test.dueDate,
-                  testId: test.id,
-                  filePath: test.filePath,
-                  isDone: test.isDone,
+                  testName: rediologies.name,
+                  dueDate: rediologies.dueDate,
+                  testId: rediologies.id,
+                  filePath: rediologies.filePath,
+                  isDone: rediologies.isDone,
                   onUploadPressed: () {
                     Navigator.push(
                       context,
@@ -60,8 +64,9 @@ class RequiredTestsViewAtNurse extends StatelessWidget {
                     );
                   },
                   onDonePressed: () {
-                    BlocProvider.of<TestCubit>(context)
-                        .updateTestStatus(test.id, test.isDone, patientId);
+                    BlocProvider.of<RediologyCubit>(context)
+                        .updateRediologyStatus(
+                            rediologies.id, rediologies.isDone, patientId);
                   },
                 );
               },

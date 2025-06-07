@@ -32,7 +32,8 @@ class RadiologyCubit extends Cubit<RadiologyStates> {
           (data['patient']['tasks'] as List).isNotEmpty) {
         final List<dynamic> radiologesJson = data['patient']['tasks'];
         final radiologes = radiologesJson
-            .map((e) => RadiologyModel.fromJson(e as Map<String, dynamic>))
+            .map((e) =>
+                RadiologyModelAtDoctor.fromJson(e as Map<String, dynamic>))
             .toList();
 
         emit(RadiologySuccess(radiologes));
@@ -73,26 +74,24 @@ class RadiologyCubit extends Cubit<RadiologyStates> {
     }
   }
 
- Future<void> toggleRadiologyStatus(int id, bool currentStatus, int patientId) async {
-  emit(RadiologyLoading());
+  Future<void> updateRadiologyStatus(
+      int id, bool currentStatus, int patientId) async {
+    emit(RadiologyLoading());
 
-  try {
-    final newIsDone = !currentStatus;
-    final newStatus = newIsDone ? 'completed' : 'pending';
+    try {
+      final newIsDone = !currentStatus;
+      final newStatus = newIsDone ? 'completed' : 'pending';
 
-    await dio.post(
-      '$baseUrl/api/tasks/$id',
-      data: {
-        'status': newStatus,
-      },
-    );
+      await dio.post(
+        '$baseUrl/api/tasks/$id',
+        data: {
+          'status': newStatus,
+        },
+      );
 
-    await fetchRadiologes(patientId);
-
-  } catch (e) {
-    emit(RadiologyError(e.toString()));
+      await fetchRadiologes(patientId);
+    } catch (e) {
+      emit(RadiologyError(e.toString()));
+    }
   }
-}
-
-
 }

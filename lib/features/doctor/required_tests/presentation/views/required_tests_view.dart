@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../../../core/utils/widgets/custom_view.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
 import '../../../../../core/utils/widgets/custom_show_dialog.dart';
-import '../../data/treatment_model.dart';
+import '../../data/test_model_at_doctor.dart';
 import '../managers/tests_cubit.dart';
 import '../managers/tests_states.dart';
 import 'widgets/custom_test_card.dart';
@@ -55,7 +55,8 @@ class RequiredTestsView extends StatelessWidget {
         itemCount: state.tests!.length,
         itemBuilder: (context, index) {
           final test = state.tests![index];
-          final formattedDate = DateFormat.yMMMMd().format(DateTime.parse(test.dueDate));
+          final formattedDate =
+              DateFormat.yMMMMd().format(DateTime.parse(test.dueDate));
           return CustomTestCard(
             iconImage: 'assets/images/Vector.svg',
             testName: test.name,
@@ -65,7 +66,9 @@ class RequiredTestsView extends StatelessWidget {
               context.read<TestCubit>().deleteTest(test.id, patientId);
             },
             onDonePressed: () {
-              context.read<TestCubit>().toggleTestStatus(test.id, test.isDone, patientId);
+              context
+                  .read<TestCubit>()
+                  .updateTestStatus(test.id, test.isDone, patientId);
             },
           );
         },
@@ -104,16 +107,17 @@ class RequiredTestsView extends StatelessWidget {
         if (selectedTime == null) return;
 
         final dueDate = DateFormat('yyyy-MM-dd').format(selectedDate);
-        final dueTime = "${selectedTime.hour.toString().padLeft(2, '0')}:${selectedTime.minute.toString().padLeft(2, '0')}";
+        final dueTime =
+            "${selectedTime.hour.toString().padLeft(2, '0')}:${selectedTime.minute.toString().padLeft(2, '0')}";
 
-        final request = CreateTreatmentRequest(
+        final request = CreateTestRequest(
           id: patientId,
           name: testName,
           dueDate: dueDate,
           dueTime: dueTime,
         );
 
-        cubit.dTreaadtment(request, patientId);
+        cubit.addTest(request, patientId);
 
         Navigator.pop(context);
       },

@@ -1,29 +1,29 @@
 import 'package:equatable/equatable.dart';
-import '../../data/test_model_at_doctor.dart';
+import 'package:smart_care_app/features/nurse/Rediology/data/rediology_model_at_nurse.dart';
 
-class TestState extends Equatable {
+class RediologyState extends Equatable {
   final bool isLoading;
   final String? error;
-  final List<TestModelAtDoctor>? tests;
+  final List<RediologyModelAtNurse>? rediologies;
   final bool isEmpty;
 
-  const TestState({
+  const RediologyState({
     this.isLoading = false,
     this.error,
-    this.tests,
+    this.rediologies,
     this.isEmpty = false,
   });
 
-  TestState copyWith({
+  RediologyState copyWith({
     bool? isLoading,
     String? error,
-    List<TestModelAtDoctor>? tests,
+    List<RediologyModelAtNurse>? rediologies,
     bool? isEmpty,
   }) {
-    return TestState(
+    return RediologyState(
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
-      tests: tests ?? this.tests,
+      rediologies: rediologies ?? this.rediologies,
       isEmpty: isEmpty ?? this.isEmpty,
     );
   }
@@ -32,7 +32,7 @@ class TestState extends Equatable {
   List<Object?> get props => [
         isLoading,
         error,
-        tests?.length, // فقط الطول لتجنب مشاكل المقارنة
+        rediologies?.length,
         isEmpty,
       ];
 }

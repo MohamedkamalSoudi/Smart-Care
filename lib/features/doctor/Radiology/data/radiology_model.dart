@@ -21,7 +21,7 @@ class CreateRadiologyRequest {
   }
 }
 
-class RadiologyModel {
+class RadiologyModelAtDoctor {
   final int id;
   final int patientId;
   final String name;
@@ -31,7 +31,7 @@ class RadiologyModel {
   final String status;
   final String? filePath;
 
-  RadiologyModel({
+  RadiologyModelAtDoctor({
     required this.id,
     required this.patientId,
     required this.name,
@@ -42,9 +42,9 @@ class RadiologyModel {
     this.filePath,
   });
 
-  factory RadiologyModel.fromJson(Map<String, dynamic> json) {
+  factory RadiologyModelAtDoctor.fromJson(Map<String, dynamic> json) {
     final status = json['status'] ?? 'pending';
-    return RadiologyModel(
+    return RadiologyModelAtDoctor(
       id: json['id'],
       patientId: json['patient_id'],
       name: json['name'],
@@ -69,11 +69,11 @@ class RadiologyModel {
     };
   }
 
-  RadiologyModel copyWith({
+  RadiologyModelAtDoctor copyWith({
     bool? isDone,
     String? status,
   }) {
-    return RadiologyModel(
+    return RadiologyModelAtDoctor(
       id: id,
       patientId: patientId,
       name: name,

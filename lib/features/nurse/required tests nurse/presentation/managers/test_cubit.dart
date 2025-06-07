@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import '../../../../../core/utils/headers.dart';
-import '../../data/treatment_nurse_model.dart';
-import 'nurse_test_state.dart';
+import '../../data/test_model_at_nurse.dart';
+import 'test_state.dart';
 
-class NurseTestCubit extends Cubit<NurseTestState> {
-  NurseTestCubit() : super(const NurseTestState());
+class TestCubit extends Cubit<TestState> {
+  TestCubit() : super(const TestState());
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
   final Dio dio = Dio(
@@ -23,7 +23,8 @@ class NurseTestCubit extends Cubit<NurseTestState> {
   Future<void> fetchTests(int patientId) async {
     emit(state.copyWith(isLoading: true));
     try {
-      final response = await dio.get('$baseUrl/api/lab-tests/patient/$patientId');
+      final response =
+          await dio.get('$baseUrl/api/lab-tests/patient/$patientId');
       final data = response.data;
 
       if (data['patient'] != null &&
@@ -31,7 +32,7 @@ class NurseTestCubit extends Cubit<NurseTestState> {
           (data['patient']['lab_tests'] as List).isNotEmpty) {
         final List<dynamic> testsJson = data['patient']['lab_tests'];
         final tests = testsJson
-            .map((e) => NurseTreatmentModel.fromJson(e as Map<String, dynamic>))
+            .map((e) => TestModelAtNurse.fromJson(e as Map<String, dynamic>))
             .toList();
 
         emit(state.copyWith(tests: tests, isLoading: false));
@@ -43,37 +44,37 @@ class NurseTestCubit extends Cubit<NurseTestState> {
     }
   }
 
-  Future<void> toggleTestStatus(int testId, bool currentStatus, int patientId) async {
-  emit(state.copyWith(isLoading: true));
+  Future<void> updateTestStatus(
+      int testId, bool currentStatus, int patientId) async {
+    emit(state.copyWith(isLoading: true));
 
-  try {
-    final newIsDone = !currentStatus;
-    final String newApiStatus = newIsDone ? 'completed' : 'pending';
+    try {
+      final newIsDone = !currentStatus;
+      final String newApiStatus = newIsDone ? 'completed' : 'pending';
 
-    await dio.post(
-      '$baseUrl/api/lab-tests/$testId',
-      data: {
-        'status': newApiStatus,
-      },
-    );
+      await dio.post(
+        '$baseUrl/api/lab-tests/$testId',
+        data: {
+          'status': newApiStatus,
+        },
+      );
 
-    final updatedTests = state.tests!.map((test) {
-      if (test.id == testId) {
-        return test.copyWith(isDone: newIsDone, status: newApiStatus);
-      }
-      return test;
-    }).toList();
+      final tests = state.tests!.map((test) {
+        if (test.id == testId) {
+          return test.copyWith(isDone: newIsDone, status: newApiStatus);
+        }
+        return test;
+      }).toList();
 
-    emit(state.copyWith(
-      isLoading: false,
-      tests: updatedTests,
-    ));
-
-  } catch (e) {
-    emit(state.copyWith(
-      isLoading: false,
-      error: e.toString(),
-    ));
+      emit(state.copyWith(
+        isLoading: false,
+        tests: tests,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        isLoading: false,
+        error: e.toString(),
+      ));
+    }
   }
-}
 }

@@ -1,27 +1,27 @@
 import 'package:equatable/equatable.dart';
 
-import '../../data/treatment_nurse_model.dart';
+import '../../data/test_model_at_nurse.dart';
 
-class NurseTestState extends Equatable {
+class TestState extends Equatable {
   final bool isLoading;
   final String? error;
-  final List<NurseTreatmentModel>? tests;
+  final List<TestModelAtNurse>? tests;
   final bool isEmpty;
 
-  const NurseTestState({
+  const TestState({
     this.isLoading = false,
     this.error,
     this.tests,
     this.isEmpty = false,
   });
 
-  NurseTestState copyWith({
+  TestState copyWith({
     bool? isLoading,
     String? error,
-    List<NurseTreatmentModel>? tests,
+    List<TestModelAtNurse>? tests,
     bool? isEmpty,
   }) {
-    return NurseTestState(
+    return TestState(
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
       tests: tests ?? this.tests,

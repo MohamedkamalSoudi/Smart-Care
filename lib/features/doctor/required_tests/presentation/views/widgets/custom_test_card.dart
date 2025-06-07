@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'card_content.dart';
 import 'card_actions.dart';
-import 'green_line.dart';
+import 'green_line_of_card.dart';
 
 class CustomTestCard extends StatelessWidget {
   const CustomTestCard({
@@ -47,7 +47,7 @@ class CustomTestCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GreenLine(isDone: isDone),
+              GreenLineOfCard(isDone: isDone),
               const SizedBox(width: 10),
               Expanded(
                 child: CardContent(

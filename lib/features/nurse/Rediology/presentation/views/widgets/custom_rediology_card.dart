@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
-import 'package:smart_care_app/features/doctor/Radiology/presentation/views/widgets/green_line_%20radiology_card.dart';
-import 'package:smart_care_app/features/doctor/Radiology/presentation/views/widgets/radiology_card_actions.dart';
-import 'package:smart_care_app/features/doctor/Radiology/presentation/views/widgets/radiology_card_content.dart';
+import 'package:smart_care_app/features/nurse/Rediology/presentation/views/widgets/card_actions.dart';
+import 'package:smart_care_app/features/nurse/Rediology/presentation/views/widgets/card_content.dart';
+import 'package:smart_care_app/features/nurse/Rediology/presentation/views/widgets/green_line_of_card.dart';
 
-class CustomRadiologyCardBody extends StatelessWidget {
-  const CustomRadiologyCardBody({
+class CustomRediologyCard extends StatelessWidget {
+  const CustomRediologyCard({
     super.key,
     required this.iconImage,
-    required this.radiologyName,
+    required this.testName,
     required this.dueDate,
     required this.isDone,
-    required this.onDeletePressed,
+    required this.onUploadPressed,
     required this.onDonePressed,
+    required int testId,
+    String? filePath,
   });
 
   final String iconImage;
-  final String radiologyName;
+  final String testName;
   final String dueDate;
   final bool isDone;
-  final VoidCallback onDeletePressed;
+  final VoidCallback onUploadPressed;
   final VoidCallback onDonePressed;
 
   @override
@@ -47,18 +49,18 @@ class CustomRadiologyCardBody extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GreenLineRadiologyCard(isDone: isDone),
+              GreenLineOfCard(isDone: isDone),
               const SizedBox(width: 10),
               Expanded(
-                child: RadiologyCardContent(
-                  radiologyName: radiologyName,
+                child: CardContent(
+                  rediologyName: testName,
                   formattedDate: dueDate,
                 ),
               ),
-              RadiologyCardActions(
+              CardActions(
                 iconImage: iconImage,
                 isDone: isDone,
-                onDeletePressed: onDeletePressed,
+                onUploadPressed: onUploadPressed,
                 onDonePressed: onDonePressed,
               ),
             ],

@@ -4,15 +4,15 @@ import 'package:smart_care_app/features/nurse/required%20tests%20nurse/presentat
 import 'card_content.dart';
 import 'green_line.dart';
 
-class CustomTestCardNurse extends StatelessWidget {
-  const CustomTestCardNurse({
+class CustomTestCardAtNurse extends StatelessWidget {
+  const CustomTestCardAtNurse({
     super.key,
     required this.iconImage,
     required this.testName,
     required this.dueDate,
     required this.isDone,
     required this.onUploadPressed,
-    required this.onDonePressed, 
+    required this.onDonePressed,
     required int testId,
     String? filePath,
   });
@@ -57,7 +57,7 @@ class CustomTestCardNurse extends StatelessWidget {
                   formattedDate: dueDate,
                 ),
               ),
-              CardActions( 
+              CardActions(
                 iconImage: iconImage,
                 isDone: isDone,
                 onUploadPressed: onUploadPressed,

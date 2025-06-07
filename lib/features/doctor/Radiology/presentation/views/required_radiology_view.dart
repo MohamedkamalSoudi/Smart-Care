@@ -4,15 +4,15 @@ import 'package:intl/intl.dart';
 import 'package:smart_care_app/features/doctor/Radiology/data/radiology_model.dart';
 import 'package:smart_care_app/features/doctor/Radiology/presentation/manager/radiology_cubit.dart';
 import 'package:smart_care_app/features/doctor/Radiology/presentation/manager/radiology_states.dart';
-import 'package:smart_care_app/features/doctor/Radiology/presentation/views/widgets/custom_radiology_card_body.dart';
+import 'package:smart_care_app/features/doctor/Radiology/presentation/views/widgets/custom_radiology_card.dart';
 import '../../../../../core/utils/widgets/custom_view.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
 import '../../../../../core/utils/widgets/custom_show_dialog.dart';
 
-class RequiredRadiologyView extends StatelessWidget {
-  static const id = 'required_Radiology_view';
+class RequiredRadiologyViewAtDoctor extends StatelessWidget {
+  static const id = 'RequiredRadiologyViewAtDoctor';
 
-  const RequiredRadiologyView({super.key});
+  const RequiredRadiologyViewAtDoctor({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +39,15 @@ class RequiredRadiologyView extends StatelessWidget {
                 ? const Center(child: CircularProgressIndicator())
                 : state is RadiologyEmpty
                     ? const CustomEmptyBody(
-                        title: 'No radiologes added until now')
+                        title: 'No Rediologies added until now')
                     : state is RadiologySuccess
                         ? ListView.builder(
-                            itemCount: state.radiologes.length,
+                            itemCount: state.rediologies.length,
                             itemBuilder: (context, index) {
-                              final radiology = state.radiologes[index];
+                              final radiology = state.rediologies[index];
                               final formattedDate = DateFormat.yMMMMd()
                                   .format(DateTime.parse(radiology.dueDate));
-                              return CustomRadiologyCardBody(
+                              return CustomRadiologyCard(
                                 iconImage: 'assets/images/Vector.svg',
                                 radiologyName: radiology.name,
                                 dueDate: formattedDate,
@@ -58,8 +58,10 @@ class RequiredRadiologyView extends StatelessWidget {
                                       .deleteRadiology(radiology.id, patientId);
                                 },
                                 onDonePressed: () {
-                                  context.read<RadiologyCubit>().toggleRadiologyStatus(radiology.id, radiology.isDone, patientId);
-
+                                  context
+                                      .read<RadiologyCubit>()
+                                      .updateRadiologyStatus(radiology.id,
+                                          radiology.isDone, patientId);
                                 },
                               );
                             },

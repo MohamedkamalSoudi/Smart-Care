@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
 
-class RadiologyCardContent extends StatelessWidget {
+class CardContent extends StatelessWidget {
   final String radiologyName;
   final String formattedDate;
 
-  const RadiologyCardContent({
+  const CardContent({
     super.key,
     required this.radiologyName,
     required this.formattedDate,

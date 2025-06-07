@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class GreenLine extends StatelessWidget {
+class GreenLineOfCard extends StatelessWidget {
   final bool isDone;
 
-  const GreenLine({super.key, required this.isDone});
+  const GreenLineOfCard({super.key, required this.isDone});
 
   @override
   Widget build(BuildContext context) {

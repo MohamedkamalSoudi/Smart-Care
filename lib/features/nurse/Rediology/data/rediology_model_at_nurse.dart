@@ -1,4 +1,4 @@
-class NurseTreatmentModel {
+class RediologyModelAtNurse {
   final int id;
   final int patientId;
   final String name;
@@ -8,7 +8,7 @@ class NurseTreatmentModel {
   final String? filePath;
   final String status;
 
-  NurseTreatmentModel({
+  RediologyModelAtNurse({
     required this.id,
     required this.patientId,
     required this.name,
@@ -19,7 +19,7 @@ class NurseTreatmentModel {
     required this.status,
   });
 
-  NurseTreatmentModel copyWith({
+  RediologyModelAtNurse copyWith({
     int? id,
     int? patientId,
     String? name,
@@ -29,7 +29,7 @@ class NurseTreatmentModel {
     String? filePath,
     String? status,
   }) {
-    return NurseTreatmentModel(
+    return RediologyModelAtNurse(
       id: id ?? this.id,
       patientId: patientId ?? this.patientId,
       name: name ?? this.name,
@@ -41,10 +41,10 @@ class NurseTreatmentModel {
     );
   }
 
-  factory NurseTreatmentModel.fromJson(Map<String, dynamic> json) {
+  factory RediologyModelAtNurse.fromJson(Map<String, dynamic> json) {
     final String status = json['status'] ?? 'pending';
 
-    return NurseTreatmentModel(
+    return RediologyModelAtNurse(
       id: json['id'] ?? 0,
       patientId: json['patient_id'] ?? 0,
       name: json['name'] ?? '',
@@ -69,13 +69,13 @@ class NurseTreatmentModel {
   }
 }
 
-class CreateNurseTreatmentRequest {
+class CreateRediologyRequest {
   final int id;
   final String name;
   final String dueDate;
   final String dueTime;
 
-  CreateNurseTreatmentRequest({
+  CreateRediologyRequest({
     required this.id,
     required this.name,
     required this.dueDate,

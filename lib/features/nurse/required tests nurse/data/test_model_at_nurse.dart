@@ -1,4 +1,4 @@
-class TreatmentModel {
+class TestModelAtNurse {
   final int id;
   final int patientId;
   final String name;
@@ -8,7 +8,7 @@ class TreatmentModel {
   final String? filePath;
   final String status;
 
-  TreatmentModel({
+  TestModelAtNurse({
     required this.id,
     required this.patientId,
     required this.name,
@@ -19,7 +19,7 @@ class TreatmentModel {
     required this.status,
   });
 
-  TreatmentModel copyWith({
+  TestModelAtNurse copyWith({
     int? id,
     int? patientId,
     String? name,
@@ -29,7 +29,7 @@ class TreatmentModel {
     String? filePath,
     String? status,
   }) {
-    return TreatmentModel(
+    return TestModelAtNurse(
       id: id ?? this.id,
       patientId: patientId ?? this.patientId,
       name: name ?? this.name,
@@ -41,16 +41,16 @@ class TreatmentModel {
     );
   }
 
-  factory TreatmentModel.fromJson(Map<String, dynamic> json) {
+  factory TestModelAtNurse.fromJson(Map<String, dynamic> json) {
     final String status = json['status'] ?? 'pending';
 
-    return TreatmentModel(
+    return TestModelAtNurse(
       id: json['id'] ?? 0,
       patientId: json['patient_id'] ?? 0,
       name: json['name'] ?? '',
       dueDate: json['due_date'] ?? '',
       dueTime: json['due_time'] ?? '00:00',
-      isDone: status == 'completed',  
+      isDone: status == 'completed',
       filePath: json['file_path'],
       status: status,
     );
@@ -69,15 +69,13 @@ class TreatmentModel {
   }
 }
 
-
-
-class CreateTreatmentRequest {
+class CreateTestRequest {
   final int id;
   final String name;
   final String dueDate;
   final String dueTime;
 
-  CreateTreatmentRequest({
+  CreateTestRequest({
     required this.id,
     required this.name,
     required this.dueDate,

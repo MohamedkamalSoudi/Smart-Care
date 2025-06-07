@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class RadiologyCardActions extends StatelessWidget {
-  const RadiologyCardActions({
+class CardActions extends StatelessWidget {
+  const CardActions({
     super.key,
     required this.iconImage,
     required this.isDone,
-    required this.onDeletePressed,
+    required this.onUploadPressed,
     required this.onDonePressed,
   });
 
   final String iconImage;
   final bool isDone;
-  final VoidCallback onDeletePressed;
+  final VoidCallback onUploadPressed;
   final VoidCallback onDonePressed;
 
   @override
@@ -24,11 +24,12 @@ class RadiologyCardActions extends StatelessWidget {
         children: [
           IconButton(
             icon: SvgPicture.asset(iconImage),
-            onPressed: onDeletePressed,
+            onPressed: onUploadPressed,
           ),
+
           IconButton(
             icon: isDone
-                ? Icon(
+                ? const Icon(
                     Icons.check_circle,
                     color: Colors.green,
                     size: 26,

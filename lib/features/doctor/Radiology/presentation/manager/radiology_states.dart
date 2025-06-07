@@ -7,9 +7,9 @@ class RadiologyInitial extends RadiologyStates {}
 class RadiologyLoading extends RadiologyStates {}
 
 class RadiologySuccess extends RadiologyStates {
-  final List<RadiologyModel> radiologes;
+  final List<RadiologyModelAtDoctor> rediologies;
 
-  RadiologySuccess(this.radiologes);
+  RadiologySuccess(this.rediologies);
 }
 
 class RadiologyEmpty extends RadiologyStates {}
