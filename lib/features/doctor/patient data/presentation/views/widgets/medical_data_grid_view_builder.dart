@@ -17,7 +17,7 @@ class MedicalDataGridViewBuilder extends StatelessWidget {
   final List<String> pageIds = [
     DescriptionView.id,
     RequiredRadiologyViewAtDoctor.id,
-    RequiredTestsView.id,
+    RequiredTestsViewAtDoctor.id,
     AddNewPrescription.id,
   ];
 

@@ -14,7 +14,6 @@ import '../../features/doctor/prescribed treatments/presentation/view/widgets/me
     show MedicationCard;
 import '../../features/doctor/profile/presentation/views/profile_view.dart';
 import '../../features/doctor/required_tests/presentation/views/required_tests_view.dart';
-import '../../features/nurse/Rediology/presentation/views/required_rediology_view.dart';
 import '../../features/nurse/description nurse/presentation/views/description_nurse_view.dart';
 import '../../features/nurse/home/presentation/view/home_view_nurse.dart';
 import '../../features/nurse/patient data nurse/presentation/views/patient_data_nurse.dart';
@@ -22,6 +21,7 @@ import '../../features/nurse/prescribed treatments nurse/presentation/add_new_pr
 import '../../features/nurse/prescribed treatments nurse/presentation/view/widgets/dispaly_prescription_body_nurse.dart';
 import '../../features/nurse/profile narse/presentation/views/widgets/profile_narse_view.dart';
 import '../../features/nurse/required tests nurse/presentation/views/required_tests_view.dart';
+import '../../features/nurse/Rediology/presentation/views/required_rediology_view.dart';
 
 Map<String, WidgetBuilder> get appRoutes {
   return {
@@ -35,7 +35,7 @@ Map<String, WidgetBuilder> get appRoutes {
       return PatientData(model: user);
     },
     DescriptionView.id: (context) => DescriptionView(),
-    RequiredTestsView.id: (context) => RequiredTestsView(),
+    RequiredTestsViewAtDoctor.id: (context) => RequiredTestsViewAtDoctor(),
     RequiredRadiologyViewAtDoctor.id: (context) =>
         RequiredRadiologyViewAtDoctor(),
     AddNewPrescription.id: (context) => AddNewPrescription(),
@@ -48,8 +48,9 @@ Map<String, WidgetBuilder> get appRoutes {
     },
     HomeViewNurse.id: (context) => HomeViewNurse(),
     DescriptionNurseView.id: (context) => DescriptionNurseView(),
-    RequiredTestsView.id: (context) => RequiredTestsView(),
-    RequiredRediologyViewNurse.id: (context) => RequiredRediologyViewNurse(),
+    RequiredTestsViewAtNurse.id: (context) => RequiredTestsViewAtNurse(),
+    RequiredRediologyViewAtNurse.id: (context) =>
+        RequiredRediologyViewAtNurse(),
     AddNewPrescriptionNurse.id: (context) => AddNewPrescriptionNurse(),
     DisplayPrescriptionBodyNurse.id: (context) =>
         DisplayPrescriptionBodyNurse(),

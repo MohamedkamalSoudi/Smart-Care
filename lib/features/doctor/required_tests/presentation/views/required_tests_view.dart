@@ -10,10 +10,10 @@ import '../managers/tests_cubit.dart';
 import '../managers/tests_states.dart';
 import 'widgets/custom_test_card.dart';
 
-class RequiredTestsView extends StatelessWidget {
-  static const id = 'required_tests_view';
+class RequiredTestsViewAtDoctor extends StatelessWidget {
+  static const id = 'RequiredTestsViewAtDoctor';
 
-  const RequiredTestsView({super.key});
+  const RequiredTestsViewAtDoctor({super.key});
 
   @override
   Widget build(BuildContext context) {

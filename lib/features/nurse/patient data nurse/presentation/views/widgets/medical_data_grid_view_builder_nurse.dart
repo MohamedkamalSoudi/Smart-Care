@@ -16,7 +16,7 @@ class MedicalDataGridViewBuilderNurse extends StatelessWidget {
 
   final List<String> pageIds = [
     DescriptionNurseView.id,
-    RequiredRediologyViewNurse.id,
+    RequiredRediologyViewAtNurse.id,
     RequiredTestsViewAtNurse.id,
     AddNewPrescriptionNurse.id,
   ];
@@ -39,7 +39,7 @@ class MedicalDataGridViewBuilderNurse extends StatelessWidget {
           title: medicalCardTitles[index],
           onPressed: () {
             if (route == DescriptionNurseView.id ||
-                route == RequiredRediologyViewNurse.id ||
+                route == RequiredRediologyViewAtNurse.id ||
                 route == RequiredTestsViewAtNurse.id ||
                 route == AddNewPrescriptionNurse.id) {
               Navigator.pushNamed(

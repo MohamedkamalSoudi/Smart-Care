@@ -8,10 +8,10 @@ import '../managers/rediology_cubit.dart';
 import '../managers/rediology_state.dart';
 import 'widgets/custom_rediology_card.dart';
 
-class RequiredRediologyViewNurse extends StatelessWidget {
-  static const String id = 'RequiredRediologyViewNurse';
+class RequiredRediologyViewAtNurse extends StatelessWidget {
+  static const String id = 'RequiredRediologyViewAtNurse';
 
-  const RequiredRediologyViewNurse({super.key});
+  const RequiredRediologyViewAtNurse({super.key});
 
   @override
   Widget build(BuildContext context) {
