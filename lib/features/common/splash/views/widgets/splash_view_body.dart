@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_care_app/constant.dart';
+import 'package:smart_care_app/features/common/login/presentation/views/role_based_home_screen.dart';
 import 'package:smart_care_app/features/doctor/home/presentation/views/home_view_doctor.dart';
 import '../../../login/presentation/views/login_view.dart';
 import 'sliding_text.dart';
@@ -57,12 +58,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(const Duration(seconds: 5), () async {
       // ignore: use_build_context_synchronously
       final sharedPref = await SharedPreferences.getInstance();
+      final userType = sharedPref.getString('userType');
       final response = sharedPref.getBool('isClicked');
       response != true
           ? Navigator.pushReplacementNamed(context, OnboardingView.id)
           : token == ''
               ? Navigator.pushReplacementNamed(context, LoginView.id)
-              : Navigator.pushReplacementNamed(context, HomeViewDoctor.id);
+              : Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => RoleBasedHomeScreen(
+                            userType: userType!,
+                          )));
     });
   }
 }

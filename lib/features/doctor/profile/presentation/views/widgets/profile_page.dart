@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_care_app/constant.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
 import 'package:smart_care_app/core/utils/assets.dart';
 import '../../../../../common/login/presentation/views/login_view.dart';
@@ -102,7 +103,8 @@ class ProfilePage extends StatelessWidget {
                       horizontalGap: 30,
                       onTap: () async {
                         final prefs = await SharedPreferences.getInstance();
-                        await prefs.remove('token');
+                        await prefs.setString('token', '');
+                        token = '';
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

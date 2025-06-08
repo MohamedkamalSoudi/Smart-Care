@@ -3,9 +3,12 @@ import 'package:smart_care_app/features/doctor/home/presentation/views/home_view
 import 'package:smart_care_app/features/nurse/home/presentation/view/home_view_nurse.dart';
 
 class RoleBasedHomeScreen extends StatelessWidget {
-  const RoleBasedHomeScreen({super.key, required this.userType, required this.token});
+  const RoleBasedHomeScreen({
+    super.key,
+    required this.userType,
+  });
   final String userType;
-  final String token;
+
   @override
   Widget build(BuildContext context) {
     if (userType == 'doctor') {

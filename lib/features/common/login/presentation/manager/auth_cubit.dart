@@ -38,11 +38,13 @@ class AuthCubit extends Cubit<AuthState> {
       // response تحقق من حالة
       if (response.statusCode == 201) {
         final jsonData = response.data;
+        final userType = jsonData['user']['type'];
         //ف متغير token بخزن قيمة ال
         final token = jsonData['token'];
         //SharedPreferences ف  token بخزن ال
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('token', token);
+        await prefs.setString('userType', userType);
 
         final UserModel userModel = UserModel.fromJson(jsonData);
         emit(AuthAuthenticated(userModel: userModel, token: token));

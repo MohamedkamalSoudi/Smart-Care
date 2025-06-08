@@ -32,7 +32,6 @@ class _LoginViewState extends State<LoginView> {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return RoleBasedHomeScreen(
                 userType: state.userModel.userType,
-                token: state.token,
               );
             }));
           }
@@ -75,7 +74,9 @@ class _LoginViewState extends State<LoginView> {
                 obscureText: !_isPasswordVisible,
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                    _isPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off,
                   ),
                   onPressed: () {
                     setState(() {
