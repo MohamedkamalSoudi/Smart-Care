@@ -9,6 +9,7 @@ class TestCubit extends Cubit<TestState> {
 
   final String baseUrl = "http://smartcare.wuaze.com/public";
   final Dio dio = Dio();
+  List<TestModelAtNurse> tests = [];
 
   Future<void> fetchTests(int patientId) async {
     emit(state.copyWith(isLoading: true));

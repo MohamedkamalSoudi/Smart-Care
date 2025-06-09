@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/utils/widgets/add_image_button.dart';
 import '../../../../../../core/utils/widgets/custom_view_appbar.dart';
 import '../../../../../../core/utils/widgets/image_controller.dart';
 import '../../../../../../core/utils/widgets/image_tile.dart';
+import '../../managers/cubit/edit_profile_cubit.dart';
+import 'custom_image_picker_dialog.dart';
 
 class EditProfilePicturePage extends StatefulWidget {
-  const EditProfilePicturePage({super.key});
+  const EditProfilePicturePage({super.key, required this.testId});
   static const id = "EditProfilePicturePage";
+  final int testId;
 
   @override
   State<EditProfilePicturePage> createState() => _EditProfilePicturePageState();
@@ -29,7 +32,7 @@ class _EditProfilePicturePageState extends State<EditProfilePicturePage> {
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
           children: [
-            AddImageButton(onTap: () => _showImagePickerDialog(context)),
+            AddImageButton(onTap: () => _showImagePickerDialog(context, rebuild: () { setState(() {}); }, testId: widget.testId,)),
             ...imageController.selectedImages.map(
               (image) => ImageTile(
                 image: image,
@@ -44,36 +47,16 @@ class _EditProfilePicturePageState extends State<EditProfilePicturePage> {
     );
   }
 
-  void _showImagePickerDialog(BuildContext context) {
+  void _showImagePickerDialog(BuildContext context, {required Function() rebuild , required int testId}) {
     showModalBottomSheet(
       context: context,
-      builder: (context) => SafeArea(
-        child: Wrap(
-          children: [
-            ListTile(
-              leading: const Icon(Icons.camera_alt),
-              title: const Text("Camera"),
-              onTap: () {
-                Navigator.pop(context);
-                _pickImage(ImageSource.camera);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.photo_library),
-              title: const Text("Gallery"),
-              onTap: () {
-                Navigator.pop(context);
-                _pickImage(ImageSource.gallery);
-              },
-            ),
-          ],
-        ),
+      builder: (context) => BlocProvider(
+        create: (context) => EditProfileCubit(),
+        child: CustomImagePickerDialog(imageController: imageController, rebuild: rebuild, testId: testId,),
       ),
     );
   }
 
-  Future<void> _pickImage(ImageSource source) async {
-    final picked = await imageController.pickImage(source);
-    if (picked) setState(() {});
-  }
+  
 }
+

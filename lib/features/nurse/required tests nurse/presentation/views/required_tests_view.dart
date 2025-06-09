@@ -55,7 +55,9 @@ class RequiredTestsViewAtNurse extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EditProfilePicturePage(),
+                        builder: (context) => EditProfilePicturePage(
+                          testId: test.id,
+                        ),
                       ),
                     );
                   },
