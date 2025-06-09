@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../data/test_model_at_nurse.dart';
+import '../../../data/test_model_at_nurse.dart';
 
 class TestState extends Equatable {
   final bool isLoading;

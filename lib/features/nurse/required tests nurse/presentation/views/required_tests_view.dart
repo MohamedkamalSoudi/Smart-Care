@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/features/nurse/required%20tests%20nurse/presentation/views/widgets/custom_test_card.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
-import 'widgets/edit_profile_picture_view.dart';
+import 'edit_profile_picture_view.dart';
 import '../../../../../core/utils/widgets/patient_data_appbar.dart';
-import '../managers/test_cubit.dart';
-import '../managers/test_state.dart';
+import '../managers/test_cubit/test_cubit.dart';
+import '../managers/test_cubit/test_state.dart';
 
 class RequiredTestsViewAtNurse extends StatelessWidget {
   static const String id = 'RequiredTestsViewAtNurse';
@@ -55,7 +55,8 @@ class RequiredTestsViewAtNurse extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EditProfilePicturePage(
+                        builder: (context) => EditProfilePictureView(
+                          patientId: patientId,
                           testId: test.id,
                         ),
                       ),

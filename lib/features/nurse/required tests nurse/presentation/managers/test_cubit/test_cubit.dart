@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
-import '../../../../../core/utils/headers.dart';
-import '../../data/test_model_at_nurse.dart';
+import '../../../../../../core/utils/headers.dart';
+import '../../../data/test_model_at_nurse.dart';
 import 'test_state.dart';
 
 class TestCubit extends Cubit<TestState> {
