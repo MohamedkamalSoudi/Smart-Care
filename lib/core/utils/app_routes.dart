@@ -4,17 +4,16 @@ import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart
 import '../../features/common/login/presentation/views/login_view.dart';
 import '../../features/common/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/common/splash/views/splahs_view.dart';
-import '../../features/doctor/Radiology/presentation/views/rediology_result.dart';
 import '../../features/doctor/description/presentation/views/description_view.dart';
 import '../../features/doctor/display prescription/presentation/views/widgets/dispaly_prescription_body.dart';
 import '../../features/doctor/home/data/patient_model.dart';
 import '../../features/doctor/home/presentation/views/home_view_doctor.dart';
 import '../../features/doctor/patient data/presentation/views/patient_data.dart';
 import '../../features/doctor/prescribed treatments/presentation/add_new_prescription.dart';
-import '../../features/doctor/prescribed treatments/presentation/view/widgets/medication_card.dart'
-    show MedicationCard;
+import '../../features/doctor/prescribed treatments/presentation/view/widgets/medication_card.dart';
 import '../../features/doctor/profile/presentation/views/profile_view.dart';
 import '../../features/doctor/required_tests/presentation/views/required_tests_view.dart';
+import '../../features/doctor/required_tests/presentation/views/widgets/test_result.dart';
 import '../../features/nurse/description nurse/presentation/views/description_nurse_view.dart';
 import '../../features/nurse/home/presentation/view/home_view_nurse.dart';
 import '../../features/nurse/patient data nurse/presentation/views/patient_data_nurse.dart';
@@ -55,5 +54,6 @@ Map<String, WidgetBuilder> get appRoutes {
     AddNewPrescriptionNurse.id: (context) => AddNewPrescriptionNurse(),
     DisplayPrescriptionBodyNurse.id: (context) =>
         DisplayPrescriptionBodyNurse(),
+    TestResult.id: (context) => TestResult(),
   };
 }

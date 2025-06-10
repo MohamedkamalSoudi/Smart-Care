@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:smart_care_app/core/utils/widgets/custom_empty_body.dart';
-import 'package:smart_care_app/core/utils/widgets/patient_data_appbar.dart';
-import '../../../../../core/utils/app_colors.dart';
-import 'widgets/full_screen_image.dart';
 
-class RediologyResult extends StatelessWidget {
-  const RediologyResult({super.key, required this.filePath});
-  static const id = 'RediologyResult';
+import '../../../../../../core/utils/app_colors.dart';
+import '../../../../../../core/utils/widgets/custom_empty_body.dart';
+import '../../../../../../core/utils/widgets/patient_data_appbar.dart';
+import 'full_screen_image_test.dart';
+
+class TestResult extends StatelessWidget {
+  const TestResult({super.key, this.filePath});
+
+  static const id = 'test_result';
   final String? filePath;
 
   @override
@@ -18,7 +20,7 @@ class RediologyResult extends StatelessWidget {
     if (imageUrl == null) {
       return const Scaffold(
         backgroundColor: AppColors.whitebody,
-        body: CustomEmptyBody(title: 'No Rediology Result until now'),
+        body: CustomEmptyBody(title: 'There Are No Test Results Until Now'),
       );
     }
 
@@ -41,7 +43,7 @@ class RediologyResult extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (_) =>
-                        FullScreenImage(imageProvider: imageProvider),
+                        FullScreenImageTest(imageProvider: imageProvider),
                   ),
                 );
               },

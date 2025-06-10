@@ -58,6 +58,7 @@ class RequiredTestsViewAtDoctor extends StatelessWidget {
           final formattedDate =
               DateFormat.yMMMMd().format(DateTime.parse(test.dueDate));
           return CustomTestCard(
+            filePath: test.filePath,
             iconImage: 'assets/images/Vector.svg',
             testName: test.name,
             dueDate: formattedDate,
