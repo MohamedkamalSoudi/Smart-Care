@@ -26,41 +26,44 @@ class CustomRadiologyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 100,
-          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-          decoration: BoxDecoration(
-            color: AppColors.whitebody,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.15),
-                offset: const Offset(4, 4),
-                blurRadius: 2,
-              ),
-              BoxShadow(
-                color: const Color(0xFF5F5F5F).withOpacity(0.15),
-                offset: const Offset(-1, -1),
-              ),
-            ],
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GreenLineOfCard(isDone: isDone),
-              const SizedBox(width: 10),
-              Expanded(
-                child: CardContent(
-                  radiologyName: radiologyName,
-                  formattedDate: dueDate,
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            height: 100,
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            decoration: BoxDecoration(
+              color: AppColors.whitebody,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.15),
+                  offset: const Offset(4, 4),
+                  blurRadius: 2,
                 ),
-              ),
-              CardActions(
-                iconImage: iconImage,
-                isDone: isDone,
-                onDeletePressed: onDeletePressed,
-              ),
-            ],
+                BoxShadow(
+                  color: const Color(0xFF5F5F5F).withOpacity(0.15),
+                  offset: const Offset(-1, -1),
+                ),
+              ],
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GreenLineOfCard(isDone: isDone),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: CardContent(
+                    radiologyName: radiologyName,
+                    formattedDate: dueDate,
+                  ),
+                ),
+                CardActions(
+                  iconImage: iconImage,
+                  isDone: isDone,
+                  onDeletePressed: onDeletePressed,
+                ),
+              ],
+            ),
           ),
         ),
         Divider(

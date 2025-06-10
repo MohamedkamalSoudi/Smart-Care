@@ -46,7 +46,7 @@ class PatientCardNurse extends StatelessWidget {
                         style: TextStyle(color: AppColors.textcardhome)),
                     Text('Room: ${patient.room}',
                         style: TextStyle(color: AppColors.textcardhome)),
-                    Text('Bed number: ${patient.bed}',
+                    Text('Bed number: ${patient.ped}',
                         style: TextStyle(color: AppColors.textcardhome)),
                   ],
                 ),
