@@ -4,7 +4,7 @@ import 'package:smart_care_app/core/utils/app_colors.dart';
 class NoteItem extends StatelessWidget {
   final String title;
   final Function() onTap;
-  final DateTime dateTime;  // التاريخ مطلوب
+  final DateTime dateTime;
 
   const NoteItem({
     super.key,
@@ -22,7 +22,6 @@ class NoteItem extends StatelessWidget {
         color: AppColors.cardDescription,
         borderRadius: BorderRadius.circular(16),
       ),
-      height: 200,
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -41,12 +40,17 @@ class NoteItem extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 30),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+              ),
+            ),
           ),
-          const Spacer(),
+
+          const SizedBox(height: 10),
           RichText(
             textAlign: TextAlign.end,
             text: TextSpan(

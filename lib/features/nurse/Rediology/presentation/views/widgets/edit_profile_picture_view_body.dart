@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_care_app/features/nurse/Rediology/presentation/managers/edit_profile_cubit/edit_profile_cubit.dart';
-import 'package:smart_care_app/features/nurse/Rediology/presentation/managers/rediology_details/rediology_details_cubit.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../../../core/utils/widgets/add_image_button.dart';
 import '../../../../../../core/utils/widgets/image_controller.dart';
-import '../../../../../../core/utils/widgets/image_tile.dart';
+import '../../managers/edit_profile_cubit/edit_profile_cubit.dart';
+import '../../managers/rediology_details/rediology_details_cubit.dart';
 import 'custom_image_picker_dialog.dart';
 
 class EditProfilePicturePageBody extends StatefulWidget {
@@ -23,8 +23,10 @@ class _EditProfilePicturePageBodyState
 
   @override
   void initState() {
-    context.read<RediologyDetailsCubit>().getRediologyData();
     super.initState();
+    Future.microtask(() {
+      context.read<RediologyDetailsCubit>().getRediologyData();
+    });
   }
 
   @override
@@ -51,9 +53,16 @@ class _EditProfilePicturePageBodyState
                 ),
                 if (state.rediology.filePath != null &&
                     state.rediology.filePath!.isNotEmpty)
-                  ImageTile(
-                    imageLink: gitSuitableImageLink(state.rediology.filePath!),
-                    onRemove: () {},
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: CachedNetworkImage(
+                      imageUrl: gitSuitableImageLink(state.rediology.filePath!),
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
                   )
                 else
                   Container(
@@ -61,6 +70,7 @@ class _EditProfilePicturePageBodyState
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(8),
                     ),
+                    child: const Center(child: Text("لا توجد صورة")),
                   ),
               ],
             ),
@@ -78,12 +88,18 @@ class _EditProfilePicturePageBodyState
       {required Function() rebuild, required int rediologyId}) {
     showModalBottomSheet(
       context: context,
-      builder: (context) => BlocProvider(
-        create: (context) => EditProfileCubit(),
-        child: CustomImagePickerDialog(
-          imageController: imageController,
-          rebuild: rebuild,
-          rediologyId: rediologyId,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Padding(
+        padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: BlocProvider(
+          create: (context) => EditProfileCubit(),
+          child: CustomImagePickerDialog(
+            imageController: imageController,
+            rebuild: rebuild,
+            rediologyId: rediologyId,
+          ),
         ),
       ),
     ).whenComplete(() {

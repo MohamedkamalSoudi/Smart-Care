@@ -20,6 +20,7 @@ class CardContent extends StatelessWidget {
           padding: const EdgeInsets.only(top: 14),
           child: Text(
             radiologyName,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
