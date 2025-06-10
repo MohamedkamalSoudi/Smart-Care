@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_care_app/features/nurse/Rediology/presentation/managers/rediology_cubit/rediology_cubit.dart';
+import 'package:smart_care_app/features/nurse/Rediology/presentation/views/edit_profile_picture_view.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/widgets/custom_empty_body.dart';
-import 'widgets/edit_profile_picture_view.dart';
 import '../../../../../core/utils/widgets/patient_data_appbar.dart';
-import '../managers/rediology_cubit.dart';
-import '../managers/rediology_state.dart';
+
+import '../managers/rediology_cubit/rediology_state.dart';
 import 'widgets/custom_rediology_card.dart';
 
 class RequiredRediologyViewAtNurse extends StatelessWidget {
@@ -59,7 +60,10 @@ class RequiredRediologyViewAtNurse extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EditProfilePicturePage(),
+                        builder: (context) => EditProfilePictureView(
+                          rediologyId: rediologies.id,
+                          patientId: patientId,
+                        ),
                       ),
                     );
                   },

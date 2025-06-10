@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:smart_care_app/features/nurse/Rediology/data/rediology_model_at_nurse.dart';
-import '../../../../../core/utils/headers.dart';
+import '../../../../../../core/utils/headers.dart';
 import 'rediology_state.dart';
 
 class RediologyCubit extends Cubit<RediologyState> {
