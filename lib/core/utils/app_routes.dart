@@ -55,6 +55,5 @@ Map<String, WidgetBuilder> get appRoutes {
     AddNewPrescriptionNurse.id: (context) => AddNewPrescriptionNurse(),
     DisplayPrescriptionBodyNurse.id: (context) =>
         DisplayPrescriptionBodyNurse(),
-    RediologyResult.id: (context) => RediologyResult(),
   };
 }

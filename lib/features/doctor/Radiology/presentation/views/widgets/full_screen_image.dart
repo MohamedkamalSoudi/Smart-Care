@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FullScreenImage extends StatelessWidget {
-  final String imagePath;
+  final ImageProvider imageProvider;
 
-  const FullScreenImage({super.key, required this.imagePath});
+  const FullScreenImage({super.key, required this.imageProvider});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,9 @@ class FullScreenImage extends StatelessWidget {
         onTap: () => Navigator.pop(context),
         child: Center(
           child: InteractiveViewer(
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.contain, // أو استخدم BoxFit.cover حسب ما تحب
+            child: Image(
+              image: imageProvider,
+              fit: BoxFit.contain,
               width: double.infinity,
               height: double.infinity,
             ),

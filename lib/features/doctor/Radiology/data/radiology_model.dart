@@ -39,7 +39,7 @@ class RadiologyModelAtDoctor {
     required this.dueTime,
     required this.isDone,
     required this.status,
-    this.filePath,
+    required this.filePath,
   });
 
   factory RadiologyModelAtDoctor.fromJson(Map<String, dynamic> json) {

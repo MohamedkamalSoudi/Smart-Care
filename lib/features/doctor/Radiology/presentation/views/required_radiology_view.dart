@@ -48,6 +48,7 @@ class RequiredRadiologyViewAtDoctor extends StatelessWidget {
                               final formattedDate = DateFormat.yMMMMd()
                                   .format(DateTime.parse(radiology.dueDate));
                               return CustomRadiologyCard(
+                                filePath: radiology.filePath,
                                 iconImage: 'assets/images/Vector.svg',
                                 radiologyName: radiology.name,
                                 dueDate: formattedDate,

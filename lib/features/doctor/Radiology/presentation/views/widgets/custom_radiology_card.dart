@@ -14,6 +14,7 @@ class CustomRadiologyCard extends StatelessWidget {
     required this.isDone,
     required this.onDeletePressed,
     required this.onDonePressed,
+    required this.filePath,
   });
 
   final String iconImage;
@@ -22,6 +23,7 @@ class CustomRadiologyCard extends StatelessWidget {
   final bool isDone;
   final VoidCallback onDeletePressed;
   final VoidCallback onDonePressed;
+  final String? filePath;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,9 @@ class CustomRadiologyCard extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, RediologyResult.id);
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return RediologyResult(filePath: filePath);
+            }));
           },
           child: Container(
             height: 100,
