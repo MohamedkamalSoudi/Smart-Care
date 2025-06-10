@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
+import 'package:smart_care_app/features/doctor/Radiology/presentation/views/rediology_result.dart';
 import 'package:smart_care_app/features/doctor/Radiology/presentation/views/widgets/green_line_%20of_card.dart';
 import 'package:smart_care_app/features/doctor/Radiology/presentation/views/widgets/card_actions.dart';
 import 'package:smart_care_app/features/doctor/Radiology/presentation/views/widgets/card_content.dart';
@@ -27,7 +28,9 @@ class CustomRadiologyCard extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, RediologyResult.id);
+          },
           child: Container(
             height: 100,
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),

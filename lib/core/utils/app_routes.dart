@@ -4,6 +4,7 @@ import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart
 import '../../features/common/login/presentation/views/login_view.dart';
 import '../../features/common/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/common/splash/views/splahs_view.dart';
+import '../../features/doctor/Radiology/presentation/views/rediology_result.dart';
 import '../../features/doctor/description/presentation/views/description_view.dart';
 import '../../features/doctor/display prescription/presentation/views/widgets/dispaly_prescription_body.dart';
 import '../../features/doctor/home/data/patient_model.dart';
@@ -54,5 +55,6 @@ Map<String, WidgetBuilder> get appRoutes {
     AddNewPrescriptionNurse.id: (context) => AddNewPrescriptionNurse(),
     DisplayPrescriptionBodyNurse.id: (context) =>
         DisplayPrescriptionBodyNurse(),
+    RediologyResult.id: (context) => RediologyResult(),
   };
 }
