@@ -15,8 +15,10 @@ class UserCubit extends Cubit<UserState> {
     emit(UserLoading());
 
     try {
-      final response = await dio.get('$baseUrl/api/doctor/patients',
-          options: Options(headers: await HeadersApi.getHeaders()));
+      final response = await dio.get(
+        '$baseUrl/api/doctor/patients',
+        options: Options(headers: await HeadersApi.getHeaders()),
+      );
 
       if (response.statusCode == 200) {
         if (response.data is Map && response.data.containsKey('patients')) {
@@ -29,20 +31,25 @@ class UserCubit extends Cubit<UserState> {
           }
           emit(UserLoaded(models));
         } else {
-          emit(UserError('البيانات غير متوفرة أو ليست قائمة'));
+          emit(UserError('Data is not available or not a list', type: 'empty_data'));
         }
       } else {
-        emit(UserError('فشل في تحميل المستخدمين: ${response.statusMessage}'));
+        emit(UserError(
+          'Failed to load users: ${response.statusMessage}',
+          type: 'server_error',
+        ));
       }
     } on DioException catch (e) {
       if (e.response != null) {
         emit(UserError(
-            'خطأ من الخادم (${e.response?.statusCode}): ${e.message}'));
+          'Server Error (${e.response?.statusCode}): ${e.message}',
+          type: 'server_error',
+        ));
       } else {
-        emit(UserError('مشكلة في الاتصال: ${e.message}'));
+        emit(UserError('Internet connection problem: ${e.message}', type: 'no_internet'));
       }
     } catch (e) {
-      emit(UserError('حدث خطأ غير متوقع: $e'));
+      emit(UserError('An unexpected error occurred: $e', type: 'unexpected'));
     }
   }
 }

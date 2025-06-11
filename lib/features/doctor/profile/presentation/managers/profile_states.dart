@@ -13,3 +13,5 @@ class DoctorProfileError extends DoctorProfileStates {
   final String message;
   DoctorProfileError(this.message);
 }
+
+class DoctorProfileNoInternet extends DoctorProfileStates {}

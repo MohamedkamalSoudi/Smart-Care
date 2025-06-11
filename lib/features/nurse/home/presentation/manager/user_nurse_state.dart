@@ -1,4 +1,3 @@
-
 import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart';
 
 abstract class UserNurseState {}
@@ -14,5 +13,7 @@ class UserNurseLoaded extends UserNurseState {
 
 class UserNurseError extends UserNurseState {
   final String message;
-  UserNurseError(this.message);
+  final String? type; 
+
+  UserNurseError(this.message, {this.type});
 }

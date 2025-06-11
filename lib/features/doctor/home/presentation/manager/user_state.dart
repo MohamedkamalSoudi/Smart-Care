@@ -13,5 +13,7 @@ class UserLoaded extends UserState {
 
 class UserError extends UserState {
   final String message;
-  UserError(this.message);
+  final String? type; 
+
+  UserError(this.message, {this.type});
 }
