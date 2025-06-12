@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/features/doctor/Radiology/presentation/views/required_radiology_view.dart';
 import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart';
 import '../../features/common/login/presentation/views/login_view.dart';
@@ -17,8 +18,8 @@ import '../../features/doctor/required_tests/presentation/views/widgets/test_res
 import '../../features/nurse/description nurse/presentation/views/description_nurse_view.dart';
 import '../../features/nurse/home/presentation/view/home_view_nurse.dart';
 import '../../features/nurse/patient data nurse/presentation/views/patient_data_nurse.dart';
-import '../../features/nurse/prescribed treatments nurse/presentation/add_new_prescription_nurse.dart';
-import '../../features/nurse/prescribed treatments nurse/presentation/view/widgets/dispaly_prescription_body_nurse.dart';
+import '../../features/nurse/prescribed treatments nurse/manager/treatment_cubit.dart';
+import '../../features/nurse/prescribed treatments nurse/presentation/view/dispaly_prescription_body_nurse.dart';
 import '../../features/nurse/profile narse/presentation/views/widgets/profile_narse_view.dart';
 import '../../features/nurse/required tests nurse/presentation/views/required_tests_view.dart';
 import '../../features/nurse/Rediology/presentation/views/required_rediology_view.dart';
@@ -51,9 +52,13 @@ Map<String, WidgetBuilder> get appRoutes {
     RequiredTestsViewAtNurse.id: (context) => RequiredTestsViewAtNurse(),
     RequiredRediologyViewAtNurse.id: (context) =>
         RequiredRediologyViewAtNurse(),
-    AddNewPrescriptionNurse.id: (context) => AddNewPrescriptionNurse(),
-    DisplayPrescriptionBodyNurse.id: (context) =>
-        DisplayPrescriptionBodyNurse(),
+    DisplayPrescriptionBodyNurse.id: (context) {
+  final patientId = ModalRoute.of(context)!.settings.arguments as int;
+  return BlocProvider(
+    create: (context) => TreatmentCubit()..fetchTreatments(patientId),
+    child: DisplayPrescriptionBodyNurse(),
+  );
+},
     TestResult.id: (context) => TestResult(),
   };
 }

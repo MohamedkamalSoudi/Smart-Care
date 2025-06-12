@@ -1,5 +1,5 @@
-// الحالة الأساسية
-import 'package:smart_care_app/features/nurse/prescribed%20treatments%20nurse/data/treatment_model.dart';
+import 'package:equatable/equatable.dart';
+import '../data/treatment_model.dart';
 
 abstract class TreatmentState {}
 
@@ -7,9 +7,40 @@ class TreatmentInitial extends TreatmentState {}
 
 class TreatmentLoading extends TreatmentState {}
 
-class TreatmentLoaded extends TreatmentState {
+class TreatmentLoaded extends TreatmentState with EquatableMixin {
   final List<Treatment> treatments;
-  TreatmentLoaded(this.treatments);
+  final bool isEmpty;
+  final bool isLoading;
+  final String? error;
+
+  TreatmentLoaded({
+    required this.treatments,
+    this.isEmpty = false,
+    this.isLoading = false,
+    this.error,
+  });
+
+  TreatmentLoaded copyWith({
+    List<Treatment>? treatments,
+    bool? isEmpty,
+    bool? isLoading,
+    String? error,
+  }) {
+    return TreatmentLoaded(
+      treatments: treatments ?? this.treatments,
+      isEmpty: isEmpty ?? this.isEmpty,
+      isLoading: isLoading ?? this.isLoading,
+      error: error ?? this.error,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        treatments.length,
+        isEmpty,
+        isLoading,
+        error,
+      ];
 }
 
 class TreatmentError extends TreatmentState {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../Rediology/presentation/views/required_rediology_view.dart';
 import '../../../../description nurse/presentation/views/description_nurse_view.dart';
+import '../../../../prescribed treatments nurse/presentation/view/dispaly_prescription_body_nurse.dart';
 import '../../../../required tests nurse/presentation/views/required_tests_view.dart';
-import '../../../../prescribed treatments nurse/presentation/add_new_prescription_nurse.dart';
 import '../../../data/patient_ists_nurse.dart';
 import 'custom_medical_card_nurse.dart';
 
@@ -18,7 +18,7 @@ class MedicalDataGridViewBuilderNurse extends StatelessWidget {
     DescriptionNurseView.id,
     RequiredRediologyViewAtNurse.id,
     RequiredTestsViewAtNurse.id,
-    AddNewPrescriptionNurse.id,
+    DisplayPrescriptionBodyNurse.id,
   ];
 
   @override
@@ -41,7 +41,7 @@ class MedicalDataGridViewBuilderNurse extends StatelessWidget {
             if (route == DescriptionNurseView.id ||
                 route == RequiredRediologyViewAtNurse.id ||
                 route == RequiredTestsViewAtNurse.id ||
-                route == AddNewPrescriptionNurse.id) {
+                route == DisplayPrescriptionBodyNurse.id) {
               Navigator.pushNamed(
                 context,
                 route,

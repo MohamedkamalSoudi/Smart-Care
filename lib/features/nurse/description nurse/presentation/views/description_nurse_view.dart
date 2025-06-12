@@ -82,8 +82,13 @@ class DescriptionNurseView extends StatelessWidget {
               );
             } else if (state is ErrorNurseState) {
               return Center(child: Text('Error: ${state.error}'));
+            }
+            else if (state is EmptyNurseState) {
+              return const CustomEmptyBody(
+                  title: 'No description added until now');
+            
             } else {
-              return const CustomEmptyBody(title: 'No description found');
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),

@@ -15,8 +15,9 @@ class TreatmentCubit extends Cubit<TreatmentState> {
 
     try {
       final response = await dio.get(
-          '$baseUrl/api/treatments/patient/$patientId',
-          options: Options(headers: await HeadersApi.getHeaders()));
+        '$baseUrl/api/treatments/patient/$patientId',
+        options: Options(headers: await HeadersApi.getHeaders()),
+      );
 
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data['patient']['treatments'];
@@ -26,13 +27,54 @@ class TreatmentCubit extends Cubit<TreatmentState> {
 
         final List<Treatment> expanded = expandTreatmentsWithTimes(original);
 
-        emit(TreatmentLoaded(expanded));
+        emit(TreatmentLoaded(
+          treatments: expanded,
+          isEmpty: expanded.isEmpty,
+        ));
       } else {
         emit(TreatmentError(
-            'Failed to load treatments: ${response.statusCode}'));
+          'Failed to load treatments: ${response.statusCode}',
+        ));
       }
     } catch (e) {
       emit(TreatmentError('Error: $e'));
+    }
+  }
+
+  Future<void> updateTestStatus(
+      int testId, bool currentStatus, int patientId) async {
+    // تأكد إن الحالة الحالية من نوع TreatmentLoaded
+    if (state is! TreatmentLoaded) return;
+
+    final currentState = state as TreatmentLoaded;
+    emit(currentState.copyWith(isLoading: true));
+
+    try {
+      final newIsDone = !currentStatus;
+      final String newApiStatus = newIsDone ? 'completed' : 'pending';
+
+      await dio.post(
+        '$baseUrl/api/treatments/$testId',
+        data: {'status': newApiStatus},
+        options: Options(headers: await HeadersApi.getHeaders()),
+      );
+
+      final updatedTreatments = currentState.treatments.map((treatment) {
+        if (treatment.id == testId) {
+          return treatment.copyWith(isDone: newIsDone, status: newApiStatus);
+        }
+        return treatment;
+      }).toList();
+
+      emit(currentState.copyWith(
+        isLoading: false,
+        treatments: updatedTreatments,
+      ));
+    } catch (e) {
+      emit(currentState.copyWith(
+        isLoading: false,
+        error: e.toString(),
+      ));
     }
   }
 }

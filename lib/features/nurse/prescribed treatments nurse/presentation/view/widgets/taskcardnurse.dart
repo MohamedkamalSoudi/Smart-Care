@@ -7,6 +7,7 @@ import 'connection_status_indicato_rnurse.dart';
 
 class ConnectionStatusCardNurse extends StatelessWidget {
   final String timestamp;
+  final String name;
   final String date;
   final String connectionType;
   final String message;
@@ -20,7 +21,7 @@ class ConnectionStatusCardNurse extends StatelessWidget {
     required this.connectionType,
     required this.message,
     required this.isToggled,
-    required this.onToggle,
+    required this.onToggle, required this.name,
   });
 
   @override
@@ -75,13 +76,14 @@ class ConnectionStatusCardNurse extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ConnectionStatusContentNurse(
+                        name: name,
                         connectionType: connectionType,
                         message: message,
                         timestamp: timestamp,
                         date: date),
                     ),
                     ConnectionStatusActionsNurse(
-                      isToggled: isToggled,
+                      isDone: isToggled,
                       onToggle: onToggle,
                     ),
                   ],

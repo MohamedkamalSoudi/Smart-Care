@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ConnectionStatusActionsNurse extends StatelessWidget {
-  final bool isToggled;
+  final bool isDone;
   final VoidCallback onToggle;
 
   const ConnectionStatusActionsNurse({
     super.key,
-    required this.isToggled,
+    required this.isDone,
     required this.onToggle,
   });
 
@@ -18,7 +18,7 @@ class ConnectionStatusActionsNurse extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         IconButton(
-          icon: isToggled
+          icon: isDone
               ? Icon(
                   Icons.check_circle_outline_outlined,
                   color: Colors.green,
