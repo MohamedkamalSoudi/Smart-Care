@@ -6,11 +6,13 @@ import 'connection_status_actions.dart';
 
 class ConnectionStatusCard extends StatelessWidget {
   final String timestamp;
+  final String title;
   final String date;
   final String connectionType;
   final String message;
   final bool isToggled;
   final VoidCallback onToggle;
+  final VoidCallback onDelete;
 
   const ConnectionStatusCard({
     super.key,
@@ -19,7 +21,9 @@ class ConnectionStatusCard extends StatelessWidget {
     required this.connectionType,
     required this.message,
     required this.isToggled,
-    required this.onToggle,
+    required this.onToggle, 
+    required this.title, required this.onDelete,
+
   });
 
   @override
@@ -74,12 +78,14 @@ class ConnectionStatusCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ConnectionStatusContent(
+                        title: title,
                         connectionType: connectionType,
                         message: message,
                         timestamp: timestamp,
                         date: date),
                     ),
                     ConnectionStatusActions(
+                    onFirstIconPressed: onDelete,         
                       isToggled: isToggled,
                       onToggle: onToggle,
                     ),

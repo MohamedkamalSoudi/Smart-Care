@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
 
-import '../../../../display prescription/presentation/views/dispaly_prescription.dart';
 
 class SaveButton extends StatelessWidget {
-  const SaveButton({super.key});
-
+  const SaveButton({super.key,  required this.onPressed});
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return  const DisplayPrescription();
-              }));
-        },
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.blue,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

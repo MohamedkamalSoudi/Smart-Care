@@ -1,34 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
 
-class ReminderTimesSection extends StatelessWidget {
-  final TimeOfDay? time1;
-  final TimeOfDay? time2;
-  final Function({required bool isFirst, required TimeOfDay newTime}) onTimeChanged;
+class ReminderTimesSection extends StatefulWidget {
+  final int maxTimes; 
+  final List<TimeOfDay?> times; 
+  final Function(int, TimeOfDay) onTimeChanged;
 
   const ReminderTimesSection({
     super.key,
-    required this.time1,
-    required this.time2,
+    required this.maxTimes,
+    required this.times,
     required this.onTimeChanged,
   });
 
-  Future<void> _selectTime(BuildContext context, bool isFirst) async {
+  @override
+  State<ReminderTimesSection> createState() => _ReminderTimesSectionState();
+}
+
+class _ReminderTimesSectionState extends State<ReminderTimesSection> {
+  late int timeCounter;
+
+  @override
+  void initState() {
+    timeCounter = widget.maxTimes;
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant ReminderTimesSection oldWidget) {
+    if (oldWidget.maxTimes != widget.maxTimes) {
+      setState(() {
+        timeCounter = widget.maxTimes;
+      });
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  Future<void> _selectTime(int index) async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay.now(),
+      initialTime: widget.times[index] ?? TimeOfDay.now(),
     );
     if (picked != null) {
-      onTimeChanged(isFirst: isFirst, newTime: picked);
+      widget.onTimeChanged(index, picked);
     }
   }
 
-  Widget timeRow({
-    required BuildContext context,
-    required String label,
-    required TimeOfDay? time,
-    required bool isFirst,
-  }) {
+  String formatTimeOfDayTo24Hour(TimeOfDay time) {
+    final hour = time.hour.toString().padLeft(2, '0');
+    final minute = time.minute.toString().padLeft(2, '0');
+    return '$hour:$minute:00';
+  }
+
+  Widget _buildTimeRow(int index) {
+    final time = widget.times[index];
     return Row(
       children: [
         Container(
@@ -43,14 +68,14 @@ class ReminderTimesSection extends StatelessWidget {
             children: [
               Icon(Icons.access_time, color: AppColors.blue),
               const SizedBox(width: 6),
-              Text(label),
+              Text("Time ${index + 1}"),
             ],
           ),
         ),
         const SizedBox(width: 12),
         Expanded(
           child: InkWell(
-            onTap: () => _selectTime(context, isFirst),
+            onTap: () => _selectTime(index),
             child: Container(
               height: 50,
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
@@ -60,7 +85,7 @@ class ReminderTimesSection extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  time != null ? time.format(context) : "--:--",
+                  time != null ? formatTimeOfDayTo24Hour(time) : "--:--:--",
                   style: const TextStyle(fontSize: 16),
                 ),
               ),
@@ -81,19 +106,10 @@ class ReminderTimesSection extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 10),
-        timeRow(
-          context: context,
-          label: "Time 1",
-          time: time1,
-          isFirst: true,
-        ),
-        const SizedBox(height: 12),
-        timeRow(
-          context: context,
-          label: "Time 2",
-          time: time2,
-          isFirst: false,
-        ),
+        for (int i = 0; i < timeCounter && i < widget.times.length; i++) ...[
+          _buildTimeRow(i),
+          const SizedBox(height: 12),
+        ],
       ],
     );
   }

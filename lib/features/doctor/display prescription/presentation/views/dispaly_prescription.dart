@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_colors.dart';
-import 'widgets/dispaly_prescription_body.dart';
 
 class DisplayPrescription extends StatelessWidget {
   const DisplayPrescription({super.key});
@@ -10,6 +9,6 @@ static const id = 'DisplayPrescription';
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whitebody,
-        body: DisplayPrescriptionBody());
+        body: Container());
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_care_app/core/utils/app_colors.dart';
+import 'package:smart_care_app/features/doctor/prescribed%20treatments/presentation/manager/cubit/treatment_doctor_cubit.dart';
 import '../../../../../../core/utils/widgets/patient_data_appbar.dart';
 import 'additional_notes_field.dart';
 import 'dosage_field.dart';
@@ -10,34 +11,89 @@ import 'times_per_day_selector.dart';
 
 class MedicationCard extends StatefulWidget {
   static const id = 'MedicationCard';
+  final String patientId;
+  final TreatmentCubitDoctor cubit;
 
-  const MedicationCard({super.key});
+  const MedicationCard({
+    super.key,
+    required this.patientId,
+    required this.cubit,
+  });
 
   @override
-  // ignore: library_private_types_in_public_api
-  _MedicationCardState createState() => _MedicationCardState();
+  State<MedicationCard> createState() => _MedicationCardState();
 }
 
 class _MedicationCardState extends State<MedicationCard> {
-  TimeOfDay? time1;
-  TimeOfDay? time2;
-  int timesPerDay = 2;
+  int timesPerDay = 1;
+  final List<TimeOfDay?> reminderTimes = [null, null, null];
 
-  void updateTime({required bool isFirst, required TimeOfDay newTime}) {
-    setState(() {
-      if (isFirst) {
-        time1 = newTime;
-      } else {
-        time2 = newTime;
-      }
-    });
-  }
+  final TextEditingController drugNameController = TextEditingController();
+  final TextEditingController dosageController = TextEditingController();
+  final TextEditingController notesController = TextEditingController();
 
   void updateTimesPerDay(int value) {
     setState(() {
       timesPerDay = value;
     });
   }
+
+  void updateTime(int index, TimeOfDay newTime) {
+    setState(() {
+      if (index < reminderTimes.length) {
+        reminderTimes[index] = newTime;
+      }
+    });
+  }
+
+  void _onSave() {
+  final name = drugNameController.text.trim();
+  final dosage = dosageController.text.trim();
+  final description = notesController.text.trim();
+
+  final times = reminderTimes.where((t) => t != null).toList();
+
+  if (times.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("اختر على الأقل وقت تنبيه واحد")),
+    );
+    return;
+  }
+
+  if (name.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("ادخل اسم الدواء")),
+    );
+    return;
+  }
+
+  if (dosage.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("ادخل الجرعة")),
+    );
+    return;
+  }
+
+  final int? parsedPatientId = int.tryParse(widget.patientId);
+  if (parsedPatientId == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("رقم المريض غير صحيح")),
+    );
+    return;
+  }
+
+  final formattedTimes = times.map((t) => t!.format(context)).toList();
+
+  widget.cubit.addTreatment(
+    patientId: parsedPatientId.toString(),
+    name: name,
+    dosage: dosage,
+    description: description.isNotEmpty ? description : null,
+    times: formattedTimes,
+  );
+
+  Navigator.pop(context);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -51,30 +107,30 @@ class _MedicationCardState extends State<MedicationCard> {
             borderRadius: BorderRadius.circular(24),
             side: BorderSide(color: Colors.grey.shade400),
           ),
-          margin: EdgeInsets.all(16),
+          margin: const EdgeInsets.all(16),
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  DrugNameField(),
-                  Divider(height: 32),
-                  DosageField(),
-                  SizedBox(height: 16),
+                  DrugNameField(controller: drugNameController),
+                  const Divider(height: 32),
+                  DosageField(controller: dosageController),
+                  const SizedBox(height: 16),
                   TimesPerDaySelector(
                     timesPerDay: timesPerDay,
                     onChanged: updateTimesPerDay,
                   ),
-                  Divider(height: 32),
+                  const Divider(height: 32),
                   ReminderTimesSection(
-                    time1: time1,
-                    time2: time2,
+                    maxTimes: timesPerDay,
+                    times: reminderTimes,
                     onTimeChanged: updateTime,
                   ),
-                  Divider(height: 32),
-                  AdditionalNotesField(),
-                  SizedBox(height: 20),
-                  SaveButton(),
+                  const Divider(height: 32),
+                  AdditionalNotesField(controller: notesController),
+                  const SizedBox(height: 20),
+                  SaveButton(onPressed: _onSave),
                 ],
               ),
             ),

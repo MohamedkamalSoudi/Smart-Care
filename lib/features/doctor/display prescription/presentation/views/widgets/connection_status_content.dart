@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ConnectionStatusContent extends StatelessWidget {
+  final String title;
   final String connectionType;
   final String message;
   final String timestamp;
@@ -11,7 +12,7 @@ class ConnectionStatusContent extends StatelessWidget {
     required this.connectionType,
     required this.message,
     required this.timestamp,
-    required this.date,
+    required this.date, required this.title,
   });
 
   @override
@@ -21,7 +22,7 @@ class ConnectionStatusContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'C-Vitrase',
+          title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,

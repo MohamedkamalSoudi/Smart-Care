@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/features/doctor/Radiology/presentation/views/required_radiology_view.dart';
+import 'package:smart_care_app/features/doctor/prescribed%20treatments/presentation/manager/cubit/treatment_doctor_cubit.dart';
 import 'package:smart_care_app/features/nurse/home/data/patient_nurse_model.dart';
 import '../../features/common/login/presentation/views/login_view.dart';
 import '../../features/common/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/common/splash/views/splahs_view.dart';
 import '../../features/doctor/description/presentation/views/description_view.dart';
-import '../../features/doctor/display prescription/presentation/views/widgets/dispaly_prescription_body.dart';
 import '../../features/doctor/home/data/patient_model.dart';
 import '../../features/doctor/home/presentation/views/home_view_doctor.dart';
 import '../../features/doctor/patient data/presentation/views/patient_data.dart';
-import '../../features/doctor/prescribed treatments/presentation/add_new_prescription.dart';
+import '../../features/doctor/prescribed treatments/presentation/view/add_new_prescription_viwe_body.dart';
 import '../../features/doctor/prescribed treatments/presentation/view/widgets/medication_card.dart';
 import '../../features/doctor/profile/presentation/views/profile_view.dart';
 import '../../features/doctor/required_tests/presentation/views/required_tests_view.dart';
@@ -39,9 +39,16 @@ Map<String, WidgetBuilder> get appRoutes {
     RequiredTestsViewAtDoctor.id: (context) => RequiredTestsViewAtDoctor(),
     RequiredRadiologyViewAtDoctor.id: (context) =>
         RequiredRadiologyViewAtDoctor(),
-    AddNewPrescription.id: (context) => AddNewPrescription(),
-    MedicationCard.id: (context) => MedicationCard(),
-    DisplayPrescriptionBody.id: (context) => DisplayPrescriptionBody(),
+    MedicationCard.id: (context) {
+  final args = ModalRoute.of(context)!.settings.arguments as Map<String, Object?>;
+  final cubit = args['cubit'] as TreatmentCubitDoctor;
+  final patientId = args['patientId'] as String;
+
+  return MedicationCard(
+    cubit: cubit,
+    patientId: patientId,
+  );
+},
     ProfileNarseView.id: (context) => ProfileNarseView(),
     PatientDataNurse.id: (context) {
       final user = ModalRoute.of(context)!.settings.arguments as UserModelNurse;
@@ -59,6 +66,8 @@ Map<String, WidgetBuilder> get appRoutes {
     child: DisplayPrescriptionBodyNurse(),
   );
 },
+AddNewPrescriptionViweBody.id: (context) => AddNewPrescriptionViweBody(
+),
     TestResult.id: (context) => TestResult(),
   };
 }

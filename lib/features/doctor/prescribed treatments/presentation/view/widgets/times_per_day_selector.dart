@@ -37,7 +37,7 @@ class TimesPerDaySelector extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  if (timesPerDay < 10) onChanged(timesPerDay + 1);
+                  if (timesPerDay < 3) onChanged(timesPerDay + 1);
                 },
                 child: Icon(Icons.add, color: Colors.black54),
               ),
