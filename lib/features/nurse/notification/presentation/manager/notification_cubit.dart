@@ -9,36 +9,39 @@ import 'package:dio/dio.dart';
 class NotificationCubit extends Cubit<NotificationState> {
   NotificationCubit() : super(NotificationInitial());
 
-  List<NotificationModelAtNurse> notificationsAtNurse = [];
+  List<NotificationModelAtNurse> schedule = [];
+  List<NotificationModelAtNurse> waiting = [];
+  List<NotificationModelAtNurse> complete = [];
+
   final String baseUrl = "http://smartcare.wuaze.com/public";
+
   Future<void> fetchNotifications() async {
     emit(NotificationLoading());
 
     try {
       final response = await Dio().get(
         '$baseUrl/api/notifications',
-        options: Options(
-          headers: await HeadersApi.getHeaders(),
-        ),
+        options: Options(headers: await HeadersApi.getHeaders()),
       );
-      log('Response status: ${response.statusCode}');
-      log('Headers: ${response.headers}');
-      log('Raw data: ${response.data}');
+
       if (response.data != null && response.data['unread'] != null) {
         final List<dynamic> unreadList = response.data['unread'];
-        log('Unread list: $unreadList');
 
         if (unreadList.isNotEmpty) {
-          notificationsAtNurse = unreadList
+          schedule = unreadList
               .where((item) =>
                   item is Map<String, dynamic> && item['patient'] != null)
               .map((item) => NotificationModelAtNurse.fromJson(item))
               .toList();
         } else {
-          notificationsAtNurse = [];
+          schedule = [];
         }
 
-        emit(NotificationLoaded(notificationsAtNurse));
+        emit(NotificationLoaded(
+          schedule: schedule,
+          waiting: waiting,
+          complete: complete,
+        ));
       } else {
         emit(NotificationError("No unread data in response"));
       }
@@ -46,5 +49,19 @@ class NotificationCubit extends Cubit<NotificationState> {
       log("Error fetching notifications: $e\n$stack");
       emit(NotificationError(e.toString()));
     }
+  }
+
+  void moveToWaiting(NotificationModelAtNurse item) {
+    schedule.remove(item);
+    waiting.add(item);
+    emit(NotificationLoaded(
+        schedule: schedule, waiting: waiting, complete: complete));
+  }
+
+  void moveToComplete(NotificationModelAtNurse item) {
+    schedule.remove(item);
+    complete.add(item);
+    emit(NotificationLoaded(
+        schedule: schedule, waiting: waiting, complete: complete));
   }
 }

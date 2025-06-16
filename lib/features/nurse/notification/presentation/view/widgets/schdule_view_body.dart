@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_care_app/features/nurse/notification/presentation/manager/notification_cubit.dart';
@@ -16,30 +14,37 @@ class SchduleViewBody extends StatelessWidget {
       child: BlocBuilder<NotificationCubit, NotificationState>(
         builder: (context, state) {
           if (state is NotificationLoading) {
-            return Center(child: CircularProgressIndicator());
-          } else if (state is NotificationLoaded) {
-            final notifications = state.notifications;
-
-            log(notifications.length.toString());
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView.builder(
-                itemCount: notifications.length,
-                itemBuilder: (context, index) {
-                  final item = notifications[index];
-                  return CustomCard(
-                    patientName: item.patient.name,
-                    roomNumber: item.patient.roomNumber,
-                    ped: item.patient.ped,
-                    time: item.createdAt,
-                  );
-                },
-              ),
-            );
+            return const Center(child: CircularProgressIndicator());
           } else if (state is NotificationError) {
-            return Center(child: Text('حدث خطأ: ${state.message}'));
+            return Center(child: Text('Error: ${state.message}'));
+          } else if (state is NotificationLoaded) {
+            final notifications = state.schedule; // <-- تأكد أن هذا الحقل موجود
+            if (notifications.isEmpty) {
+              return const Center(child: Text("No schedule tasks"));
+            }
+
+            return ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: notifications.length,
+              itemBuilder: (context, index) {
+                final item = notifications[index];
+                return CustomCard(
+                  patientName: item.patient.name,
+                  roomNumber: item.patient.roomNumber,
+                  ped: item.patient.ped,
+                  time: item.createdAt,
+                  date: item.createdAt,
+                  titel: item.title,
+                  patientId: item.patient.patientId,
+                  onWaiting: () =>
+                      context.read<NotificationCubit>().moveToWaiting(item),
+                  onComplete: () =>
+                      context.read<NotificationCubit>().moveToComplete(item),
+                );
+              },
+            );
           } else {
-            return Center(child: Text('لا توجد بيانات'));
+            return const Center(child: Text("Something went wrong"));
           }
         },
       ),

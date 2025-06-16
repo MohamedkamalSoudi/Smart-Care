@@ -19,7 +19,7 @@ class RoomNumberAndBedNumber extends StatelessWidget {
       child: Row(
         spacing: 5,
         children: [
-          Text(roomNumber),
+          Text('G$roomNumber'),
           Container(
             height: 40,
             width: 10,

@@ -37,13 +37,13 @@ class NotificationModelAtNurse {
 }
 
 class PatientDataInNotification {
-  final int id;
+  final int patientId;
   final String roomNumber;
   final String ped;
   final String name;
 
   PatientDataInNotification({
-    required this.id,
+    required this.patientId,
     required this.roomNumber,
     required this.ped,
     required this.name,
@@ -51,7 +51,7 @@ class PatientDataInNotification {
 
   factory PatientDataInNotification.fromJson(Map<String, dynamic> json) {
     return PatientDataInNotification(
-      id: json['id'],
+      patientId: json['id'],
       roomNumber: json['room_number'],
       ped: json['ped'],
       name: json['user']['name'],

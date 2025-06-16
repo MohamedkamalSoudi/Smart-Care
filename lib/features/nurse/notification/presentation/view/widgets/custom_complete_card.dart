@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'room_number_and_bed_number.dart';
-import 'time_container.dart';
-
 class CustomCompleteCard extends StatelessWidget {
-  const CustomCompleteCard({super.key});
+  final String name;
+  final String roomNumber;
+  final String time;
+  final String patientName;
+  final String ped;
+  final String date;
+
+  const CustomCompleteCard({
+    super.key,
+    required this.name,
+    required this.roomNumber,
+    required this.time,
+    required this.patientName,
+    required this.ped,
+    required this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,25 +24,21 @@ class CustomCompleteCard extends StatelessWidget {
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.transparent,
-          border: Border.all(width: 2, color: Color(0xff4DADFB))),
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.transparent,
+        border: Border.all(width: 2, color: Color(0xff4DADFB)),
+      ),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Ahmed yousef'),
-              //  RoomNumberAndBedNumber(),
+              Text(name),
+              Text("Room $roomNumber"),
             ],
           ),
-          SizedBox(
-            height: 20,
-          ),
-          TimeContainer(),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20),
+          Text("Time: $time"),
         ],
       ),
     );

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TimeContainer extends StatelessWidget {
+  final String date;
+  final String titel;
   const TimeContainer({
     super.key,
+    required this.date,
+    required this.titel,
   });
 
   @override
@@ -15,10 +19,10 @@ class TimeContainer extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text('Saturday, Nov 22'),
+          Text(titel),
           Spacer(),
           Icon(Icons.settings_backup_restore),
-          Text(' Saturday, Nov 22'),
+          Text(date),
         ],
       ),
     );
