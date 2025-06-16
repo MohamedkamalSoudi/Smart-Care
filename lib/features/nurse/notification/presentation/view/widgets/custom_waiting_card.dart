@@ -22,7 +22,7 @@ class CustomWaitingCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Ahmed yousef'),
-              RoomNumberAndBedNumber(),
+              // RoomNumberAndBedNumber(),
             ],
           ),
           SizedBox(

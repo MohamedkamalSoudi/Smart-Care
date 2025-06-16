@@ -21,7 +21,7 @@ class CustomCompleteCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Ahmed yousef'),
-              RoomNumberAndBedNumber(),
+              //  RoomNumberAndBedNumber(),
             ],
           ),
           SizedBox(
@@ -31,7 +31,6 @@ class CustomCompleteCard extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-         
         ],
       ),
     );

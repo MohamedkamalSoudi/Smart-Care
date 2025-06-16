@@ -5,7 +5,16 @@ import 'room_number_and_bed_number.dart';
 import 'time_container.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key});
+  final String patientName;
+  final String roomNumber;
+  final String ped;
+  final String time;
+  const CustomCard(
+      {super.key,
+      required this.patientName,
+      required this.roomNumber,
+      required this.ped,
+      required this.time});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +30,11 @@ class CustomCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Ahmed yousef'),
-              RoomNumberAndBedNumber(),
+              Text(patientName),
+              RoomNumberAndBedNumber(
+                roomNumber: roomNumber,
+                ped: ped,
+              ),
             ],
           ),
           SizedBox(

@@ -7,7 +7,7 @@ class NotificationInitial extends NotificationState {}
 class NotificationLoading extends NotificationState {}
 
 class NotificationLoaded extends NotificationState {
-  final List<NotificationModel> notifications;
+  final List<NotificationModelAtNurse> notifications;
 
   NotificationLoaded(this.notifications);
 }

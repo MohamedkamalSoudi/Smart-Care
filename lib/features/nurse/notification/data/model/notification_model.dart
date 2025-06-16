@@ -10,14 +10,14 @@ class TapBarModel {
   });
 }
 
-class NotificationModel {
+class NotificationModelAtNurse {
   final String id;
   final String title;
   final String message;
   final String createdAt;
-  final PatientData patient;
+  final PatientDataInNotification patient;
 
-  NotificationModel({
+  NotificationModelAtNurse({
     required this.id,
     required this.title,
     required this.message,
@@ -25,32 +25,32 @@ class NotificationModel {
     required this.patient,
   });
 
-  factory NotificationModel.fromJson(Map<String, dynamic> json) {
-    return NotificationModel(
+  factory NotificationModelAtNurse.fromJson(Map<String, dynamic> json) {
+    return NotificationModelAtNurse(
       id: json['id'],
       title: json['title'],
       message: json['message'],
       createdAt: json['created_at'],
-      patient: PatientData.fromJson(json['patient']),
+      patient: PatientDataInNotification.fromJson(json['patient']),
     );
   }
 }
 
-class PatientData {
+class PatientDataInNotification {
   final int id;
   final String roomNumber;
   final String ped;
   final String name;
 
-  PatientData({
+  PatientDataInNotification({
     required this.id,
     required this.roomNumber,
     required this.ped,
     required this.name,
   });
 
-  factory PatientData.fromJson(Map<String, dynamic> json) {
-    return PatientData(
+  factory PatientDataInNotification.fromJson(Map<String, dynamic> json) {
+    return PatientDataInNotification(
       id: json['id'],
       roomNumber: json['room_number'],
       ped: json['ped'],
