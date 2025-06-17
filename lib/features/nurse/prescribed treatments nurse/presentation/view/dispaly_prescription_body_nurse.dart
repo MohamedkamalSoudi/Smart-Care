@@ -21,7 +21,7 @@ class DisplayPrescriptionBodyNurse extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.whitebody,
         appBar: PatientDataAppbar(
-          title: "Prescribed Treatments",
+          title: "Required Treatments",
           context: context,
         ),
         body: BlocBuilder<TreatmentCubit, TreatmentState>(

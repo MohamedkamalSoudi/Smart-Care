@@ -28,7 +28,7 @@ class TestResult extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.whitebody,
-      appBar: PatientDataAppbar(context: context, title: 'Rediology Result'),
+      appBar: PatientDataAppbar(context: context, title: 'Test Result'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: GridView.count(

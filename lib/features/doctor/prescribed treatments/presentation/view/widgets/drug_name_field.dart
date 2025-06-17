@@ -15,7 +15,7 @@ class DrugNameField extends StatelessWidget {
         TextFormField(
           controller: controller, 
           decoration: InputDecoration(
-            hintText: "e.g. Amoxicillin 250mg",
+            hintText: " Amoxicillin 250mg",
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           ),
         ),

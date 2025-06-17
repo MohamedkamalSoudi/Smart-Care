@@ -27,11 +27,11 @@ class AddNewPrescriptionViweBody extends StatelessWidget {
           builder: (context, state) {
             if (state is TreatmentLoaded) {
               return CustomView(
-                title: "Add New Prescription",
+                title: "Add New Treatment",
                 isFloatingActive: true,
                 body: state.treatments.isEmpty
                     ? const CustomEmptyBody(
-                        title: 'No Prescriptions added until now')
+                        title: 'No Treatments added until now')
                     : ListView.builder(
                         itemCount: state.treatments.length,
                         itemBuilder: (context, index) {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'custom_notification_button.dart';
+import 'room_number_and_bed_number.dart';
 
 class CustomWaitingCard extends StatelessWidget {
   final String patientName;
@@ -21,6 +23,7 @@ class CustomWaitingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String todayDate = DateFormat('EEEE, MMM d').format(DateTime.now());
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(bottom: 16),
@@ -32,7 +35,6 @@ class CustomWaitingCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// الاسم + الغرفة والسرير
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -41,22 +43,27 @@ class CustomWaitingCard extends StatelessWidget {
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
-              Text('Room: $roomNumber | Bed: $ped'),
+              RoomNumberAndBedNumber (roomNumber: roomNumber, ped: ped),
             ],
           ),
           const SizedBox(height: 20),
-
-          /// الوقت والتاريخ
-          Row(
-            children: [
-              const Icon(Icons.access_time, size: 18, color: Colors.grey),
-              const SizedBox(width: 5),
-              Text('$date - $time'),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            decoration: BoxDecoration(
+              color: Color(0xff9ADCF6),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+              SizedBox(width: 5),
+              Text(date),
+              Spacer(),
+              Icon(Icons.settings_backup_restore,), 
+              Text(todayDate),
             ],
+            ),
           ),
           const SizedBox(height: 20),
-
-          /// زر إنهاء
           Row(
             children: [
               Expanded(

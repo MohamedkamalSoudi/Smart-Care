@@ -16,7 +16,7 @@ class SchduleViewBody extends StatelessWidget {
         } else if (state is NotificationError) {
           return Center(child: Text('Error: ${state.message}'));
         } else if (state is NotificationLoaded) {
-          final notifications = state.schedule; // <-- تأكد أن هذا الحقل موجود
+          final notifications = state.schedule; 
           if (notifications.isEmpty) {
             return const Center(child: Text("No schedule tasks"));
           }

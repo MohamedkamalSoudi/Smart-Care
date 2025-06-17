@@ -11,15 +11,19 @@ class HomeViewNurse extends StatelessWidget {
   static const id = 'HomeViewNurse';
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserNurseCubit()..fetchUsersNurse(),
-      child: BlocProvider(
-        create: (_) => NotificationCubit()..fetchNotifications(),
-        child: Scaffold(
-          backgroundColor: AppColors.whitebody,
-          appBar: homeViewAppbarNurse(),
-          body: const HomeViewBodyNurse(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => UserNurseCubit()..fetchUsersNurse(),
         ),
+        BlocProvider(
+          create: (_) => NotificationCubit()..fetchNotifications(),
+        ),
+      ],
+      child: Scaffold(
+        backgroundColor: AppColors.whitebody,
+        appBar: homeViewAppbarNurse(),
+        body: const HomeViewBodyNurse(),
       ),
     );
   }

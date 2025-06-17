@@ -21,7 +21,7 @@ class DescriptionNurseView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.whitebody,
         appBar: PatientDataAppbar(
-          title: 'Description of the condition',
+          title: 'Description',
           context: context,
         ),
         body: BlocBuilder<DescriptionNurseCubit, DescriptionNurseStates>(

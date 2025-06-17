@@ -17,7 +17,7 @@ class EditProfilePictureView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.whitebody,
         appBar: PatientDataAppbar(
-          title: 'Edit Profile Picture',
+          title: 'Add Test Image',
           context: context,
         ),
         body: EditProfilePicturePageBody(

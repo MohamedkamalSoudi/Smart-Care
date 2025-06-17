@@ -6,6 +6,7 @@ import '../../../../notification/presentation/manager/notification_cubit.dart';
 import '../../../../notification/presentation/manager/notification_state.dart';
 
 PreferredSizeWidget homeViewAppbarNurse() {
+  
   return PreferredSize(
     preferredSize: Size.fromHeight(60.0),
     child: Column(

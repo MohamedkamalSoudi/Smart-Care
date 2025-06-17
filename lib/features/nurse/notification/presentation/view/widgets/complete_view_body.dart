@@ -15,7 +15,7 @@ class CompleteViewBody extends StatelessWidget {
           final complete = state.complete;
           if (complete.isEmpty) {
             return const Center(
-              child: Text('لا توجد مهام مكتملة'),
+              child: Text('No completed tasks'),
             );
           }
           return ListView.builder(

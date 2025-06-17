@@ -37,7 +37,7 @@ class RequiredRediologyViewAtNurse extends StatelessWidget {
                 state.rediologies == null ||
                 state.rediologies!.isEmpty) {
               return const CustomEmptyBody(
-                  title: 'No  rediologies added until now');
+                  title: 'No rediologies added until now');
             }
 
             return ListView.builder(

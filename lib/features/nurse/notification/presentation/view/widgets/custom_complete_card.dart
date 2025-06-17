@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import 'room_number_and_bed_number.dart';
 
 class CustomCompleteCard extends StatelessWidget {
   final String name;
@@ -20,6 +23,7 @@ class CustomCompleteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String todayDate = DateFormat('EEEE, MMM d').format(DateTime.now());
     return Container(
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.only(bottom: 16),
@@ -34,11 +38,37 @@ class CustomCompleteCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(name),
-              Text("Room $roomNumber"),
+              RoomNumberAndBedNumber(roomNumber: roomNumber, ped: ped),
             ],
           ),
           SizedBox(height: 20),
-          Text("Time: $time"),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: Color(0xff9ADCF6),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+                Text(
+                  time,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black, 
+                  ),
+                ),
+                Spacer(),
+                Icon(Icons.settings_backup_restore,), 
+                Text(
+                  todayDate,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

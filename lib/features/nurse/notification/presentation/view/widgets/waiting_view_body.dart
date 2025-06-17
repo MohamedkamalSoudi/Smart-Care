@@ -15,7 +15,7 @@ class WaitingViewBody extends StatelessWidget {
           final waiting = state.waiting;
           if (waiting.isEmpty) {
             return const Center(
-              child: Text('لا توجد مهام في الانتظار'),
+              child: Text('No pending tasks'),
             );
           }
           return ListView.builder(

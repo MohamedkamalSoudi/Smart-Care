@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'custom_notification_button.dart';
 import 'room_number_and_bed_number.dart';
-import 'time_container.dart';
 
 class CustomCard extends StatelessWidget {
   final String patientName;
@@ -29,6 +29,7 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String todayDate = DateFormat('EEEE, MMM d').format(DateTime.now());
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(bottom: 16),
@@ -39,7 +40,6 @@ class CustomCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // المريض وبيانات الغرفة
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -48,10 +48,36 @@ class CustomCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-          // الوقت والعنوان
-          TimeContainer(date: date, titel: titel),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: Color(0xff9ADCF6),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+                Text(
+                  titel,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black, 
+                  ),
+                ),
+                Spacer(),
+                Icon(Icons.settings_backup_restore,),
+                Text(
+                  todayDate,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black, 
+                  ),
+                ),
+              ],
+            ),
+            
+          ),
+
           const SizedBox(height: 20),
-          // الأزرار
           Row(
             children: [
               if (onWaiting != null)

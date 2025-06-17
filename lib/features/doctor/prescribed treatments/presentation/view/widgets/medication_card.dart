@@ -55,21 +55,24 @@ class _MedicationCardState extends State<MedicationCard> {
 
   if (times.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("اختر على الأقل وقت تنبيه واحد")),
+      const SnackBar(content: Text("Please select at least one reminder time")),
+
     );
     return;
   }
 
   if (name.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("ادخل اسم الدواء")),
+      const SnackBar(content: Text("Enter the medication name")),
+
     );
     return;
   }
 
   if (dosage.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("ادخل الجرعة")),
+      const SnackBar(content: Text("Enter the dosage")),
+
     );
     return;
   }
@@ -77,7 +80,8 @@ class _MedicationCardState extends State<MedicationCard> {
   final int? parsedPatientId = int.tryParse(widget.patientId);
   if (parsedPatientId == null) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("رقم المريض غير صحيح")),
+      const SnackBar(content: Text("Invalid patient ID")),
+
     );
     return;
   }
@@ -99,7 +103,7 @@ class _MedicationCardState extends State<MedicationCard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whitebody,
-      appBar: PatientDataAppbar(title: "Add New Prescription", context: context),
+      appBar: PatientDataAppbar(title: "Add New Treatment", context: context),
       body: Center(
         child: Card(
           color: AppColors.whitebody,

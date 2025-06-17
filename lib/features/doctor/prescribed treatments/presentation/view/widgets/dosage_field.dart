@@ -8,12 +8,12 @@ class DosageField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Dosage (Optional)", style: TextStyle(fontWeight: FontWeight.w500)),
+        Text("Dosage", style: TextStyle(fontWeight: FontWeight.w500)),
         SizedBox(height: 6),
         TextFormField(
           controller: controller,
           decoration: InputDecoration(
-            hintText: "e.g. 1 Tablet, 10ml",
+            hintText: "10ml",
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           ),
         ),

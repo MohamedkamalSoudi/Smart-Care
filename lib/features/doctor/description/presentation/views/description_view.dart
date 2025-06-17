@@ -31,7 +31,7 @@ class DescriptionView extends StatelessWidget {
         },
         builder: (context, state) {
           return CustomView(
-            title: 'Description of the condition',
+            title: 'Description',
             isFloatingActive: state is EmptyState ? true : false,
             body: state is DataFounded
                 ? NoteItem(
@@ -43,7 +43,7 @@ class DescriptionView extends StatelessWidget {
                       customShowDialog(
                         context,
                         controller,
-                        'Edit Description of patient:',
+                        'Edit Description of patient',
                         () {
                           context
                               .read<DescriptionCubit>()

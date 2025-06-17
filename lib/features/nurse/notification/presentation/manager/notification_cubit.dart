@@ -45,8 +45,8 @@ class NotificationCubit extends Cubit<NotificationState> {
       } else {
         emit(NotificationError("No unread data in response"));
       }
+    // ignore: unused_catch_stack
     } catch (e, stack) {
-      log("Error fetching notifications: $e\n$stack");
       emit(NotificationError(e.toString()));
     }
   }
@@ -93,11 +93,11 @@ class NotificationCubit extends Cubit<NotificationState> {
       if (response.statusCode == 200) {
         log('Notification $id marked as read');
       } else {
-        log('Failed to mark notification $id as read');
+        print('Failed to mark notification as read');
       }
     } catch (e) {
-      log('Error marking notification $id as read: $e');
-      rethrow; // حتى يتم الإمساك بها في moveToComplete
+      print(e.toString());
+      rethrow; 
     }
   }
 }

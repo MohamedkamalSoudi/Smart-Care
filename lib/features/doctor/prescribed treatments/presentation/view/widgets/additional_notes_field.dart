@@ -14,7 +14,7 @@ class AdditionalNotesField extends StatelessWidget {
           controller: controller,
           maxLines: 2,
           decoration: InputDecoration(
-            hintText: "e.g. Take with food",
+            hintText: "Take with food",
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           ),
         ),
