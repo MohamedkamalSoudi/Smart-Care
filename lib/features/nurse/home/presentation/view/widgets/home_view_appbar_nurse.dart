@@ -6,15 +6,14 @@ import '../../../../notification/presentation/manager/notification_cubit.dart';
 import '../../../../notification/presentation/manager/notification_state.dart';
 
 PreferredSizeWidget homeViewAppbarNurse() {
-  
   return PreferredSize(
-    preferredSize: Size.fromHeight(60.0),
+    preferredSize: const Size.fromHeight(60.0),
     child: Column(
       children: [
         AppBar(
           automaticallyImplyLeading: false,
           scrolledUnderElevation: 0,
-          title: Text(
+          title: const Text(
             'Patients List',
             style: TextStyle(
               color: AppColors.grey60,
@@ -34,15 +33,19 @@ PreferredSizeWidget homeViewAppbarNurse() {
                 }
 
                 return Stack(
+                  clipBehavior: Clip.none,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.notifications_none,
-                          color: AppColors.iconhome),
+                      icon: const Icon(
+                        Icons.notifications_none,
+                        color: AppColors.iconhome,
+                      ),
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => NotificationView()),
+                            builder: (context) => const NotificationView(),
+                          ),
                         );
                       },
                     ),
@@ -51,16 +54,21 @@ PreferredSizeWidget homeViewAppbarNurse() {
                         right: 6,
                         top: 6,
                         child: Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
+                          padding: const EdgeInsets.all(5),
+                          decoration: const BoxDecoration(
                             color: Colors.red,
                             shape: BoxShape.circle,
                           ),
-                          child: Text(
-                            '$scheduleLength',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
+                          constraints: const BoxConstraints(
+                          ),
+                          child: Center(
+                            child: Text(
+                              '$scheduleLength',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -71,7 +79,7 @@ PreferredSizeWidget homeViewAppbarNurse() {
             ),
           ],
         ),
-        Divider(
+        const Divider(
           height: 1.5,
           thickness: 1.5,
           color: AppColors.iconhome,
