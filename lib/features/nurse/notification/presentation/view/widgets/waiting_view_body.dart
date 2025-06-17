@@ -9,38 +9,35 @@ class WaitingViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => NotificationCubit()..fetchNotifications(),
-      child: BlocBuilder<NotificationCubit, NotificationState>(
-        builder: (context, state) {
-          if (state is NotificationLoaded) {
-            final waiting = state.waiting;
-            if (waiting.isEmpty) {
-              return const Center(
-                child: Text('لا توجد مهام في الانتظار'),
-              );
-            }
-            return ListView.builder(
-              padding: const EdgeInsets.all(8.0),
-              itemCount: waiting.length,
-              itemBuilder: (context, index) {
-                final item = waiting[index];
-                return CustomWaitingCard(
-                  patientName: item.patient.name,
-                  roomNumber: item.patient.roomNumber,
-                  ped: item.patient.ped,
-                  date: item.createdAt,
-                  time: item.createdAt,
-                  onComplete: () =>
-                      context.read<NotificationCubit>().moveToComplete(item),
-                );
-              },
+    return BlocBuilder<NotificationCubit, NotificationState>(
+      builder: (context, state) {
+        if (state is NotificationLoaded) {
+          final waiting = state.waiting;
+          if (waiting.isEmpty) {
+            return const Center(
+              child: Text('لا توجد مهام في الانتظار'),
             );
-          } else {
-            return const Center(child: CircularProgressIndicator());
           }
-        },
-      ),
+          return ListView.builder(
+            padding: const EdgeInsets.all(8.0),
+            itemCount: waiting.length,
+            itemBuilder: (context, index) {
+              final item = waiting[index];
+              return CustomWaitingCard(
+                patientName: item.patient.name,
+                roomNumber: item.patient.roomNumber,
+                ped: item.patient.ped,
+                date: item.createdAt,
+                time: item.createdAt,
+                onComplete: () =>
+                    context.read<NotificationCubit>().moveToComplete(item),
+              );
+            },
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }

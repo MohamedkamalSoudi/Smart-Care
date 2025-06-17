@@ -55,13 +55,49 @@ class NotificationCubit extends Cubit<NotificationState> {
     schedule.remove(item);
     waiting.add(item);
     emit(NotificationLoaded(
-        schedule: schedule, waiting: waiting, complete: complete));
+      schedule: List.from(schedule),
+      waiting: List.from(waiting),
+      complete: List.from(complete),
+    ));
   }
 
-  void moveToComplete(NotificationModelAtNurse item) {
-    schedule.remove(item);
-    complete.add(item);
-    emit(NotificationLoaded(
-        schedule: schedule, waiting: waiting, complete: complete));
+  Future<void> moveToComplete(NotificationModelAtNurse item) async {
+    try {
+      await markNotificationAsRead(item.id);
+
+      if (schedule.contains(item)) {
+        schedule.remove(item);
+      } else if (waiting.contains(item)) {
+        waiting.remove(item);
+      }
+
+      complete.add(item);
+
+      emit(NotificationLoaded(
+        schedule: List.from(schedule),
+        waiting: List.from(waiting),
+        complete: List.from(complete),
+      ));
+    } catch (e) {
+      log('Failed to mark notification as read or move: $e');
+    }
+  }
+
+  Future<void> markNotificationAsRead(String id) async {
+    try {
+      final response = await Dio().post(
+        '$baseUrl/api/notifications/$id/read',
+        options: Options(headers: await HeadersApi.getHeaders()),
+      );
+
+      if (response.statusCode == 200) {
+        log('Notification $id marked as read');
+      } else {
+        log('Failed to mark notification $id as read');
+      }
+    } catch (e) {
+      log('Error marking notification $id as read: $e');
+      rethrow; // حتى يتم الإمساك بها في moveToComplete
+    }
   }
 }
